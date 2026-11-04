@@ -30,7 +30,7 @@
             <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
                 <!-- Language Selector -->
                 <div class="inline-flex rounded-xl bg-[#F8F6EF] p-1 border border-[#174D3B]/10 text-xs font-semibold">
-                    <button type="button" id="lang-id-btn" class="lang-btn px-2.5 py-1 rounded-lg bg-[#174D3B] text-white transition-all duration-150">
+                    <button type="button" id="lang-id-btn" class="lang-btn px-2.5 py-1 rounded-lg bg-[#4ea8de] text-white transition-all duration-150">
                         Bahasa
                     </button>
                     <button type="button" id="lang-en-btn" class="lang-btn px-2.5 py-1 rounded-lg text-[#5A6961] hover:text-[#174D3B] transition-all duration-150">
@@ -133,7 +133,7 @@
                     </div>
 
                     <button type="submit" id="send-btn"
-                        class="px-5 py-3 rounded-xl bg-gradient-to-r from-[#174D3B] to-[#21845B] hover:from-[#21845B] hover:to-[#174D3B] text-white text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-xs hover:shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                        class="px-5 py-3 rounded-xl bg-[#4ea8de] hover:bg-[#38bdf8] text-white text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-xs hover:shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
                         <span>Kirim</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
@@ -181,9 +181,9 @@
         function setLanguage(lang) {
             currentLang = lang;
             if (lang === 'id') {
-                langIdBtn.classList.add('bg-[#174D3B]', 'text-white');
+                langIdBtn.classList.add('bg-[#4ea8de]', 'text-white');
                 langIdBtn.classList.remove('text-[#5A6961]');
-                langEnBtn.classList.remove('bg-[#174D3B]', 'text-white');
+                langEnBtn.classList.remove('bg-[#4ea8de]', 'text-white');
                 langEnBtn.classList.add('text-[#5A6961]');
 
                 userInput.placeholder = "Tanyakan etika, busana, atau aturan pura...";
@@ -196,9 +196,9 @@
                     btn.textContent = btn.getAttribute('data-q-id');
                 });
             } else {
-                langEnBtn.classList.add('bg-[#174D3B]', 'text-white');
+                langEnBtn.classList.add('bg-[#4ea8de]', 'text-white');
                 langEnBtn.classList.remove('text-[#5A6961]');
-                langIdBtn.classList.remove('bg-[#174D3B]', 'text-white');
+                langIdBtn.classList.remove('bg-[#4ea8de]', 'text-white');
                 langIdBtn.classList.add('text-[#5A6961]');
 
                 userInput.placeholder = "Ask about dress code, sanctuary rules, or temple etiquette...";
@@ -458,3 +458,4 @@
 </script>
 @endpush
 @endsection
+

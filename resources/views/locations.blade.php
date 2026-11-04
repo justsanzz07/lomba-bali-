@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="pt-6 mt-4 border-t border-gray-100">
-                        <a href="{{ route('santi.show', $loc->slug) }}" class="w-full inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#174D3B] to-[#21845B] hover:from-[#21845B] hover:to-[#174D3B] text-white font-semibold text-xs shadow-xs hover:shadow-md transition-all duration-200">
+                        <a href="{{ route('santi.show', $loc->slug) }}" class="w-full inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl bg-[#4ea8de] hover:bg-[#38bdf8] text-white font-semibold text-xs shadow-xs hover:shadow-md transition-all duration-200">
                             <span>Mulai Tanya Santi AI</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -129,3 +129,4 @@
 </script>
 @endpush
 @endsection
+

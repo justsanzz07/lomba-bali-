@@ -36,9 +36,9 @@ class SantiCulturalGuardianTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('SANTI');
-        $response->assertSee('Discover Bali. Respect Its Culture.');
-        $response->assertSee('Ask Santi AI');
+        $response->assertSee('Santi Cultural Guardian');
+        $response->assertSee('Discover the Magic of Bali');
+        $response->assertSee('Tanya Santi AI');
         $response->assertSee('Pura Besakih');
     }
 
@@ -313,3 +313,4 @@ class SantiCulturalGuardianTest extends TestCase
         $this->assertStringContainsString('Terjadi kendala saat menghubungi layanan Santi AI', $response->json('answer'));
     }
 }
+

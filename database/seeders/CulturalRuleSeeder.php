@@ -13,6 +13,46 @@ class CulturalRuleSeeder extends Seeder
      */
     public function run(): void
     {
+        $ulunDanu = Location::where('slug', 'pura-ulun-danu-beratan')->first();
+        if ($ulunDanu) {
+            $ulunDanuRules = [
+                [
+                    'category' => 'dress_code',
+                    'title' => 'Ketentuan Busana Kamen dan Selendang',
+                    'content' => 'Pengunjung wajib mengenakan kain penutup (kamen/sarung) dan selendang pengikat pinggang saat melangkah memasuki pelataran batas suci pura. Pakaian atas wajib sopan dan menutup bahu.',
+                    'source_name' => 'Simulasi SOP Pengelola DTW Ulun Danu Beratan',
+                    'source_url' => 'https://ulundanuberatan.com',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'sacred_area',
+                    'title' => 'Zona Suci Meru Terapung di Danau',
+                    'content' => 'Pelinggih Meru 11 tingkat di atas danau merupakan linggih pemujaan Sang Hyang Danu. Wisatawan dilarang mendekati dengan wahana air melampaui tali pelampung batas suci atau memanjat struktur candi.',
+                    'source_name' => 'Simulasi Awig-Awig Adat Desa Candikuning',
+                    'source_url' => 'https://tabanankab.go.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'photography',
+                    'title' => 'Etika Foto dan Larangan Drone Tanpa Izin',
+                    'content' => 'Pengambilan foto dari daratan taman diperbolehkan. Dilarang menerbangkan drone di atas area pelinggih suci tanpa izin resmi dari kantor pengelola objek wisata.',
+                    'source_name' => 'Simulasi Panduan Etika Kunjungan Kawasan Danau Beratan',
+                    'source_url' => 'https://ulundanuberatan.com',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+            ];
+
+            foreach ($ulunDanuRules as $rule) {
+                CulturalRule::updateOrCreate(
+                    ['location_id' => $ulunDanu->id, 'title' => $rule['title']],
+                    $rule
+                );
+            }
+        }
+
         $besakih = Location::where('slug', 'pura-besakih')->first();
         if ($besakih) {
             $besakihRules = [

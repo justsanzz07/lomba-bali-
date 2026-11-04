@@ -14,6 +14,13 @@ class LocationSeeder extends Seeder
     {
         $locations = [
             [
+                'name' => 'Pura Ulun Danu Beratan Bedugul',
+                'slug' => 'pura-ulun-danu-beratan',
+                'description' => 'Pura air ikonik di tepi Danau Beratan Bedugul dengan menara meru 11 tingkat yang tampak mengapung di atas danau berkabut, didedikasikan untuk memuja Dewi Danu.',
+                'address' => 'Danau Beratan, Candikuning, Kec. Baturiti, Kabupaten Tabanan, Bali',
+                'is_active' => true,
+            ],
+            [
                 'name' => 'Pura Agung Besakih',
                 'slug' => 'pura-besakih',
                 'description' => 'Pura terbesar dan tersuci di Pulau Bali (Mother Temple) yang terletak di lereng Gunung Agung. Memiliki kompleks bertingkat yang sakral bagi umat Hindu Dharma.',
