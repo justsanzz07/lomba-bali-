@@ -48,25 +48,30 @@
                     </div>
                 </a>
 
-                <!-- Center Navigation (Desktop) -->
-                <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium text-white/90">
+                <!-- Center Navigation (Desktop: Clean, Non-Redundant, Purposeful) -->
+                <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-white/90">
                     <a href="{{ route('landing') }}#hero" class="hover:text-white transition-colors">{{ __('messages.nav_home') }}</a>
                     <a href="{{ route('landing') }}#about" class="hover:text-white transition-colors">{{ __('messages.nav_about') }}</a>
                     <a href="{{ route('landing') }}#services" class="hover:text-white transition-colors">{{ __('messages.nav_guide') }}</a>
                     <a href="{{ route('landing') }}#how-it-works" class="hover:text-white transition-colors">{{ __('messages.nav_how') }}</a>
                     <a href="{{ route('locations.index') }}" class="hover:text-white transition-colors">{{ __('messages.nav_locations') }}</a>
-                    <a href="{{ route('landing') }}#ai-assistant" class="hover:text-white transition-colors">{{ __('messages.nav_assistant') }}</a>
                 </nav>
 
                 <!-- Right-side Action Buttons -->
-                <div class="hidden md:flex items-center space-x-3">
+                <div class="hidden md:flex items-center space-x-4">
                     <!-- Language Switcher Dropdown (Indonesian / English) -->
                     <div class="relative group">
                         <button type="button" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-white transition-all shadow-xs">
                             @if(app()->getLocale() === 'en')
-                                <span>🇺🇸 EN</span>
+                                <span class="inline-flex items-center space-x-1">
+                                    <span>🇺🇸</span>
+                                    <span>EN</span>
+                                </span>
                             @else
-                                <span>🇮🇩 ID</span>
+                                <span class="inline-flex items-center space-x-1">
+                                    <span>🇮🇩</span>
+                                    <span>ID</span>
+                                </span>
                             @endif
                             <svg class="w-3.5 h-3.5 text-white/80 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -94,10 +99,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('landing') }}#footer" class="px-4 py-2 rounded-full text-xs font-semibold text-white/90 hover:text-white border border-white/20 hover:border-white/40 transition-colors">
-                        {{ __('messages.nav_contact') }}
-                    </a>
-                    <a href="{{ route('santi.show', 'pura-ulun-danu-beratan') }}" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#DDF2DF] text-[#174D3B] text-xs font-bold shadow-md hover:shadow-lg transition-all duration-200">
+                    <a href="{{ route('santi.show', 'pura-besakih') }}" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#DDF2DF] text-[#174D3B] text-xs font-bold shadow-md hover:shadow-lg transition-all duration-200">
                         <span>{{ __('messages.nav_ask_santi') }}</span>
                         <svg class="w-3.5 h-3.5 text-[#174D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -141,9 +143,8 @@
             <a href="{{ route('landing') }}#services" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">{{ __('messages.nav_guide') }}</a>
             <a href="{{ route('landing') }}#how-it-works" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">{{ __('messages.nav_how') }}</a>
             <a href="{{ route('locations.index') }}" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">{{ __('messages.nav_locations') }}</a>
-            <a href="{{ route('landing') }}#ai-assistant" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">{{ __('messages.nav_assistant') }}</a>
             <div class="pt-4 border-t border-white/10 flex flex-col space-y-2">
-                <a href="{{ route('santi.show', 'pura-ulun-danu-beratan') }}" class="w-full text-center py-3 rounded-full bg-white text-[#174D3B] font-bold text-xs shadow-md">
+                <a href="{{ route('santi.show', 'pura-besakih') }}" class="w-full text-center py-3 rounded-full bg-white text-[#174D3B] font-bold text-xs shadow-md">
                     {{ __('messages.nav_ask_santi') }}
                 </a>
             </div>
