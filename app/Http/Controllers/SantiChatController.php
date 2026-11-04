@@ -118,4 +118,3 @@ class SantiChatController extends Controller
         return response()->json($response);
     }
 }
-

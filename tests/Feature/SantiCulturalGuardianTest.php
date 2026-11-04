@@ -38,8 +38,29 @@ class SantiCulturalGuardianTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('SANTI');
         $response->assertSee('Discover Bali');
-        $response->assertSee('Respect Its Culture');
-        $response->assertSee('Ask Santi AI');
+        $response->assertSee('Tanya Santi AI');
+    }
+
+    /**
+     * Test: Language switcher switches between Indonesian and English.
+     */
+    public function test_language_switcher_switches_between_indonesian_and_english(): void
+    {
+        // 1. Indonesian test
+        $responseId = $this->get('/?lang=id');
+        $responseId->assertStatus(200);
+        $responseId->assertSee('Tanya Santi AI');
+        $responseId->assertSee('Panduan Budaya Cerdas untuk Menjelajahi Bali');
+
+        // 2. English test
+        $responseEn = $this->get('/?lang=en');
+        $responseEn->assertStatus(200);
+        $responseEn->assertSee('Ask Santi AI');
+        $responseEn->assertSee('Your Smart Cultural Guide to Exploring Bali');
+
+        // 3. Route switch
+        $responseSwitch = $this->get('/lang/en');
+        $responseSwitch->assertRedirect();
     }
 
     /**
@@ -313,4 +334,3 @@ class SantiCulturalGuardianTest extends TestCase
         $this->assertStringContainsString('Terjadi kendala saat menghubungi layanan Santi AI', $response->json('answer'));
     }
 }
-

@@ -1,0 +1,103 @@
+<?php
+
+return [
+    // Header & Navigation
+    'brand_subtitle' => 'AI Cultural Guardian',
+    'nav_home' => 'Beranda',
+    'nav_about' => 'Tentang',
+    'nav_guide' => 'Panduan Budaya',
+    'nav_how' => 'Cara Kerja',
+    'nav_locations' => 'Lokasi Pura',
+    'nav_assistant' => 'Asisten AI',
+    'nav_contact' => 'Hubungi Kami',
+    'nav_ask_santi' => 'Tanya Santi AI',
+
+    // Hero Section
+    'hero_eyebrow' => '✦ ASISTEN BUDAYA BERBASIS AI • BALI',
+    'hero_title_1' => 'Discover Bali.',
+    'hero_title_2' => 'Respect Its Culture.',
+    'hero_subtitle' => 'Pendamping cerdas berbasis AI untuk memahami tradisi, etika lokal, dan pedoman kawasan suci Bali.',
+    'hero_cta_primary' => 'Tanya Santi AI',
+    'hero_cta_secondary' => 'Jelajahi Panduan Budaya',
+    'hero_card1_title' => 'Asisten Budaya AI',
+    'hero_card1_desc' => 'Dapatkan panduan etika budaya instan ke mana pun Anda bepergian di Bali.',
+    'hero_card2_title' => 'Panduan Berbasis Lokasi',
+    'hero_card2_desc' => 'Pahami aturan adat dan tradisi lokal sebelum memasuki kawasan suci pura.',
+
+    // About Section
+    'about_label' => 'TENTANG SANTI',
+    'about_heading' => 'Panduan Budaya Cerdas untuk Menjelajahi Bali',
+    'about_p1' => 'Santi adalah asisten budaya berbasis AI yang dirancang untuk membantu wisatawan menemukan dan memahami keindahan tradisi, adat istiadat, dan etika budaya Bali.',
+    'about_p2' => 'Melalui percakapan cerdas dan panduan berbasis lokasi, Santi memberikan informasi bermanfaat tentang aturan adat setempat, etika pura, dan perilaku sopan — membantu setiap pengunjung menikmati Bali dengan kesadaran dan rasa hormat yang mendalam.',
+    'about_highlight' => 'Jelajahi Bali dengan Pengetahuan, Rasa Hormat & Kesadaran Budaya',
+    'about_cta' => 'Jelajahi Panduan Budaya',
+    'about_badge_247' => '24/7',
+    'about_badge_assistance' => 'Bantuan AI',
+    'about_badge_desc1' => 'Panduan budaya AI untuk wisatawan domestik & mancanegara.',
+    'about_badge_multilingual' => 'Dukungan Multibahasa',
+    'about_badge_desc2' => 'Membantu wisatawan memahami tradisi dan kearifan dresta lokal.',
+
+    // Services Section
+    'services_label' => 'LAYANAN KAMI',
+    'services_heading' => 'Eksplorasi Panduan Budaya Kami',
+    'services_desc' => 'Temukan panduan budaya cerdas yang dirancang untuk menjadikan setiap perjalanan di Bali lebih beradab, berwawasan, dan bermakna.',
+    'services_badge_interactive' => 'Interaktif',
+    'services_badge_etiquette' => 'Etika Adat',
+    'services_badge_context' => 'Konteks Cerdas',
+    'services_card1_title' => 'Asisten Budaya AI',
+    'services_card1_desc' => 'Ajukan pertanyaan tentang tradisi Bali, etika pura, dan tata krama persembahyangan.',
+    'services_card1_cta' => 'Eksplorasi AI',
+    'services_card2_title' => 'Pedoman Kebudayaan',
+    'services_card2_desc' => 'Pelajari aturan dresta, ketentuan busana (kamen & senteng), dan etika kawasan sakral.',
+    'services_card2_cta' => 'Lihat Pedoman',
+    'services_card3_title' => 'Panduan Berbasis Lokasi',
+    'services_card3_desc' => 'Dapatkan informasi kebudayaan yang disesuaikan secara khusus dengan pura yang dikunjungi.',
+    'services_card3_cta' => 'Pilih Lokasi Pura',
+    'services_explore_all' => 'EKSPLORASI SEMUA LAYANAN',
+
+    // How It Works Section
+    'how_label' => 'SEDERHANA & BERADAB',
+    'how_heading' => 'Bagaimana Santi Memandu Perjalanan Anda',
+    'how_desc' => 'Tiga langkah mudah untuk terhubung dengan kesucian dan adat istiadat Bali.',
+    'how_step1_title' => 'Tanya Kapan Saja, di Mana Saja',
+    'how_step1_desc' => 'Kirim pertanyaan langsung dalam bahasa Anda. Dapatkan jawaban langsung yang kaya konteks dan berdasar pada data adat resmi.',
+    'how_step2_title' => 'Integritas Cerdas Lokasi',
+    'how_step2_desc' => 'Baik saat berkunjung ke Besakih, Uluwatu, atau Tirta Empul, Santi memberikan panduan adat yang spesifik sesuai dresta lokasi.',
+    'how_step3_title' => 'Menjaga Kesucian Warisan Leluhur',
+    'how_step3_desc' => 'Pahami batasan sakral dan tradisi lokal untuk bepergian secara bertanggung jawab — menjaga pura dan menghormati tradisi Bali.',
+
+    // AI Assistant CTA Section
+    'cta_eyebrow' => '✦ WAWASAN BUDAYA INSTAN',
+    'cta_heading_1' => 'Bepergian dengan Rasa Hormat.',
+    'cta_heading_2' => 'Nikmati Bali Lebih Baik.',
+    'cta_desc' => 'Punya pertanyaan seputar budaya Bali, etika pura suci, atau busana adat? Biarkan Santi memandu Anda sebelum melangkah masuk.',
+    'cta_btn' => 'Mulai Mengobrol dengan Santi',
+    'cta_preview_badge' => '• SIMULASI LIVE CHAT SANTI AI',
+    'cta_chat_greeting' => 'Om Swastiastu! Selamat datang di Bali. Saya Santi, asisten pemandu budaya virtual Anda. Ada yang bisa saya bantu hari ini?',
+    'cta_chat_user' => 'Apa yang harus saya perhatikan sebelum memasuki Pura Tirta Empul?',
+    'cta_chat_answer' => 'Pastikan Anda mengenakan kain kamen rapi menutup hingga bawah lutut dan mengikatkan senteng (selendang) di pinggang. Jika ingin melukat, wajib menggunakan kain basahan khusus melukat warna hijau yang tersedia di lokasi.',
+
+    // Footer
+    'footer_desc' => 'Mendukung pariwisata beretika di Bali melalui kecerdasan buatan, melestarikan tradisi suci, dan menjaga ketaksuan Pulau Dewata.',
+    'footer_tech' => 'Didukung oleh Gemini Generative AI & Database-Backed Context Retrieval.',
+    'footer_quick_links' => 'Tautan Cepat',
+    'footer_ai_features' => 'Fitur AI',
+    'footer_contact' => 'Kontak & Dukungan',
+    'footer_contact_sub' => 'Inisiatif Pelestarian Budaya Bali',
+    'footer_location' => 'Denpasar, Bali, Indonesia',
+    'footer_launch_btn' => 'Buka Asisten AI',
+    'footer_rights' => 'Hak cipta dilindungi.',
+    'footer_privacy' => 'Kebijakan Privasi',
+    'footer_terms' => 'Ketentuan Etika Budaya',
+    'footer_community' => 'Pedoman Komunitas',
+
+    // Locations Page
+    'loc_page_title' => 'Pilih Kawasan Pura atau Situs Suci',
+    'loc_page_subtitle' => 'Pilih pura yang Anda kunjungi. Santi AI akan memberikan panduan khusus mengenai etika busana, batasan sakral, dan aturan adat.',
+    'loc_search_placeholder' => 'Cari nama pura atau kabupaten...',
+    'loc_verified_badge' => 'Panduan Terverifikasi',
+    'loc_unverified_badge' => 'Uji Coba Sistem (Unverified)',
+    'loc_start_chat' => 'Mulai Tanya Santi AI',
+    'loc_no_results' => 'Tidak ada pura yang cocok dengan pencarian Anda.',
+    'loc_back_home' => 'Kembali ke Beranda',
+];

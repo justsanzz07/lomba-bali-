@@ -173,7 +173,7 @@
         const greetingHint = document.getElementById('greeting-hint');
         const suggestedButtons = document.querySelectorAll('.suggested-btn');
 
-        let currentLang = 'id';
+        let currentLang = '{{ app()->getLocale() }}' === 'en' ? 'en' : 'id';
         let conversationHistory = [];
         let isProcessing = false;
 
@@ -181,9 +181,9 @@
         function setLanguage(lang) {
             currentLang = lang;
             if (lang === 'id') {
-                langIdBtn.classList.add('bg-[#4ea8de]', 'text-white');
-                langIdBtn.classList.remove('text-[#5A6961]');
-                langEnBtn.classList.remove('bg-[#4ea8de]', 'text-white');
+                langIdBtn.classList.add('bg-[#21845B]', 'text-white');
+                langIdBtn.classList.remove('text-[#5A6961]', 'bg-[#4ea8de]');
+                langEnBtn.classList.remove('bg-[#21845B]', 'bg-[#4ea8de]', 'text-white');
                 langEnBtn.classList.add('text-[#5A6961]');
 
                 userInput.placeholder = "Tanyakan etika, busana, atau aturan pura...";
@@ -196,9 +196,9 @@
                     btn.textContent = btn.getAttribute('data-q-id');
                 });
             } else {
-                langEnBtn.classList.add('bg-[#4ea8de]', 'text-white');
-                langEnBtn.classList.remove('text-[#5A6961]');
-                langIdBtn.classList.remove('bg-[#4ea8de]', 'text-white');
+                langEnBtn.classList.add('bg-[#21845B]', 'text-white');
+                langEnBtn.classList.remove('text-[#5A6961]', 'bg-[#4ea8de]');
+                langIdBtn.classList.remove('bg-[#21845B]', 'bg-[#4ea8de]', 'text-white');
                 langIdBtn.classList.add('text-[#5A6961]');
 
                 userInput.placeholder = "Ask about dress code, sanctuary rules, or temple etiquette...";
@@ -212,6 +212,9 @@
                 });
             }
         }
+
+        // Initialize language from app locale
+        setLanguage(currentLang);
 
         langIdBtn.addEventListener('click', () => setLanguage('id'));
         langEnBtn.addEventListener('click', () => setLanguage('en'));

@@ -43,36 +43,74 @@
                             SANTI
                         </div>
                         <div class="text-[9px] uppercase tracking-widest text-[#DDF2DF] font-semibold mt-0.5">
-                            AI Cultural Guardian
+                            {{ __('messages.brand_subtitle') }}
                         </div>
                     </div>
                 </a>
 
                 <!-- Center Navigation (Desktop) -->
-                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-white/90">
-                    <a href="{{ route('landing') }}#hero" class="hover:text-white transition-colors">Home</a>
-                    <a href="{{ route('landing') }}#about" class="hover:text-white transition-colors">About</a>
-                    <a href="{{ route('landing') }}#services" class="hover:text-white transition-colors">Cultural Guide</a>
-                    <a href="{{ route('landing') }}#how-it-works" class="hover:text-white transition-colors">How It Works</a>
-                    <a href="{{ route('locations.index') }}" class="hover:text-white transition-colors">Locations</a>
-                    <a href="{{ route('landing') }}#ai-assistant" class="hover:text-white transition-colors">AI Assistant</a>
+                <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium text-white/90">
+                    <a href="{{ route('landing') }}#hero" class="hover:text-white transition-colors">{{ __('messages.nav_home') }}</a>
+                    <a href="{{ route('landing') }}#about" class="hover:text-white transition-colors">{{ __('messages.nav_about') }}</a>
+                    <a href="{{ route('landing') }}#services" class="hover:text-white transition-colors">{{ __('messages.nav_guide') }}</a>
+                    <a href="{{ route('landing') }}#how-it-works" class="hover:text-white transition-colors">{{ __('messages.nav_how') }}</a>
+                    <a href="{{ route('locations.index') }}" class="hover:text-white transition-colors">{{ __('messages.nav_locations') }}</a>
+                    <a href="{{ route('landing') }}#ai-assistant" class="hover:text-white transition-colors">{{ __('messages.nav_assistant') }}</a>
                 </nav>
 
                 <!-- Right-side Action Buttons -->
                 <div class="hidden md:flex items-center space-x-3">
+                    <!-- Language Switcher Dropdown (Indonesian / English) -->
+                    <div class="relative group">
+                        <button type="button" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-white transition-all shadow-xs">
+                            @if(app()->getLocale() === 'en')
+                                <span>🇺🇸 EN</span>
+                            @else
+                                <span>🇮🇩 ID</span>
+                            @endif
+                            <svg class="w-3.5 h-3.5 text-white/80 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-44 rounded-2xl bg-white shadow-2xl py-2 text-xs font-semibold text-[#202A25] hidden group-hover:block border border-gray-100 z-50">
+                            <a href="{{ route('lang.switch', 'id') }}" class="flex items-center justify-between px-3.5 py-2 hover:bg-[#DDF2DF]/40 transition-colors {{ app()->getLocale() === 'id' ? 'text-[#174D3B] font-bold bg-[#DDF2DF]/30' : 'text-[#737B75]' }}">
+                                <span class="flex items-center space-x-2">
+                                    <span>🇮🇩</span>
+                                    <span>Bahasa Indonesia</span>
+                                </span>
+                                @if(app()->getLocale() === 'id')
+                                    <svg class="w-3.5 h-3.5 text-[#21845B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                                @endif
+                            </a>
+                            <a href="{{ route('lang.switch', 'en') }}" class="flex items-center justify-between px-3.5 py-2 hover:bg-[#DDF2DF]/40 transition-colors {{ app()->getLocale() === 'en' ? 'text-[#174D3B] font-bold bg-[#DDF2DF]/30' : 'text-[#737B75]' }}">
+                                <span class="flex items-center space-x-2">
+                                    <span>🇺🇸</span>
+                                    <span>English</span>
+                                </span>
+                                @if(app()->getLocale() === 'en')
+                                    <svg class="w-3.5 h-3.5 text-[#21845B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                                @endif
+                            </a>
+                        </div>
+                    </div>
+
                     <a href="{{ route('landing') }}#footer" class="px-4 py-2 rounded-full text-xs font-semibold text-white/90 hover:text-white border border-white/20 hover:border-white/40 transition-colors">
-                        Contact Us
+                        {{ __('messages.nav_contact') }}
                     </a>
                     <a href="{{ route('santi.show', 'pura-ulun-danu-beratan') }}" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#DDF2DF] text-[#174D3B] text-xs font-bold shadow-md hover:shadow-lg transition-all duration-200">
-                        <span>Ask Santi AI</span>
+                        <span>{{ __('messages.nav_ask_santi') }}</span>
                         <svg class="w-3.5 h-3.5 text-[#174D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                         </svg>
                     </a>
                 </div>
 
-                <!-- Mobile Hamburger Button -->
-                <div class="flex items-center md:hidden">
+                <!-- Mobile Header Right (Lang switcher + Hamburger) -->
+                <div class="flex items-center space-x-2 md:hidden">
+                    <a href="{{ route('lang.switch', app()->getLocale() === 'en' ? 'id' : 'en') }}"
+                       class="px-2.5 py-1 rounded-full bg-white/15 border border-white/25 text-[11px] font-bold text-white">
+                        {{ app()->getLocale() === 'en' ? '🇺🇸 EN' : '🇮🇩 ID' }}
+                    </a>
                     <button type="button" id="mobile-menu-btn" class="p-2 rounded-xl text-white hover:bg-white/10 focus:outline-none" aria-label="Toggle navigation menu">
                         <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -87,15 +125,26 @@
 
         <!-- Mobile Dropdown Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-[#174D3B] border-t border-white/10 px-4 pt-4 pb-6 space-y-3 shadow-xl">
-            <a href="{{ route('landing') }}#hero" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">Home</a>
-            <a href="{{ route('landing') }}#about" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">About</a>
-            <a href="{{ route('landing') }}#services" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">Cultural Guide</a>
-            <a href="{{ route('landing') }}#how-it-works" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">How It Works</a>
-            <a href="{{ route('locations.index') }}" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">Locations Directory</a>
-            <a href="{{ route('landing') }}#ai-assistant" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">AI Assistant</a>
+            <!-- Language selector for mobile -->
+            <div class="flex items-center space-x-2 px-3 py-2 bg-white/10 rounded-xl mb-3">
+                <span class="text-xs text-white/80 font-medium">Bahasa / Language:</span>
+                <a href="{{ route('lang.switch', 'id') }}" class="px-2.5 py-1 rounded-lg text-xs font-bold {{ app()->getLocale() === 'id' ? 'bg-white text-[#174D3B]' : 'text-white/80 hover:text-white' }}">
+                    🇮🇩 Indonesia
+                </a>
+                <a href="{{ route('lang.switch', 'en') }}" class="px-2.5 py-1 rounded-lg text-xs font-bold {{ app()->getLocale() === 'en' ? 'bg-white text-[#174D3B]' : 'text-white/80 hover:text-white' }}">
+                    🇺🇸 English
+                </a>
+            </div>
+
+            <a href="{{ route('landing') }}#hero" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">{{ __('messages.nav_home') }}</a>
+            <a href="{{ route('landing') }}#about" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">{{ __('messages.nav_about') }}</a>
+            <a href="{{ route('landing') }}#services" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">{{ __('messages.nav_guide') }}</a>
+            <a href="{{ route('landing') }}#how-it-works" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">{{ __('messages.nav_how') }}</a>
+            <a href="{{ route('locations.index') }}" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">{{ __('messages.nav_locations') }}</a>
+            <a href="{{ route('landing') }}#ai-assistant" class="mobile-link block px-3 py-2 rounded-lg text-sm font-medium text-white hover:bg-white/10">{{ __('messages.nav_assistant') }}</a>
             <div class="pt-4 border-t border-white/10 flex flex-col space-y-2">
                 <a href="{{ route('santi.show', 'pura-ulun-danu-beratan') }}" class="w-full text-center py-3 rounded-full bg-white text-[#174D3B] font-bold text-xs shadow-md">
-                    Ask Santi AI
+                    {{ __('messages.nav_ask_santi') }}
                 </a>
             </div>
         </div>
@@ -120,48 +169,47 @@
                         </div>
                         <div>
                             <span class="font-bold text-xl tracking-tight text-white block">SANTI</span>
-                            <span class="text-[9px] uppercase tracking-widest text-[#DDF2DF]">AI Cultural Guardian</span>
+                            <span class="text-[9px] uppercase tracking-widest text-[#DDF2DF]">{{ __('messages.brand_subtitle') }}</span>
                         </div>
                     </div>
                     <p class="text-xs text-[#F8F6EF]/75 leading-relaxed max-w-sm">
-                        Empowering respectful tourism in Bali through artificial intelligence, preserving sacred traditions, and ensuring cultural reverence for the island of the Gods.
+                        {{ __('messages.footer_desc') }}
                     </p>
                     <div class="text-[11px] text-[#DDF2DF]/80 pt-1">
-                        Powered by Gemini Generative AI & Database-Backed Context Retrieval.
+                        {{ __('messages.footer_tech') }}
                     </div>
                 </div>
 
                 <!-- Col 2: Quick Links -->
                 <div>
-                    <h3 class="text-xs uppercase tracking-wider font-bold text-[#DDF2DF] mb-4">Quick Links</h3>
+                    <h3 class="text-xs uppercase tracking-wider font-bold text-[#DDF2DF] mb-4">{{ __('messages.footer_quick_links') }}</h3>
                     <ul class="space-y-2.5 text-xs text-[#F8F6EF]/80">
-                        <li><a href="{{ route('landing') }}#hero" class="hover:text-white transition-colors">Home</a></li>
-                        <li><a href="{{ route('landing') }}#about" class="hover:text-white transition-colors">About Santi</a></li>
-                        <li><a href="{{ route('locations.index') }}" class="hover:text-white transition-colors">Cultural Locations</a></li>
-                        <li><a href="{{ route('landing') }}#how-it-works" class="hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="{{ route('landing') }}#hero" class="hover:text-white transition-colors">{{ __('messages.nav_home') }}</a></li>
+                        <li><a href="{{ route('landing') }}#about" class="hover:text-white transition-colors">{{ __('messages.nav_about') }}</a></li>
+                        <li><a href="{{ route('locations.index') }}" class="hover:text-white transition-colors">{{ __('messages.nav_locations') }}</a></li>
+                        <li><a href="{{ route('landing') }}#how-it-works" class="hover:text-white transition-colors">{{ __('messages.nav_how') }}</a></li>
                     </ul>
                 </div>
 
                 <!-- Col 3: AI Features -->
                 <div>
-                    <h3 class="text-xs uppercase tracking-wider font-bold text-[#DDF2DF] mb-4">AI Features</h3>
+                    <h3 class="text-xs uppercase tracking-wider font-bold text-[#DDF2DF] mb-4">{{ __('messages.footer_ai_features') }}</h3>
                     <ul class="space-y-2.5 text-xs text-[#F8F6EF]/80">
-                        <li><a href="{{ route('santi.show', 'pura-besakih') }}" class="hover:text-white transition-colors">AI Cultural Assistant</a></li>
-                        <li><a href="{{ route('landing') }}#services" class="hover:text-white transition-colors">Cultural Guidelines</a></li>
-                        <li><a href="{{ route('locations.index') }}" class="hover:text-white transition-colors">Location-Smart Guidance</a></li>
-                        <li><a href="{{ route('landing') }}#services" class="hover:text-white transition-colors">Sacred Area Etiquette</a></li>
+                        <li><a href="{{ route('santi.show', 'pura-besakih') }}" class="hover:text-white transition-colors">{{ __('messages.services_card1_title') }}</a></li>
+                        <li><a href="{{ route('landing') }}#services" class="hover:text-white transition-colors">{{ __('messages.services_card2_title') }}</a></li>
+                        <li><a href="{{ route('locations.index') }}" class="hover:text-white transition-colors">{{ __('messages.services_card3_title') }}</a></li>
                     </ul>
                 </div>
 
                 <!-- Col 4: Contact & Support -->
                 <div>
-                    <h3 class="text-xs uppercase tracking-wider font-bold text-[#DDF2DF] mb-4">Contact & Support</h3>
+                    <h3 class="text-xs uppercase tracking-wider font-bold text-[#DDF2DF] mb-4">{{ __('messages.footer_contact') }}</h3>
                     <div class="space-y-2 text-xs text-[#F8F6EF]/80">
-                        <p class="font-medium text-white">Bali Cultural Heritage Initiative</p>
-                        <p class="text-[11px] text-[#F8F6EF]/70">Denpasar, Bali, Indonesia</p>
+                        <p class="font-medium text-white">{{ __('messages.footer_contact_sub') }}</p>
+                        <p class="text-[11px] text-[#F8F6EF]/70">{{ __('messages.footer_location') }}</p>
                         <div class="pt-2">
                             <a href="{{ route('locations.index') }}" class="inline-flex items-center space-x-1 px-3.5 py-1.5 rounded-full bg-[#21845B] hover:bg-[#174D3B] text-white text-[11px] font-semibold transition-colors">
-                                <span>Launch AI Assistant</span>
+                                <span>{{ __('messages.footer_launch_btn') }}</span>
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                                 </svg>
@@ -172,11 +220,11 @@
             </div>
 
             <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#F8F6EF]/60">
-                <p>&copy; {{ date('Y') }} SANTI — AI Cultural Guardian. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} SANTI — AI Cultural Guardian. {{ __('messages.footer_rights') }}</p>
                 <div class="flex items-center space-x-6 mt-3 sm:mt-0">
-                    <span class="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
-                    <span class="hover:text-white cursor-pointer transition-colors">Terms of Cultural Reverence</span>
-                    <span class="hover:text-white cursor-pointer transition-colors">Community Guidelines</span>
+                    <span class="hover:text-white cursor-pointer transition-colors">{{ __('messages.footer_privacy') }}</span>
+                    <span class="hover:text-white cursor-pointer transition-colors">{{ __('messages.footer_terms') }}</span>
+                    <span class="hover:text-white cursor-pointer transition-colors">{{ __('messages.footer_community') }}</span>
                 </div>
             </div>
         </div>
