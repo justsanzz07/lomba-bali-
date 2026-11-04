@@ -26,9 +26,9 @@ return [
 
     // About Section
     'about_label' => 'ABOUT SANTI',
-    'about_heading' => 'Your Smart Cultural Guide to Exploring Bali',
-    'about_p1' => 'Santi is an AI-powered cultural assistant designed to help travelers discover and understand the beauty of Balinese traditions, local customs, and cultural etiquette.',
-    'about_p2' => 'Through intelligent conversations and location-based guidance, Santi provides helpful information about local rules, temple etiquette, and respectful behavior — helping every visitor experience Bali with greater awareness and respect.',
+    'about_heading' => 'Your AI Cultural Guide to Exploring Bali',
+    'about_p1' => 'Santi is an AI-powered cultural assistant designed to help domestic and international travelers understand Balinese traditions, local customs, and cultural etiquette.',
+    'about_p2' => 'Through intelligent conversations, Santi provides helpful guidance about temple etiquette, local regulations, and respectful behavior, helping visitors explore Bali while respecting its unique cultural heritage.',
     'about_highlight' => 'Explore Bali with Knowledge, Respect & Cultural Awareness',
     'about_cta' => 'Explore Cultural Guide',
     'about_badge_247' => '24/7',
@@ -101,3 +101,4 @@ return [
     'loc_no_results' => 'No temples found matching your search query.',
     'loc_back_home' => 'Back to Home',
 ];
+

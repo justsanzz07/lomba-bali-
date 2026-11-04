@@ -50,13 +50,13 @@ class SantiCulturalGuardianTest extends TestCase
         $responseId = $this->get('/?lang=id');
         $responseId->assertStatus(200);
         $responseId->assertSee('Tanya Santi AI');
-        $responseId->assertSee('Panduan Budaya Cerdas untuk Menjelajahi Bali');
+        $responseId->assertSee('Panduan Budaya AI untuk Menjelajahi Bali');
 
         // 2. English test
         $responseEn = $this->get('/?lang=en');
         $responseEn->assertStatus(200);
         $responseEn->assertSee('Ask Santi AI');
-        $responseEn->assertSee('Your Smart Cultural Guide to Exploring Bali');
+        $responseEn->assertSee('Your AI Cultural Guide to Exploring Bali');
 
         // 3. Route switch
         $responseSwitch = $this->get('/lang/en');

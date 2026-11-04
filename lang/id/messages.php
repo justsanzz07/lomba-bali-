@@ -26,9 +26,9 @@ return [
 
     // About Section
     'about_label' => 'TENTANG SANTI',
-    'about_heading' => 'Panduan Budaya Cerdas untuk Menjelajahi Bali',
-    'about_p1' => 'Santi adalah asisten budaya berbasis AI yang dirancang untuk membantu wisatawan menemukan dan memahami keindahan tradisi, adat istiadat, dan etika budaya Bali.',
-    'about_p2' => 'Melalui percakapan cerdas dan panduan berbasis lokasi, Santi memberikan informasi bermanfaat tentang aturan adat setempat, etika pura, dan perilaku sopan — membantu setiap pengunjung menikmati Bali dengan kesadaran dan rasa hormat yang mendalam.',
+    'about_heading' => 'Panduan Budaya AI untuk Menjelajahi Bali',
+    'about_p1' => 'Santi adalah asisten kebudayaan berbasis AI yang dirancang untuk membantu wisatawan domestik dan internasional memahami tradisi, adat istiadat setempat, serta etika budaya Bali.',
+    'about_p2' => 'Melalui percakapan cerdas, Santi memberikan panduan bermanfaat mengenai etika pura, peraturan setempat, dan perilaku beradab — membantu setiap pengunjung menjelajahi Bali sambil menghormati warisan budayanya yang luhur.',
     'about_highlight' => 'Jelajahi Bali dengan Pengetahuan, Rasa Hormat & Kesadaran Budaya',
     'about_cta' => 'Jelajahi Panduan Budaya',
     'about_badge_247' => '24/7',
@@ -101,3 +101,4 @@ return [
     'loc_no_results' => 'Tidak ada pura yang cocok dengan pencarian Anda.',
     'loc_back_home' => 'Kembali ke Beranda',
 ];
+
