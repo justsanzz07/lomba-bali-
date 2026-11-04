@@ -1,258 +1,427 @@
 @extends('layouts.app')
 
-@section('title', 'Santi — AI Cultural Guardian Bali | Discover the Magic of Bali')
+@section('title', 'SANTI — AI Cultural Guardian Bali | Discover Bali. Respect Its Culture.')
 
 @section('content')
-    <!-- Hero Section (Matching Exact Visual of User Reference Image) -->
-    <section class="relative min-h-[90vh] lg:min-h-screen flex items-center justify-start text-white overflow-hidden bg-cover bg-center bg-no-repeat"
-             style="background-image: url('{{ asset('images/hero-bali.jpg') }}');">
-        <!-- Atmospheric Dim Overlay for WCAG Contrast & Photography Depth -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/35 to-black/30"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none"></div>
+    <!-- ==================== 1. HERO SECTION ==================== -->
+    <section id="hero" class="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center text-white overflow-hidden bg-cover bg-center bg-no-repeat"
+             style="background-image: url('{{ asset('images/hero-candi-bentar.jpg') }}'), url('{{ asset('images/hero-bali.jpg') }}');">
+        <!-- Dark Transparent Atmospheric Overlay for Readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-[#174D3B]/90"></div>
+        <div class="absolute inset-0 bg-black/25"></div>
 
-        <!-- Hero Content (Center-Left Aligned as in Reference Image) -->
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-32 lg:py-40">
-            <div class="max-w-2xl space-y-6">
-                <!-- Large White Bold Headline -->
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
-                    Discover the Magic of Bali
-                </h1>
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-32 pb-24 text-center flex flex-col items-center justify-center space-y-6">
+            <!-- Top Tag / Eyebrow Badge -->
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md">
+                <span class="text-xs uppercase tracking-widest font-semibold text-[#DDF2DF]">✦ AI-POWERED CULTURAL GUARDIAN • BALI</span>
+            </div>
 
-                <!-- Clear, Atmospheric Subtitle -->
-                <p class="text-base sm:text-lg text-white/90 leading-relaxed font-normal max-w-xl drop-shadow-sm">
-                    Pahami etika sakral, ketentuan busana pura (kamen & senteng), dan kearifan dresta Bali bersama asisten AI kebudayaan terpercaya.
-                </p>
+            <!-- Main Headline -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight max-w-4xl drop-shadow-sm">
+                Discover Bali.<br>
+                Respect Its Culture.
+            </h1>
 
-                <!-- Primary CTA Button (Sky-Blue matching "Explore Tours ->" in Reference Screenshot) -->
-                <div class="pt-2 flex flex-col sm:flex-row items-start gap-4">
-                    <a href="{{ route('locations.index') }}"
-                       class="inline-flex items-center space-x-2.5 px-7 py-3.5 rounded-xl bg-[#4ea8de] hover:bg-[#38bdf8] text-white font-semibold text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200">
-                        <span>Explore Guidelines</span>
-                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            <!-- Subtitle -->
+            <p class="text-base sm:text-lg text-white/90 leading-relaxed font-normal max-w-2xl mx-auto drop-shadow-xs">
+                Your AI-powered cultural companion to understand Balinese traditions, local etiquette, and sacred-area guidelines.
+            </p>
+
+            <!-- Centered Action Buttons -->
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                <a href="{{ route('santi.show', 'pura-besakih') }}"
+                   class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-full bg-white hover:bg-[#DDF2DF] text-[#174D3B] font-bold text-sm shadow-lg hover:shadow-xl transition-all duration-200">
+                    <span>Ask Santi AI</span>
+                    <svg class="w-4 h-4 text-[#174D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+
+                <a href="#services"
+                   class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium text-sm backdrop-blur-md border border-white/25 transition-all duration-200">
+                    <span>Explore Cultural Guide</span>
+                </a>
+            </div>
+
+            <!-- Two Floating Information Cards Near Bottom of Hero -->
+            <div class="pt-12 w-full max-w-3xl grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                <!-- Floating Card 1 -->
+                <div class="glass-card-dark p-4 sm:p-5 rounded-2xl flex items-start space-x-3.5 hover:border-white/30 transition-colors shadow-lg">
+                    <div class="w-10 h-10 rounded-xl bg-[#21845B]/60 text-white flex-shrink-0 flex items-center justify-center mt-0.5 border border-white/10">
+                        <svg class="w-5 h-5 text-[#DDF2DF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                         </svg>
-                    </a>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-sm text-white">AI Cultural Assistant</h4>
+                            <svg class="w-3.5 h-3.5 text-[#DDF2DF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </div>
+                        <p class="text-xs text-[#DDF2DF]/80 mt-1 leading-relaxed">
+                            Get instant cultural guidance wherever you travel in Bali.
+                        </p>
+                    </div>
+                </div>
 
-                    <a href="{{ route('santi.show', 'pura-ulun-danu-beratan') }}"
-                       class="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-medium text-base backdrop-blur-md border border-white/25 transition-all duration-200">
-                        <span>Tanya Pura Ulun Danu</span>
-                    </a>
+                <!-- Floating Card 2 -->
+                <div class="glass-card-dark p-4 sm:p-5 rounded-2xl flex items-start space-x-3.5 hover:border-white/30 transition-colors shadow-lg">
+                    <div class="w-10 h-10 rounded-xl bg-[#21845B]/60 text-white flex-shrink-0 flex items-center justify-center mt-0.5 border border-white/10">
+                        <svg class="w-5 h-5 text-[#DDF2DF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-sm text-white">Location-Based Guidance</h4>
+                            <svg class="w-3.5 h-3.5 text-[#DDF2DF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </div>
+                        <p class="text-xs text-[#DDF2DF]/80 mt-1 leading-relaxed">
+                            Understand local customs and traditions before entering sacred areas.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Carousel Indicator Dots (Matching Screenshot at Bottom Center) -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center space-x-2 z-20" aria-label="Slide Indicator">
-            <span class="w-8 h-2.5 rounded-full bg-white shadow-sm transition-all"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white/80 transition-all cursor-pointer"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white/80 transition-all cursor-pointer"></span>
+    <!-- ==================== 2. ABOUT SECTION ==================== -->
+    <section id="about" class="py-24 bg-[#F8F6EF]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <!-- Left Side: Text Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-block px-3 py-1 rounded-full bg-[#DDF2DF] text-[#174D3B] text-xs font-bold tracking-wider uppercase">
+                        ABOUT SANTI
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#174D3B] tracking-tight leading-tight">
+                        Your Trusted Cultural Companion in Bali
+                    </h2>
+
+                    <div class="space-y-4 text-sm sm:text-base text-[#202A25]/80 leading-relaxed font-normal">
+                        <p>
+                            Santi is an AI-powered cultural assistant designed to help domestic and international tourists understand Balinese customs, traditions, and local etiquette.
+                        </p>
+                        <p>
+                            Through intelligent conversations and location-based cultural information, Santi helps visitors explore Bali respectfully and responsibly — bridging modern hospitality with ancient spiritual wisdom.
+                        </p>
+                    </div>
+
+                    <!-- Factual Cultural Alignment Point -->
+                    <div class="pt-2 text-xs font-semibold text-[#174D3B] flex items-center space-x-2">
+                        <span class="w-2 h-2 rounded-full bg-[#21845B]"></span>
+                        <span>Grounded in Tri Hita Karana, Dharma & Cultural Respect</span>
+                    </div>
+
+                    <!-- Discover More CTA -->
+                    <div class="pt-4">
+                        <a href="#services"
+                           class="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-[#DDF2DF] hover:bg-[#c9e8cd] text-[#174D3B] text-xs font-bold transition-colors">
+                            <span>Discover More</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side: Large Image with Overlapping Floating Cards -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative mx-auto max-w-lg lg:max-w-none">
+                        <!-- Main Photograph -->
+                        <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/4.5] bg-gray-200">
+                            <img src="{{ asset('images/about-bali-guide.jpg') }}"
+                                 alt="Balinese Cultural Heritage Guide"
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='{{ asset('images/hero-bali.jpg') }}';">
+                        </div>
+
+                        <!-- Floating Information Card 1 (Top Right) -->
+                        <div class="absolute -top-6 -right-2 sm:-right-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 max-w-[210px] space-y-1">
+                            <div class="flex items-center space-x-1.5">
+                                <span class="text-xl font-extrabold text-[#174D3B]">24/7</span>
+                                <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#DDF2DF] text-[#174D3B]">AI Assistance</span>
+                            </div>
+                            <p class="text-[11px] text-[#737B75] leading-tight">
+                                AI cultural guidance for domestic & international tourists.
+                            </p>
+                        </div>
+
+                        <!-- Floating Information Card 2 (Bottom Left / Bottom Right) -->
+                        <div class="absolute -bottom-6 -left-2 sm:-left-6 bg-white p-4 sm:p-5 rounded-2xl shadow-xl border border-gray-100 max-w-[230px] space-y-1.5">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 rounded-full bg-[#21845B]"></div>
+                                <h4 class="font-bold text-xs text-[#174D3B]">Multilingual Support</h4>
+                            </div>
+                            <p class="text-[11px] text-[#737B75] leading-tight">
+                                Helping international and domestic travelers understand local traditions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Location Selection Section (Anchored as #locations) -->
-    <section id="locations" class="py-20 bg-[#F8F6EF]">
+    <!-- ==================== 3. CULTURAL SERVICES SECTION ==================== -->
+    <section id="services" class="py-24 bg-white border-t border-[#174D3B]/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <!-- Header Row: Label & Main Heading on Left, Description on Right -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <span class="text-xs uppercase tracking-widest font-bold text-[#174D3B]">
-                        Kawasan Budaya Terverifikasi
+                    <span class="inline-block px-3 py-1 rounded-full bg-[#DDF2DF] text-[#174D3B] text-xs font-bold tracking-wider uppercase mb-3">
+                        OUR SERVICES
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#174D3B] mt-1">
-                        Pilih Kawasan Pura Kunjungan Anda
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#174D3B] tracking-tight">
+                        Explore Our Cultural Guidance
                     </h2>
-                    <p class="text-sm text-[#5A6961] mt-2 max-w-2xl leading-relaxed">
-                        Setiap pura memiliki aturan dresta dan zona kesucian mandala tersendiri. Pilih lokasi untuk mendapatkan panduan akurat dari Santi AI.
+                </div>
+                <div class="max-w-md">
+                    <p class="text-sm text-[#737B75] leading-relaxed">
+                        Discover smart cultural guidance designed to make every journey in Bali more respectful, informed, and meaningful.
                     </p>
                 </div>
-                <a href="{{ route('locations.index') }}" class="inline-flex items-center space-x-1 text-sm font-bold text-[#174D3B] hover:text-[#4ea8de] transition-colors whitespace-nowrap">
-                    <span>Lihat Semua Pura ({{ $locations->count() }})</span>
+            </div>
+
+            <!-- Three Large Image Cards with Consistent Height & Rounded Corners -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- CARD 1: AI Cultural Assistant -->
+                <div class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-end min-h-[420px] bg-gray-900 border border-gray-100">
+                    <img src="{{ asset('images/service-ai-chat.jpg') }}"
+                         alt="AI Cultural Assistant"
+                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         onerror="this.src='{{ asset('images/hero-bali.jpg') }}';">
+                    <!-- Subtle Dark Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent"></div>
+
+                    <div class="relative p-6 sm:p-7 text-white space-y-2 z-10 flex flex-col justify-between h-full">
+                        <div class="flex justify-end">
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md bg-white/20 backdrop-blur-md">Interactive</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-1.5 group-hover:text-[#DDF2DF] transition-colors">
+                                AI Cultural Assistant
+                            </h3>
+                            <p class="text-xs text-white/80 leading-relaxed mb-4">
+                                Ask questions about Balinese traditions, temple etiquette, and cultural practices.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-white/20">
+                                <a href="{{ route('santi.show', 'pura-besakih') }}" class="text-xs font-bold text-white hover:text-[#DDF2DF] transition-colors">
+                                    Explore AI
+                                </a>
+                                <a href="{{ route('santi.show', 'pura-besakih') }}" class="w-8 h-8 rounded-full bg-white text-[#174D3B] flex items-center justify-center group-hover:bg-[#DDF2DF] transition-colors shadow-sm">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 2: Cultural Guidelines -->
+                <div class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-end min-h-[420px] bg-gray-900 border border-gray-100">
+                    <img src="{{ asset('images/service-guidelines.jpg') }}"
+                         alt="Cultural Guidelines"
+                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         onerror="this.src='{{ asset('images/hero-bali.jpg') }}';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent"></div>
+
+                    <div class="relative p-6 sm:p-7 text-white space-y-2 z-10 flex flex-col justify-between h-full">
+                        <div class="flex justify-end">
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md bg-white/20 backdrop-blur-md">Etiquette</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-1.5 group-hover:text-[#DDF2DF] transition-colors">
+                                Cultural Guidelines
+                            </h3>
+                            <p class="text-xs text-white/80 leading-relaxed mb-4">
+                                Learn local rules, dress requirements, and appropriate behavior before entering sacred places.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-white/20">
+                                <a href="{{ route('locations.index') }}" class="text-xs font-bold text-white hover:text-[#DDF2DF] transition-colors">
+                                    View Guidelines
+                                </a>
+                                <a href="{{ route('locations.index') }}" class="w-8 h-8 rounded-full bg-white text-[#174D3B] flex items-center justify-center group-hover:bg-[#DDF2DF] transition-colors shadow-sm">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3: Location-Based Guidance -->
+                <div class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-end min-h-[420px] bg-gray-900 border border-gray-100">
+                    <img src="{{ asset('images/service-location.jpg') }}"
+                         alt="Location-Based Guidance"
+                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         onerror="this.src='{{ asset('images/hero-bali.jpg') }}';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent"></div>
+
+                    <div class="relative p-6 sm:p-7 text-white space-y-2 z-10 flex flex-col justify-between h-full">
+                        <div class="flex justify-end">
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md bg-white/20 backdrop-blur-md">Smart Context</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-1.5 group-hover:text-[#DDF2DF] transition-colors">
+                                Location-Based Guidance
+                            </h3>
+                            <p class="text-xs text-white/80 leading-relaxed mb-4">
+                                Receive cultural information tailored to the location you are visiting.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-white/20">
+                                <a href="{{ route('locations.index') }}" class="text-xs font-bold text-white hover:text-[#DDF2DF] transition-colors">
+                                    Explore Locations
+                                </a>
+                                <a href="{{ route('locations.index') }}" class="w-8 h-8 rounded-full bg-white text-[#174D3B] flex items-center justify-center group-hover:bg-[#DDF2DF] transition-colors shadow-sm">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Centered Button Below the Cards -->
+            <div class="text-center mt-12">
+                <a href="{{ route('locations.index') }}"
+                   class="inline-flex items-center space-x-2 px-8 py-3.5 rounded-full bg-[#DDF2DF] hover:bg-[#c9e8cd] text-[#174D3B] text-xs font-bold tracking-wider uppercase transition-colors shadow-sm">
+                    <span>EXPLORE ALL SERVICES</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>
                 </a>
             </div>
-
-            <!-- Locations Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($locations->take(6) as $loc)
-                    <div class="bg-white rounded-2xl p-6 shadow-xs hover:shadow-lg border border-[#174D3B]/10 transition-all duration-200 flex flex-col justify-between group">
-                        <div class="space-y-4">
-                            <!-- Location Badge & QR Link -->
-                            <div class="flex items-center justify-between">
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold {{ $loc->verified_rules_count > 0 ? 'bg-[#21845B]/10 text-[#21845B]' : 'bg-amber-100 text-amber-800' }}">
-                                    {{ $loc->verified_rules_count > 0 ? $loc->verified_rules_count . ' Aturan Terverifikasi' : 'Uji Coba Unverified' }}
-                                </span>
-                                <span class="text-[11px] font-mono text-gray-400">/santi/{{ $loc->slug }}</span>
-                            </div>
-
-                            <!-- Title -->
-                            <h3 class="text-xl font-bold text-[#174D3B] group-hover:text-[#4ea8de] transition-colors">
-                                {{ $loc->name }}
-                            </h3>
-
-                            <!-- Description -->
-                            <p class="text-xs text-[#5A6961] line-clamp-3 leading-relaxed">
-                                {{ $loc->description }}
-                            </p>
-
-                            <!-- Address -->
-                            @if($loc->address)
-                                <div class="flex items-start space-x-2 text-xs text-[#5A6961] pt-2 border-t border-gray-100">
-                                    <svg class="w-4 h-4 text-[#4ea8de] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                    <span class="truncate">{{ $loc->address }}</span>
-                                </div>
-                            @endif
-                        </div>
-
-                        <!-- Card Action Button -->
-                        <div class="pt-6 mt-4 border-t border-gray-100">
-                            <a href="{{ route('santi.show', $loc->slug) }}"
-                               class="w-full inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl bg-[#F8F6EF] hover:bg-[#4ea8de] text-[#174D3B] hover:text-white font-semibold text-xs transition-colors">
-                                <span>Tanya Aturan Pura Ini</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            <!-- QR Code Section -->
-            <div class="mt-12 p-6 rounded-2xl bg-white border border-[#174D3B]/10 flex flex-col md:flex-row items-center justify-between gap-4">
-                <div class="flex items-center space-x-4">
-                    <div class="w-12 h-12 rounded-xl bg-[#4ea8de]/10 text-[#4ea8de] flex items-center justify-center font-bold">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-sm text-[#174D3B]">Akses Langsung Melalui Papan QR Code di Pintu Masuk</h4>
-                        <p class="text-xs text-[#5A6961]">Wisatawan dapat langsung membuka panduan pura spesifik tanpa registrasi atau unduh aplikasi.</p>
-                    </div>
-                </div>
-                <a href="{{ route('locations.index') }}" class="text-xs font-bold text-[#4ea8de] hover:underline whitespace-nowrap">
-                    Buka Direktori Lengkap &rarr;
-                </a>
-            </div>
         </div>
     </section>
 
-    <!-- Cultural Guidelines Summary (#guidelines & #etiquette) -->
-    <section id="guidelines" class="py-20 bg-white border-t border-[#174D3B]/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <span class="text-xs uppercase tracking-widest font-bold text-[#4ea8de]">
-                        Etika Dasar Kawasan Suci
-                    </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#174D3B] leading-tight">
-                        Menghormati Kesucian Adat dan Tradisi Luhur Bali
-                    </h2>
-                    <p class="text-sm text-[#5A6961] leading-relaxed">
-                        Kawasan pura di Bali dibagi menjadi tiga zona sakral (Tri Mandala). Memahami batasan dan busana yang pantas adalah bentuk penghormatan tertinggi kepada masyarakat dan leluhur Bali.
-                    </p>
-
-                    <div class="space-y-4 pt-2">
-                        <div class="p-4 rounded-xl bg-[#F8F6EF] border border-[#174D3B]/10">
-                            <h4 class="font-bold text-sm text-[#174D3B] mb-1">1. Busana Kamen & Senteng</h4>
-                            <p class="text-xs text-[#5A6961] leading-relaxed">Wajib mengenakan kain penutup (kamen/sarung) hingga bawah lutut dan selendang (senteng) yang diikatkan di pinggang sebagai simbol pengendalian diri.</p>
-                        </div>
-
-                        <div class="p-4 rounded-xl bg-[#F8F6EF] border border-[#174D3B]/10">
-                            <h4 class="font-bold text-sm text-[#174D3B] mb-1">2. Batas Utama Mandala (Jeroan)</h4>
-                            <p class="text-xs text-[#5A6961] leading-relaxed">Area pelataran dalam pura hanya diperuntukkan bagi umat yang bersembahyang secara khusyuk. Wisatawan umum dipandu berada di zona Jaba Tengah.</p>
-                        </div>
-
-                        <div class="p-4 rounded-xl bg-[#F8F6EF] border border-[#174D3B]/10">
-                            <h4 class="font-bold text-sm text-[#174D3B] mb-1">3. Menjaga Kesucian Diri (Cuntaka)</h4>
-                            <p class="text-xs text-[#5A6961] leading-relaxed">Pengunjung wanita yang sedang datang bulan (menstruasi) atau yang sedang dalam masa duka diimbau secara adat untuk tidak memasuki area suci pura.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Visual Card with Authentic Guidelines Info -->
-                <div class="rounded-3xl bg-[#174D3B] p-8 text-white relative shadow-xl">
-                    <div class="space-y-6">
-                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                            <span class="text-xs uppercase tracking-wider font-semibold text-[#4ea8de]">Filosofi Dresta Bali</span>
-                            <span class="text-xs bg-white/15 px-3 py-1 rounded-full text-white/90">Santi Verified AI</span>
-                        </div>
-
-                        <blockquote class="text-lg font-light italic leading-relaxed text-[#F8F6EF]">
-                            "Di mana bumi dipijak, di sana langit dijunjung. Tri Hita Karana mengajarkan keharmonisan manusia dengan Tuhan, sesama manusia, dan alam semesta."
-                        </blockquote>
-
-                        <div class="pt-4 border-t border-white/10 text-xs text-white/80 space-y-2">
-                            <p class="font-semibold text-white">Etika Praktis di Lokasi Pura:</p>
-                            <p>• Jangan melangkah atau menduduki pelinggih/candi pemujaan.</p>
-                            <p>• Dilarang memotret langsung tepat di hadapan Pemangku yang sedang memimpin ritual.</p>
-                            <p>• Dilarang menerbangkan drone di atas mandala pura tanpa izin resmi.</p>
-                            <p>• Selalu jaga tutur kata dan ketertiban di lingkungan pura.</p>
-                        </div>
-
-                        <div class="pt-2">
-                            <a href="{{ route('locations.index') }}"
-                               class="w-full inline-flex items-center justify-center space-x-2 py-3 px-4 rounded-xl bg-[#4ea8de] hover:bg-[#38bdf8] text-white font-semibold text-xs transition-colors">
-                                <span>Pilih Pura & Tanya Santi AI</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section (#how-it-works) -->
-    <section id="how-it-works" class="py-20 bg-[#F8F6EF] border-t border-[#174D3B]/10">
+    <!-- ==================== 4. HOW IT WORKS SECTION ==================== -->
+    <section id="how-it-works" class="py-24 bg-[#F8F6EF]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span class="text-xs uppercase tracking-widest font-bold text-[#174D3B]">
-                    Alur Penggunaan
+                <span class="inline-block px-3 py-1 rounded-full bg-[#DDF2DF] text-[#174D3B] text-xs font-bold tracking-wider uppercase">
+                    SIMPLE & RESPECTFUL
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-[#174D3B]">
-                    Cara Menggunakan Santi
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-[#174D3B] tracking-tight">
+                    How Santi Guides Your Journey
                 </h2>
-                <p class="text-sm text-[#5A6961]">
-                    Tiga langkah sederhana bagi wisatawan untuk mendapatkan panduan budaya yang akurat dan terverifikasi.
+                <p class="text-sm text-[#737B75] leading-relaxed">
+                    Three effortless steps to connect with Balinese cultural sanctity.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl border border-[#174D3B]/10 hover:border-[#4ea8de] transition-colors">
-                    <div class="w-12 h-12 rounded-xl bg-[#174D3B] text-white font-bold text-lg flex items-center justify-center mb-6">
-                        01
+                <!-- Step 01 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-[#DDF2DF] text-[#174D3B] font-extrabold text-sm flex items-center justify-center mb-6">
+                            01
+                        </div>
+                        <h3 class="font-bold text-base text-[#174D3B] mb-2.5">Ask Anytime, Anywhere</h3>
+                        <p class="text-xs text-[#737B75] leading-relaxed">
+                            Send your questions directly in your native language. Receive immediate, context-rich responses grounded in authentic local information.
+                        </p>
                     </div>
-                    <h3 class="font-bold text-base text-[#174D3B] mb-2">Pilih atau Pindai Lokasi Pura</h3>
-                    <p class="text-xs text-[#5A6961] leading-relaxed">
-                        Pilih pura dari direktori atau pindai kode QR yang terpasang di papan informasi gerbang masuk objek wisata.
-                    </p>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl border border-[#174D3B]/10 hover:border-[#4ea8de] transition-colors">
-                    <div class="w-12 h-12 rounded-xl bg-[#4ea8de] text-white font-bold text-lg flex items-center justify-center mb-6">
-                        02
+                <!-- Step 02 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-[#174D3B] text-white font-extrabold text-sm flex items-center justify-center mb-6">
+                            02
+                        </div>
+                        <h3 class="font-bold text-base text-[#174D3B] mb-2.5">Location-Smart Integrity</h3>
+                        <p class="text-xs text-[#737B75] leading-relaxed">
+                            Whether you're visiting Besakih, Uluwatu, or Tirta Empul, Santi delivers venue-specific customary guidelines and context-appropriate protocols.
+                        </p>
                     </div>
-                    <h3 class="font-bold text-base text-[#174D3B] mb-2">Ajukan Pertanyaan</h3>
-                    <p class="text-xs text-[#5A6961] leading-relaxed">
-                        Ketik pertanyaan bebas dalam Bahasa Indonesia atau English mengenai pakaian, batasan suci, foto, atau larangan adat.
-                    </p>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl border border-[#174D3B]/10 hover:border-[#4ea8de] transition-colors">
-                    <div class="w-12 h-12 rounded-xl bg-[#21845B] text-white font-bold text-lg flex items-center justify-center mb-6">
-                        03
+                <!-- Step 03 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-[#21845B] text-white font-extrabold text-sm flex items-center justify-center mb-6">
+                            03
+                        </div>
+                        <h3 class="font-bold text-base text-[#174D3B] mb-2.5">Preserve Sacred Heritage</h3>
+                        <p class="text-xs text-[#737B75] leading-relaxed">
+                            Share knowledge of local boundaries and customs to travel responsibly — protecting sacred temples and honoring centuries of heritage.
+                        </p>
                     </div>
-                    <h3 class="font-bold text-base text-[#174D3B] mb-2">Dapatkan Jawaban Terverifikasi</h3>
-                    <p class="text-xs text-[#5A6961] leading-relaxed">
-                        Santi memberikan jawaban terstruktur berdasarkan basis data terverifikasi resmi, lengkap dengan rujukan sumbernya.
-                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 5. AI ASSISTANT CTA SECTION ==================== -->
+    <section id="ai-assistant" class="py-24 bg-[#174D3B] text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+            <span class="inline-block px-3.5 py-1.5 rounded-full bg-white/10 text-[#DDF2DF] text-xs font-semibold tracking-wider">
+                ✦ INSTANT CULTURAL INSIGHTS
+            </span>
+
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                Travel with Respect.<br>
+                Experience Bali Better.
+            </h2>
+
+            <p class="text-sm sm:text-base text-white/85 max-w-xl mx-auto leading-relaxed">
+                Have questions about Balinese culture, sacred temple etiquette, or traditional attire? Let Santi guide you before your journey begins.
+            </p>
+
+            <div>
+                <a href="{{ route('santi.show', 'pura-besakih') }}"
+                   class="inline-flex items-center space-x-2 px-8 py-4 rounded-full bg-white hover:bg-[#DDF2DF] text-[#174D3B] font-bold text-sm shadow-xl hover:shadow-2xl transition-all duration-200">
+                    <span>Start Chatting with Santi</span>
+                    <svg class="w-4 h-4 text-[#174D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Interactive Live Chat Simulation Card (Matching Screenshot Preview) -->
+            <div class="pt-8 max-w-2xl mx-auto text-left">
+                <div class="p-5 sm:p-6 rounded-2xl bg-[#103327] border border-[#21845B]/60 shadow-2xl space-y-4">
+                    <div class="flex items-center space-x-2 text-[11px] text-[#DDF2DF] font-semibold pb-2 border-b border-white/10">
+                        <span class="w-2 h-2 rounded-full bg-[#21845B] animate-pulse"></span>
+                        <span>• LIVE SANTI AI CHAT PREVIEW</span>
+                    </div>
+
+                    <!-- Santi Message -->
+                    <div class="flex items-start space-x-3">
+                        <div class="w-7 h-7 rounded-full bg-[#21845B] text-white flex-shrink-0 flex items-center justify-center font-bold text-[10px]">
+                            S
+                        </div>
+                        <div class="bg-white/10 p-3.5 rounded-2xl rounded-tl-xs text-xs text-white/90 leading-relaxed max-w-[85%]">
+                            Om Swastiastu! Selamat datang di Bali. I am Santi, your AI cultural guardian. How can I help you today?
+                        </div>
+                    </div>
+
+                    <!-- User Question -->
+                    <div class="flex items-start justify-end space-x-3">
+                        <div class="bg-[#21845B] text-white p-3 rounded-2xl rounded-tr-xs text-xs leading-relaxed max-w-[80%]">
+                            What should I know before entering Pura Tirta Empul?
+                        </div>
+                    </div>
+
+                    <!-- Santi Answer -->
+                    <div class="flex items-start space-x-3">
+                        <div class="w-7 h-7 rounded-full bg-[#21845B] text-white flex-shrink-0 flex items-center justify-center font-bold text-[10px]">
+                            S
+                        </div>
+                        <div class="bg-white/10 p-3.5 rounded-2xl rounded-tl-xs text-xs text-white/90 leading-relaxed max-w-[85%]">
+                            Please wear a proper Kamen (sarong) wrapped around your waist and tie a senteng (sash) securely. If you are entering the holy water for Melukat, a special green bathing sarong is required on site.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,18 +6,17 @@
 
 @theme {
     --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-    --color-bali-deep: #174D3B;
-    --color-bali-emerald: #21845B;
-    --color-bali-ivory: #F8F6EF;
-    --color-bali-white: #FFFFFF;
-    --color-bali-gold: #C6A15B;
-    --color-bali-gold-dark: #A98338;
-    --color-bali-dark: #202A25;
-    --color-bali-muted: #5A6961;
-    --color-bali-surface: #F3EFE6;
+    --color-forest: #174D3B;
+    --color-emerald: #21845B;
+    --color-light-green: #DDF2DF;
+    --color-ivory: #F8F6EF;
+    --color-pure-white: #FFFFFF;
+    --color-gold: #C6A15B;
+    --color-dark-text: #202A25;
+    --color-secondary-text: #737B75;
 }
 
-/* Custom scrollbars and styling */
+/* Custom scrollbars */
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -26,26 +25,24 @@
     background: #F8F6EF;
 }
 ::-webkit-scrollbar-thumb {
-    background: #C6A15B;
+    background: #21845B;
     border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #174D3B;
 }
 
-/* Balinese ornament accent border */
-.bali-border-ornament {
-    border-image: linear-gradient(to right, #174D3B, #C6A15B, #21845B) 1;
+/* Glassmorphism helpers for hero floating cards */
+.glass-card-dark {
+    background: rgba(19, 62, 48, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(221, 242, 223, 0.18);
 }
 
-/* Glassmorphism effect */
-.glass-panel {
-    background: rgba(255, 255, 255, 0.85);
+.glass-header-scrolled {
+    background: rgba(23, 77, 59, 0.96);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-}
-.glass-panel-dark {
-    background: rgba(23, 77, 59, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }

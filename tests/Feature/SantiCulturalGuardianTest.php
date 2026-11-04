@@ -36,10 +36,10 @@ class SantiCulturalGuardianTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('Santi Cultural Guardian');
-        $response->assertSee('Discover the Magic of Bali');
-        $response->assertSee('Tanya Santi AI');
-        $response->assertSee('Pura Besakih');
+        $response->assertSee('SANTI');
+        $response->assertSee('Discover Bali');
+        $response->assertSee('Respect Its Culture');
+        $response->assertSee('Ask Santi AI');
     }
 
     /**
