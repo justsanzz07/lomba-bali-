@@ -100,29 +100,29 @@
                     </div>
 
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-[#174D3B] tracking-tight leading-tight">
-                        Your Trusted Cultural Companion in Bali
+                        Your Smart Cultural Guide to Exploring Bali
                     </h2>
 
                     <div class="space-y-4 text-sm sm:text-base text-[#202A25]/80 leading-relaxed font-normal">
                         <p>
-                            Santi is an AI-powered cultural assistant designed to help domestic and international tourists understand Balinese customs, traditions, and local etiquette.
+                            Santi is an AI-powered cultural assistant designed to help travelers discover and understand the beauty of Balinese traditions, local customs, and cultural etiquette.
                         </p>
                         <p>
-                            Through intelligent conversations and location-based cultural information, Santi helps visitors explore Bali respectfully and responsibly — bridging modern hospitality with ancient spiritual wisdom.
+                            Through intelligent conversations and location-based guidance, Santi provides helpful information about local rules, temple etiquette, and respectful behavior — helping every visitor experience Bali with greater awareness and respect.
                         </p>
                     </div>
 
                     <!-- Factual Cultural Alignment Point -->
                     <div class="pt-2 text-xs font-semibold text-[#174D3B] flex items-center space-x-2">
                         <span class="w-2 h-2 rounded-full bg-[#21845B]"></span>
-                        <span>Grounded in Tri Hita Karana, Dharma & Cultural Respect</span>
+                        <span>Explore Bali with Knowledge, Respect & Cultural Awareness</span>
                     </div>
 
-                    <!-- Discover More CTA -->
+                    <!-- CTA Button -->
                     <div class="pt-4">
                         <a href="#services"
                            class="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-[#DDF2DF] hover:bg-[#c9e8cd] text-[#174D3B] text-xs font-bold transition-colors">
-                            <span>Discover More</span>
+                            <span>Explore Cultural Guide</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                             </svg>
