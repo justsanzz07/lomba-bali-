@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --color-bali-deep: #174D3B;
+    --color-bali-emerald: #21845B;
+    --color-bali-ivory: #F8F6EF;
+    --color-bali-white: #FFFFFF;
+    --color-bali-gold: #C6A15B;
+    --color-bali-gold-dark: #A98338;
+    --color-bali-dark: #202A25;
+    --color-bali-muted: #5A6961;
+    --color-bali-surface: #F3EFE6;
+}
+
+/* Custom scrollbars and styling */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #F8F6EF;
+}
+::-webkit-scrollbar-thumb {
+    background: #C6A15B;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #174D3B;
+}
+
+/* Balinese ornament accent border */
+.bali-border-ornament {
+    border-image: linear-gradient(to right, #174D3B, #C6A15B, #21845B) 1;
+}
+
+/* Glassmorphism effect */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.glass-panel-dark {
+    background: rgba(23, 77, 59, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
