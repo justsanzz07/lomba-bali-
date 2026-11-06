@@ -246,8 +246,7 @@ class SantiCulturalGuardianTest extends TestCase
         $response = $this->get('/santi');
 
         $response->assertStatus(200);
-        $response->assertSee('Seluruh Wisata');
-        $response->assertSee('Cakupan Seluruh Bali');
+        $response->assertSee('Santi AI Cultural Guardian');
         $response->assertSee('Om Swastiastu! Rahajeng rauh ring Bali.');
     }
 

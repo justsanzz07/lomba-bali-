@@ -3,125 +3,56 @@
 @section('title', $location->slug === 'seluruh-bali' ? 'Santi AI Cultural Guardian — Seluruh Wisata Bali' : 'Santi AI Guardian — ' . $location->name)
 
 @section('content')
-<div class="pt-28 pb-14 bg-[#F8F6EF] dark:bg-[#0B1E17] min-h-screen flex flex-col justify-between transition-colors duration-200">
+<div class="pt-24 pb-12 bg-[#F8F6EF] dark:bg-[#0B1E17] min-h-screen flex flex-col justify-between transition-colors duration-200">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow flex flex-col space-y-4">
-        <!-- Top Location Header Bar (Grounded & Premium) -->
-        <div class="bg-white/90 dark:bg-[#16352A]/90 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-[#174D3B]/10 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-colors">
-            <div class="flex items-center space-x-3.5">
-                <a href="{{ route('locations.index') }}" title="Daftar Seluruh Destinasi Wisata" class="w-10 h-10 rounded-xl bg-[#F8F6EF] dark:bg-[#1D4436] hover:bg-[#174D3B] hover:text-white text-[#174D3B] dark:text-[#DDF2DF] flex items-center justify-center transition-colors shadow-2xs group shrink-0">
-                    <svg class="w-5 h-5 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                </a>
-
-                <div>
-                    <div class="flex flex-wrap items-center gap-2">
-                        <!-- Destination Quick Switcher Dropdown -->
-                        <div class="relative inline-block">
-                            <select id="destination-switcher" onchange="window.location.href = this.value" class="appearance-none pl-2.5 pr-7 py-1 rounded-lg bg-[#F8F6EF] dark:bg-[#1D4436] hover:bg-white dark:hover:bg-[#21845B]/20 border border-[#174D3B]/20 dark:border-white/15 font-extrabold text-sm sm:text-base text-[#174D3B] dark:text-[#DDF2DF] focus:outline-none focus:ring-2 focus:ring-[#21845B] cursor-pointer shadow-2xs transition-colors max-w-[210px] sm:max-w-xs md:max-w-md truncate">
-                                <option value="{{ route('santi.index') }}" {{ $location->slug === 'seluruh-bali' ? 'selected' : '' }}>
-                                    🌐 Seluruh Wisata & Budaya Bali (Semua)
-                                </option>
-                                <optgroup label="Destinasi Wisata Spesifik:">
-                                    @foreach($allLocations as $loc)
-                                        @if($loc->slug !== 'seluruh-bali')
-                                            <option value="{{ route('santi.show', $loc->slug) }}" {{ $location->slug === $loc->slug ? 'selected' : '' }}>
-                                                {{ $loc->name }}
-                                            </option>
-                                        @endif
-                                    @endforeach
-                                </optgroup>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1.5 text-[#174D3B] dark:text-[#DDF2DF]">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#21845B]/15 text-[#21845B] dark:text-[#A7D9B8]">
-                            <span class="w-1.5 h-1.5 rounded-full bg-[#21845B]"></span>
-                            <span>{{ $location->slug === 'seluruh-bali' ? 'Cakupan Seluruh Bali' : 'Kawasan Aktif' }}</span>
-                        </span>
-                    </div>
-                    @if($location->address)
-                        <p class="text-[11px] text-[#5A6961] dark:text-[#A7B9AF] truncate max-w-xs sm:max-w-md flex items-center space-x-1 mt-0.5">
-                            <svg class="w-3 h-3 text-[#C6A15B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            <span>{{ $location->address }}</span>
-                        </p>
-                    @endif
-                </div>
-            </div>
-
-            <!-- Header Controls: Guidelines Link, Language Selector & Reset -->
-            <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
-                <!-- Direct Link to Written Guidelines -->
-                @if($location->slug === 'seluruh-bali')
-                    <a href="{{ route('locations.index') }}" class="inline-flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-[#DDF2DF]/80 hover:bg-[#DDF2DF] dark:bg-[#21845B]/25 dark:hover:bg-[#21845B]/40 text-[#174D3B] dark:text-[#A7D9B8] text-xs font-bold transition-all shadow-2xs">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
-                        </svg>
-                        <span class="hidden md:inline">Katalog Destinasi</span>
-                        <span class="md:hidden">Destinasi</span>
-                    </a>
-                @else
-                    <a href="{{ route('guidelines.show', $location->slug) }}" class="inline-flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-[#DDF2DF]/80 hover:bg-[#DDF2DF] dark:bg-[#21845B]/25 dark:hover:bg-[#21845B]/40 text-[#174D3B] dark:text-[#A7D9B8] text-xs font-bold transition-all shadow-2xs">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
-                        <span class="hidden md:inline">Buku Panduan Adat</span>
-                        <span class="md:hidden">Panduan</span>
-                    </a>
-                @endif
-
-                <!-- Multi-Language Selector Dropdown -->
-                <div class="relative">
-                    <select id="chat-lang-select" class="appearance-none pl-3 pr-8 py-2 rounded-xl bg-[#F8F6EF] dark:bg-[#1D4436] hover:bg-white dark:hover:bg-[#21845B]/20 border border-[#174D3B]/20 dark:border-white/10 text-xs font-bold text-[#174D3B] dark:text-[#DDF2DF] focus:outline-none focus:ring-2 focus:ring-[#21845B] cursor-pointer shadow-2xs transition-colors">
-                        <option value="id" {{ app()->getLocale() === 'id' ? 'selected' : '' }}>🇮🇩 ID (Indonesia)</option>
-                        <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>🇬🇧 EN (English)</option>
-                        <option value="zh" {{ app()->getLocale() === 'zh' ? 'selected' : '' }}>🇨🇳 ZH (中文)</option>
-                        <option value="ja" {{ app()->getLocale() === 'ja' ? 'selected' : '' }}>🇯🇵 JA (日本語)</option>
-                        <option value="ru" {{ app()->getLocale() === 'ru' ? 'selected' : '' }}>🇷🇺 RU (Русский)</option>
-                        <option value="fr" {{ app()->getLocale() === 'fr' ? 'selected' : '' }}>🇫🇷 FR (Français)</option>
-                        <option value="de" {{ app()->getLocale() === 'de' ? 'selected' : '' }}>🇩🇪 DE (Deutsch)</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[#174D3B] dark:text-[#DDF2DF]">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- Reset Chat -->
-                <button type="button" id="new-chat-btn" title="Mulai Percakapan Baru" class="p-2 sm:px-3 sm:py-2 rounded-xl bg-[#F8F6EF] dark:bg-[#1D4436] hover:bg-red-50 hover:text-red-700 dark:hover:bg-red-950/40 dark:hover:text-red-300 text-[#5A6961] dark:text-[#C1D1C7] text-xs font-semibold flex items-center space-x-1.5 transition-colors cursor-pointer shadow-2xs">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                    </svg>
-                    <span class="hidden sm:inline">Reset</span>
-                </button>
-            </div>
-        </div>
-
         <!-- Chat Main Container Card -->
-        <div class="bg-white dark:bg-[#132B22] rounded-3xl shadow-xl border border-[#174D3B]/10 dark:border-white/10 flex flex-col h-[70vh] sm:h-[74vh] overflow-hidden transition-colors">
-            <!-- Sub-Header Status Strip -->
-            <div class="px-4 sm:px-6 py-2.5 bg-[#F8F6EF]/80 dark:bg-[#16352A]/80 border-b border-[#174D3B]/10 dark:border-white/10 flex items-center justify-between text-xs">
-                <div class="flex items-center space-x-2">
-                    <div class="relative flex h-2.5 w-2.5">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#21845B] opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#21845B]"></span>
+        <div class="bg-white dark:bg-[#132B22] rounded-3xl shadow-xl border border-[#174D3B]/10 dark:border-white/10 flex flex-col h-[74vh] sm:h-[78vh] overflow-hidden transition-colors">
+            <!-- Header Status Strip -->
+            <div class="px-4 sm:px-6 py-3 bg-[#F8F6EF]/90 dark:bg-[#16352A]/90 border-b border-[#174D3B]/10 dark:border-white/10 flex items-center justify-between text-xs">
+                <div class="flex items-center space-x-3">
+                    <a href="{{ route('landing') }}" title="Kembali ke Beranda" class="w-8 h-8 rounded-xl bg-white dark:bg-[#1D4436] hover:bg-[#174D3B] hover:text-white text-[#174D3B] dark:text-[#DDF2DF] flex items-center justify-center transition-colors shadow-2xs group shrink-0">
+                        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </a>
+                    <div class="flex items-center space-x-2">
+                        <div class="relative flex h-2.5 w-2.5 shrink-0">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#21845B] opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#21845B]"></span>
+                        </div>
+                        <div>
+                            <span class="font-bold text-[#174D3B] dark:text-[#DDF2DF] text-xs block leading-tight">Santi AI Cultural Guardian</span>
+                            <span class="text-[10px] text-gray-400 dark:text-gray-500 hidden sm:inline">Menjawab Berdasarkan Rujukan Terverifikasi (SE No. 4/2023)</span>
+                        </div>
                     </div>
-                    <span class="font-bold text-[#174D3B] dark:text-[#DDF2DF] text-xs">Santi AI Cultural Guardian</span>
-                    <span class="text-[10px] text-gray-400 dark:text-gray-500 hidden sm:inline">• Menjawab Berdasarkan Rujukan Terverifikasi</span>
                 </div>
-                <div class="flex items-center space-x-1 text-[11px] font-semibold text-[#C6A15B]">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                    </svg>
-                    <span>SE No. 4/2023 & Awig-Awig</span>
+
+                <div class="flex items-center space-x-2">
+                    <!-- Multi-Language Selector Dropdown -->
+                    <div class="relative">
+                        <select id="chat-lang-select" class="appearance-none pl-2.5 pr-7 py-1.5 rounded-xl bg-white dark:bg-[#1D4436] hover:bg-[#F8F6EF] dark:hover:bg-[#21845B]/20 border border-[#174D3B]/20 dark:border-white/10 text-xs font-bold text-[#174D3B] dark:text-[#DDF2DF] focus:outline-none focus:ring-2 focus:ring-[#21845B] cursor-pointer shadow-2xs transition-colors">
+                            <option value="id" {{ app()->getLocale() === 'id' ? 'selected' : '' }}>🇮🇩 ID</option>
+                            <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>🇬🇧 EN</option>
+                            <option value="zh" {{ app()->getLocale() === 'zh' ? 'selected' : '' }}>🇨🇳 ZH</option>
+                            <option value="ja" {{ app()->getLocale() === 'ja' ? 'selected' : '' }}>🇯🇵 JA</option>
+                            <option value="ru" {{ app()->getLocale() === 'ru' ? 'selected' : '' }}>🇷🇺 RU</option>
+                            <option value="fr" {{ app()->getLocale() === 'fr' ? 'selected' : '' }}>🇫🇷 FR</option>
+                            <option value="de" {{ app()->getLocale() === 'de' ? 'selected' : '' }}>🇩🇪 DE</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1.5 text-[#174D3B] dark:text-[#DDF2DF]">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Reset Chat -->
+                    <button type="button" id="new-chat-btn" title="Mulai Percakapan Baru" class="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl bg-white dark:bg-[#1D4436] hover:bg-red-50 hover:text-red-700 dark:hover:bg-red-950/40 dark:hover:text-red-300 text-[#5A6961] dark:text-[#C1D1C7] text-xs font-semibold flex items-center space-x-1 transition-colors cursor-pointer shadow-2xs">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Reset</span>
+                    </button>
                 </div>
             </div>
 
