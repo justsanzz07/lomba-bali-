@@ -8,7 +8,7 @@
         <!-- Chat Main Container Card -->
         <div class="bg-white dark:bg-[#132B22] rounded-3xl shadow-xl border border-[#174D3B]/10 dark:border-white/10 flex flex-col h-[74vh] sm:h-[78vh] overflow-hidden transition-colors">
             <!-- Header Status Strip -->
-            <div class="px-4 sm:px-6 py-3 bg-[#F8F6EF]/90 dark:bg-[#16352A]/90 border-b border-[#174D3B]/10 dark:border-white/10 flex items-center justify-between text-xs">
+            <div class="shrink-0 px-4 sm:px-6 py-3 bg-[#F8F6EF]/90 dark:bg-[#16352A]/90 border-b border-[#174D3B]/10 dark:border-white/10 flex items-center justify-between text-xs">
                 <div class="flex items-center space-x-3">
                     <a href="{{ route('landing') }}" title="Kembali ke Beranda" class="w-8 h-8 rounded-xl bg-white dark:bg-[#1D4436] hover:bg-[#174D3B] hover:text-white text-[#174D3B] dark:text-[#DDF2DF] flex items-center justify-center transition-colors shadow-2xs group shrink-0">
                         <svg class="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,7 +96,7 @@
             </div>
 
             <!-- Loading Indicator Box (Hidden by default) -->
-            <div id="loading-indicator" class="hidden px-5 py-3 border-t border-gray-100 dark:border-white/10 bg-[#F8F6EF]/60 dark:bg-[#16352A]/60">
+            <div id="loading-indicator" class="hidden shrink-0 px-5 py-3 border-t border-[#174D3B]/10 dark:border-white/10 bg-[#F8F6EF]/60 dark:bg-[#16352A]/60">
                 <div class="flex items-center space-x-3 text-xs text-[#174D3B] dark:text-[#DDF2DF]">
                     <div class="flex space-x-1.5">
                         <div class="w-2 h-2 rounded-full bg-[#174D3B] dark:bg-[#DDF2DF] animate-bounce"></div>
@@ -108,11 +108,11 @@
             </div>
 
             <!-- Suggested Questions Carousel / Chips -->
-            <div class="px-4 py-2.5 bg-[#F8F6EF]/70 dark:bg-[#16352A]/40 border-t border-gray-100 dark:border-white/10 overflow-x-auto">
-                <div class="flex items-center space-x-2 text-xs" id="suggested-questions-container">
-                    <span class="text-[11px] font-bold text-[#5A6961] dark:text-[#A7B9AF] whitespace-nowrap">Saran:</span>
+            <div class="shrink-0 px-4 py-2.5 bg-[#F8F6EF]/90 dark:bg-[#16352A]/70 border-t border-[#174D3B]/10 dark:border-white/10 overflow-x-auto scrollbar-none">
+                <div class="flex items-center space-x-2 text-xs py-0.5" id="suggested-questions-container">
+                    <span class="text-[11px] font-bold text-[#5A6961] dark:text-[#A7B9AF] whitespace-nowrap shrink-0">Saran:</span>
                     @foreach($suggestedQuestions['id'] as $index => $sq)
-                        <button type="button" class="suggested-btn whitespace-nowrap px-3 py-1.5 rounded-full bg-white dark:bg-[#1D4436] hover:bg-[#174D3B] dark:hover:bg-[#21845B] text-[#174D3B] dark:text-[#DDF2DF] hover:text-white border border-[#174D3B]/20 dark:border-white/10 text-xs transition-colors shadow-2xs cursor-pointer">
+                        <button type="button" class="suggested-btn whitespace-nowrap shrink-0 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#1D4436] hover:bg-[#174D3B] dark:hover:bg-[#21845B] text-[#174D3B] dark:text-[#DDF2DF] hover:text-white border border-[#174D3B]/20 dark:border-white/10 text-xs font-medium transition-colors shadow-2xs cursor-pointer leading-normal">
                             {{ $sq }}
                         </button>
                     @endforeach
@@ -120,7 +120,7 @@
             </div>
 
             <!-- Input Form Box -->
-            <div class="p-3 sm:p-4 bg-white dark:bg-[#16352A] border-t border-gray-100 dark:border-white/10">
+            <div class="shrink-0 p-3 sm:p-4 bg-white dark:bg-[#16352A] border-t border-[#174D3B]/10 dark:border-white/10">
                 <form id="chat-form" class="flex items-center space-x-2">
                     <div class="relative flex-grow">
                         <input type="text" id="user-input" maxlength="1000" autocomplete="off"
@@ -276,9 +276,9 @@
             const g = greetings[lang] || greetings['id'];
             const questions = allSuggestedQuestions[lang] || allSuggestedQuestions['en'] || allSuggestedQuestions['id'] || [];
 
-            let html = `<span class="text-[11px] font-bold text-[#5A6961] dark:text-[#A7B9AF] whitespace-nowrap">${g.label_saran}</span>`;
+            let html = `<span class="text-[11px] font-bold text-[#5A6961] dark:text-[#A7B9AF] whitespace-nowrap shrink-0">${g.label_saran}</span>`;
             questions.forEach(q => {
-                html += `<button type="button" class="suggested-btn whitespace-nowrap px-3 py-1.5 rounded-full bg-white dark:bg-[#1D4436] hover:bg-[#174D3B] dark:hover:bg-[#21845B] text-[#174D3B] dark:text-[#DDF2DF] hover:text-white border border-[#174D3B]/20 dark:border-white/10 text-xs transition-colors shadow-2xs cursor-pointer">${escapeHtml(q)}</button>`;
+                html += `<button type="button" class="suggested-btn whitespace-nowrap shrink-0 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#1D4436] hover:bg-[#174D3B] dark:hover:bg-[#21845B] text-[#174D3B] dark:text-[#DDF2DF] hover:text-white border border-[#174D3B]/20 dark:border-white/10 text-xs font-medium transition-colors shadow-2xs cursor-pointer leading-normal">${escapeHtml(q)}</button>`;
             });
             suggestedContainer.innerHTML = html;
 
