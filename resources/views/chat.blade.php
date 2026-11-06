@@ -14,11 +14,6 @@
                     </svg>
                 </a>
 
-                <!-- Location Thumbnail -->
-                <div class="relative w-11 h-11 rounded-xl overflow-hidden shrink-0 border border-gray-200 dark:border-white/15 shadow-2xs">
-                    <img src="{{ asset($locationImage) }}" alt="{{ $location->name }}" class="w-full h-full object-cover">
-                </div>
-
                 <div>
                     <div class="flex flex-wrap items-center gap-2">
                         <!-- Destination Quick Switcher Dropdown -->
