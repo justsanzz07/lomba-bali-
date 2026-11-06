@@ -324,6 +324,59 @@ class SantiCulturalGuardianTest extends TestCase
     }
 
     /**
+     * Test: Chat endpoint works for all Bali general scope (seluruh-bali).
+     */
+    public function test_chat_provides_guidance_for_all_bali_general_scope(): void
+    {
+        $seluruhBali = Location::factory()->create([
+            'name' => 'Seluruh Wisata & Budaya Bali',
+            'slug' => 'seluruh-bali',
+            'is_active' => true,
+        ]);
+
+        CulturalRule::factory()->create([
+            'location_id' => $seluruhBali->id,
+            'category' => 'general',
+            'title' => 'Regulasi Pariwisata SE No. 4/2023',
+            'content' => 'Wisatawan wajib menghormati adat istiadat dan berbusana sopan.',
+            'source_name' => 'SE Gubernur Bali No. 4/2023',
+            'is_verified' => true,
+            'is_active' => true,
+        ]);
+
+        Http::fake([
+            'generativelanguage.googleapis.com/*' => Http::response([
+                'candidates' => [
+                    [
+                        'content' => [
+                            'parts' => [
+                                ['text' => 'Om Swastiastu. Seluruh wisatawan di Bali wajib menghormati adat istiadat.'],
+                            ],
+                        ],
+                    ],
+                ],
+            ], 200),
+        ]);
+
+        $response = $this->postJson('/chat', [
+            'message' => 'haiii',
+            'location_slug' => 'seluruh-bali',
+            'language' => 'id',
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'status' => 'success',
+            'answer' => 'Om Swastiastu. Seluruh wisatawan di Bali wajib menghormati adat istiadat.',
+            'location' => [
+                'name' => 'Seluruh Wisata & Budaya Bali',
+                'slug' => 'seluruh-bali',
+            ],
+        ]);
+        $this->assertNotEmpty($response->json('sources'));
+    }
+
+    /**
      * Test 9: Unverified rules are not served as official rules (insufficient_verified_information).
      */
     public function test_location_without_verified_rules_returns_insufficient_verified_info_status(): void

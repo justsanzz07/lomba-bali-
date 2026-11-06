@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CulturalRule;
 use App\Models\Location;
 use App\Services\GeminiService;
 use Illuminate\Http\JsonResponse;
