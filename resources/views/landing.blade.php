@@ -356,19 +356,20 @@
 
     <!-- ==================== 4. HOW IT WORKS SECTION (MINIMALIST & COMPACT) ==================== -->
     <section id="how-it-works" class="py-20 bg-[#F8F6EF] dark:bg-[#0E231B] border-t border-[#174D3B]/10 dark:border-white/10 relative overflow-hidden transition-colors duration-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <!-- Section Header -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
                 <div class="max-w-xl">
-                    <span class="text-[11px] sm:text-xs font-bold tracking-widest text-[#21845B] dark:text-[#34D399] uppercase block mb-2">
-                        {{ __('messages.how_label') }}
-                    </span>
-                    <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#174D3B] dark:text-[#DDF2DF] tracking-tight leading-tight">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#DDF2DF] dark:bg-[#21845B]/25 text-[#174D3B] dark:text-[#A7D9B8] text-xs font-bold tracking-wider uppercase mb-2.5">
+                        <span class="w-2 h-2 rounded-full bg-[#21845B]"></span>
+                        <span>{{ __('messages.how_label') }}</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#174D3B] dark:text-[#DDF2DF] tracking-tight leading-tight">
                         {{ __('messages.how_heading') }}
                     </h2>
                 </div>
                 <div class="max-w-md">
-                    <p class="text-xs sm:text-sm text-[#5A6961] dark:text-[#C1D1C7] leading-relaxed">
+                    <p class="text-sm sm:text-base text-[#202A25]/80 dark:text-[#C1D1C7] leading-relaxed font-normal">
                         {{ __('messages.how_desc') }}
                     </p>
                 </div>
