@@ -74,8 +74,8 @@
             </div>
         </div>
 
-        <!-- ==================== MINIMALIST CATEGORIZED RULES ==================== -->
-        <div class="space-y-10 mb-16">
+        <!-- ==================== 2x2 GRID: ATURAN ADAT ==================== -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mb-16 items-stretch">
             @php
                 $categoryConfig = [
                     'dress_code' => ['icon' => '👗', 'title' => __('messages.cat_dress_code')],
@@ -88,26 +88,24 @@
 
             @foreach($categoryConfig as $catKey => $config)
                 @if(isset($rulesByCategory[$catKey]) && $rulesByCategory[$catKey]->isNotEmpty())
-                    <section class="space-y-4">
-                        <!-- Minimalist Category Header -->
-                        <div class="flex items-center space-x-3 pb-2 border-b border-[#174D3B]/10 dark:border-white/10">
-                            <span class="w-8 h-8 rounded-xl bg-[#DDF2DF] dark:bg-[#21845B]/25 text-[#174D3B] dark:text-[#A7D9B8] flex items-center justify-center text-sm font-bold shadow-2xs">
-                                {{ $config['icon'] }}
-                            </span>
-                            <div>
+                    <div class="bg-white dark:bg-[#16352A] rounded-3xl p-5 sm:p-6 shadow-xs border border-[#174D3B]/10 dark:border-white/10 hover:border-[#21845B]/30 hover:shadow-md transition-all flex flex-col justify-between h-full">
+                        <div>
+                            <!-- Minimalist Category Header on Card -->
+                            <div class="flex items-center space-x-3 pb-3 mb-4 border-b border-[#174D3B]/10 dark:border-white/10">
+                                <span class="w-8 h-8 rounded-xl bg-[#DDF2DF] dark:bg-[#21845B]/25 text-[#174D3B] dark:text-[#A7D9B8] flex items-center justify-center text-sm font-bold shadow-2xs shrink-0">
+                                    {{ $config['icon'] }}
+                                </span>
                                 <h2 class="text-base sm:text-lg font-bold text-[#174D3B] dark:text-[#DDF2DF] leading-tight">
                                     {{ $config['title'] }}
                                 </h2>
                             </div>
-                        </div>
 
-                        <!-- Direct Rule Cards Grid (No double nesting) -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            @foreach($rulesByCategory[$catKey] as $rule)
-                                <div class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#16352A] border border-[#174D3B]/10 dark:border-white/10 hover:border-[#21845B]/40 hover:shadow-sm transition-all flex flex-col justify-between">
-                                    <div class="space-y-2">
+                            <!-- Rules List inside Category Card -->
+                            <div class="space-y-4">
+                                @foreach($rulesByCategory[$catKey] as $rule)
+                                    <div class="space-y-2 pb-3 last:pb-0 border-b border-gray-100 dark:border-white/5 last:border-b-0">
                                         <div class="flex items-center justify-between">
-                                            <span class="inline-flex items-center space-x-1 text-[10px] font-bold px-2 py-0.5 rounded-full {{ $rule->is_verified ? 'bg-[#21845B]/10 text-[#21845B] dark:bg-[#21845B]/25 dark:text-[#A7D9B8]' : 'bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300' }}">
+                                            <span class="inline-flex items-center space-x-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full {{ $rule->is_verified ? 'bg-[#21845B]/10 text-[#21845B] dark:bg-[#21845B]/25 dark:text-[#A7D9B8]' : 'bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300' }}">
                                                 @if($rule->is_verified)
                                                     <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
@@ -119,33 +117,33 @@
                                             </span>
                                         </div>
 
-                                        <h3 class="font-bold text-sm sm:text-base text-[#174D3B] dark:text-[#DDF2DF]">
+                                        <h3 class="font-bold text-sm sm:text-base text-[#174D3B] dark:text-[#DDF2DF] leading-snug">
                                             {{ $rule->title }}
                                         </h3>
 
-                                        <p class="text-xs text-[#5A6961] dark:text-[#C1D1C7] leading-relaxed">
+                                        <p class="text-xs sm:text-[13px] text-[#5A6961] dark:text-[#C1D1C7] leading-relaxed">
                                             {{ $rule->content }}
                                         </p>
-                                    </div>
 
-                                    @if($rule->source_name)
-                                        <div class="pt-3 mt-3 border-t border-gray-100 dark:border-white/10 text-[10px] sm:text-[11px] text-[#5A6961] dark:text-[#A7B9AF] flex items-center justify-between">
-                                            <span class="truncate pr-2">
-                                                <strong class="font-semibold text-[#174D3B] dark:text-[#DDF2DF]">{{ __('messages.guide_source_official') }}:</strong> {{ $rule->source_name }}
-                                            </span>
-                                            @if($rule->source_url)
-                                                <a href="{{ $rule->source_url }}" target="_blank" rel="noopener noreferrer" class="text-[#21845B] dark:text-[#A7D9B8] hover:text-[#174D3B] flex-shrink-0" title="Kunjungi Sumber Resmi">
-                                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                                    </svg>
-                                                </a>
-                                            @endif
-                                        </div>
-                                    @endif
-                                </div>
-                            @endforeach
+                                        @if($rule->source_name)
+                                            <div class="pt-2 text-[10px] sm:text-[11px] text-[#5A6961] dark:text-[#A7B9AF] flex items-center justify-between">
+                                                <span class="truncate pr-2">
+                                                    <strong class="font-semibold text-[#174D3B] dark:text-[#DDF2DF]">{{ __('messages.guide_source_official') }}:</strong> {{ $rule->source_name }}
+                                                </span>
+                                                @if($rule->source_url)
+                                                    <a href="{{ $rule->source_url }}" target="_blank" rel="noopener noreferrer" class="text-[#21845B] dark:text-[#A7D9B8] hover:text-[#174D3B] flex-shrink-0" title="Kunjungi Sumber Resmi">
+                                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                                        </svg>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-                    </section>
+                    </div>
                 @endif
             @endforeach
         </div>
