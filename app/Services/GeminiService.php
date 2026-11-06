@@ -7,6 +7,7 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class GeminiService
 {
@@ -238,37 +239,124 @@ PROMPT;
 
     /**
      * Build contents payload including bounded recent conversation history.
+     * Sanitizes roles, enforces alternating turns, summarizes older context,
+     * and condenses long model responses for optimal Gemini API consumption.
      */
     protected function buildContentsPayload(array $history, string $userMessage): array
     {
-        $contents = [];
+        $sanitizedHistory = [];
 
-        // Limit history to the last 6 messages (3 turns)
-        $recentHistory = array_slice($history, -6);
-
-        foreach ($recentHistory as $msg) {
+        // 1. Sanitize and normalize history items
+        foreach ($history as $msg) {
             if (! isset($msg['role'], $msg['content']) || ! is_string($msg['content'])) {
                 continue;
             }
 
-            $role = ($msg['role'] === 'user') ? 'user' : 'model';
-            $text = trim($msg['content']);
+            $content = trim($msg['content']);
+            if ($content === '') {
+                continue;
+            }
 
-            if (! empty($text)) {
-                $contents[] = [
-                    'role' => $role,
-                    'parts' => [
-                        ['text' => $text],
-                    ],
-                ];
+            $role = ($msg['role'] === 'user') ? 'user' : 'model';
+            $sanitizedHistory[] = [
+                'role' => $role,
+                'content' => $content,
+            ];
+        }
+
+        // 2. Bound history to the last 6 messages (approx 3 turns)
+        $maxRecent = 6;
+        $totalHistory = count($sanitizedHistory);
+        $recentHistory = $sanitizedHistory;
+        $contextSummary = '';
+
+        if ($totalHistory > $maxRecent) {
+            $olderHistory = array_slice($sanitizedHistory, 0, $totalHistory - $maxRecent);
+            $recentHistory = array_slice($sanitizedHistory, -$maxRecent);
+
+            // Extract topics from older user messages for context summary
+            $olderTopics = [];
+            foreach ($olderHistory as $old) {
+                if ($old['role'] === 'user') {
+                    $olderTopics[] = Str::limit($old['content'], 60, '...');
+                }
+            }
+
+            if (! empty($olderTopics)) {
+                $contextSummary = '[Rangkuman konteks sebelumnya: Pengguna telah menanyakan topik: '.implode('; ', $olderTopics).']';
             }
         }
 
-        // Add current user message
+        // 3. Condense long recent responses to keep context lightweight & prevent token overflow
+        $processedHistory = [];
+        foreach ($recentHistory as $item) {
+            $text = $item['content'];
+            if ($item['role'] === 'model' && mb_strlen($text) > 800) {
+                // Keep the first 750 characters as context without affecting UI display
+                $text = Str::limit($text, 750, '... [rangkuman jawaban terdahulu]');
+            }
+
+            // Prepend context summary to the first user item if available
+            if ($contextSummary !== '' && $item['role'] === 'user' && empty($processedHistory)) {
+                $text = $contextSummary."\n\n".$text;
+                $contextSummary = ''; // applied once
+            }
+
+            $processedHistory[] = [
+                'role' => $item['role'],
+                'content' => $text,
+            ];
+        }
+
+        // 4. Gemini API requires alternating turns: user -> model -> user -> model...
+        // Merge consecutive messages with the same role and ensure sequence starts with 'user'
+        $alternating = [];
+        foreach ($processedHistory as $item) {
+            if (empty($alternating)) {
+                // First turn in Gemini contents MUST be 'user'
+                if ($item['role'] === 'user') {
+                    $alternating[] = $item;
+                }
+                // If the first turn is 'model', discard it to satisfy Gemini requirement
+            } else {
+                $lastIndex = count($alternating) - 1;
+                if ($alternating[$lastIndex]['role'] === $item['role']) {
+                    // Combine consecutive same-role contents
+                    $alternating[$lastIndex]['content'] .= "\n\n".$item['content'];
+                } else {
+                    $alternating[] = $item;
+                }
+            }
+        }
+
+        // If the last message in alternating history is 'user', the next message (our current $userMessage)
+        // would create consecutive 'user' turns. We merge trailing 'user' into current $userMessage.
+        if (! empty($alternating) && end($alternating)['role'] === 'user') {
+            $lastUser = array_pop($alternating);
+            $userMessage = $lastUser['content']."\n\n".$userMessage;
+        }
+
+        // 5. Convert to Gemini contents format
+        $contents = [];
+        foreach ($alternating as $turn) {
+            $contents[] = [
+                'role' => $turn['role'],
+                'parts' => [
+                    ['text' => $turn['content']],
+                ],
+            ];
+        }
+
+        // Append current user message
+        $finalUserText = trim($userMessage);
+        if ($contextSummary !== '' && empty($contents)) {
+            $finalUserText = $contextSummary."\n\n".$finalUserText;
+        }
+
         $contents[] = [
             'role' => 'user',
             'parts' => [
-                ['text' => $userMessage],
+                ['text' => $finalUserText],
             ],
         ];
 

@@ -378,13 +378,19 @@
                     conversationHistory.push({ role: 'user', content: message });
                     conversationHistory.push({ role: 'model', content: data.answer });
 
-                    // Keep history bounded
-                    if (conversationHistory.length > 8) {
-                        conversationHistory = conversationHistory.slice(-8);
+                    // Keep history bounded in frontend state
+                    if (conversationHistory.length > 12) {
+                        conversationHistory = conversationHistory.slice(-12);
                     }
                 } else {
                     const g = greetings[currentLang] || greetings['id'];
-                    const errorMsg = data.message || g.error_server;
+                    let errorMsg = data.message || g.error_server;
+                    if (data && data.errors && typeof data.errors === 'object') {
+                        const firstKey = Object.keys(data.errors)[0];
+                        if (firstKey && data.errors[firstKey] && data.errors[firstKey][0]) {
+                            errorMsg = data.errors[firstKey][0];
+                        }
+                    }
                     renderErrorMessage(errorMsg);
                 }
             } catch (error) {

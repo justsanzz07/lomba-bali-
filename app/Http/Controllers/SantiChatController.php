@@ -147,13 +147,16 @@ class SantiChatController extends Controller
             'message' => ['required', 'string', 'max:1000'],
             'location_slug' => ['required', 'string', 'exists:locations,slug'],
             'language' => ['nullable', 'in:id,en,zh,ja,ru,fr,de'],
-            'history' => ['nullable', 'array', 'max:10'],
+            'history' => ['nullable', 'array', 'max:20'],
             'history.*.role' => ['required_with:history', 'in:user,assistant,model'],
-            'history.*.content' => ['required_with:history', 'string', 'max:1500'],
+            'history.*.content' => ['required_with:history', 'string', 'max:20000'],
         ], [
             'message.required' => 'Pertanyaan tidak boleh kosong.',
             'message.max' => 'Pertanyaan maksimal 1000 karakter.',
             'location_slug.exists' => 'Lokasi yang dipilih tidak ditemukan.',
+            'history.array' => 'Format riwayat percakapan tidak valid.',
+            'history.max' => 'Riwayat percakapan melebihi batas maksimal.',
+            'history.*.content.max' => 'Riwayat pesan melebihi batas karakter yang diizinkan.',
         ]);
 
         $location = Location::where('slug', $validated['location_slug'])

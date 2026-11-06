@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\CulturalRule;
 use App\Models\Location;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
@@ -522,5 +523,150 @@ class SantiCulturalGuardianTest extends TestCase
         ]);
         $this->assertStringNotContainsString('test-fake-gemini-key', $response->getContent());
         $this->assertStringContainsString('Terjadi kendala saat menghubungi layanan Santi AI', $response->json('answer'));
+    }
+
+    /**
+     * Test 14: Chat accepts previous long AI response in conversation history (>1500 chars) without 422 error.
+     */
+    public function test_chat_accepts_conversation_history_with_long_ai_response(): void
+    {
+        $location = Location::factory()->create([
+            'name' => 'Pura Agung Besakih',
+            'slug' => 'pura-besakih',
+            'is_active' => true,
+        ]);
+
+        CulturalRule::factory()->create([
+            'location_id' => $location->id,
+            'category' => 'dress_code',
+            'title' => 'Kewajiban Kamen dan Senteng',
+            'content' => 'Wajib mengenakan kamen dan senteng di pinggang.',
+            'source_name' => 'Pedoman PHDI Bali',
+            'is_verified' => true,
+            'is_active' => true,
+        ]);
+
+        Http::fake([
+            'generativelanguage.googleapis.com/*' => Http::response([
+                'candidates' => [
+                    [
+                        'content' => [
+                            'parts' => [
+                                ['text' => 'Om Swastiastu! Berikut panduan lengkap penyewaan busana adat di Pura Besakih.'],
+                            ],
+                        ],
+                    ],
+                ],
+            ], 200),
+        ]);
+
+        // Long answer (> 1500 chars) returned in previous turn
+        $longPreviousAiAnswer = 'Om Swastiastu! 🙏✨ '.str_repeat('Penjelasan tata krama busana adat Bali dan etika persembahyangan yang mendalam bagi wisatawan. ', 25);
+        $this->assertGreaterThan(1500, strlen($longPreviousAiAnswer));
+
+        $response = $this->postJson('/chat', [
+            'message' => 'Di mana saya bisa menyewa kamen tersebut?',
+            'location_slug' => 'pura-besakih',
+            'language' => 'id',
+            'history' => [
+                ['role' => 'user', 'content' => 'Bagaimana aturan pakaian di Pura Besakih?'],
+                ['role' => 'model', 'content' => $longPreviousAiAnswer],
+            ],
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'status' => 'success',
+            'answer' => 'Om Swastiastu! Berikut panduan lengkap penyewaan busana adat di Pura Besakih.',
+        ]);
+
+        Http::assertSent(function (Request $request) {
+            $contents = $request['contents'];
+
+            // First turn must be user, second model, third user
+            return count($contents) === 3
+                && $contents[0]['role'] === 'user'
+                && $contents[1]['role'] === 'model'
+                && $contents[2]['role'] === 'user';
+        });
+    }
+
+    /**
+     * Test 15: Multi-turn history beyond window is condensed and formatted to alternating turns.
+     */
+    public function test_chat_handles_multi_turn_history_and_condenses_older_turns(): void
+    {
+        $location = Location::factory()->create([
+            'name' => 'Pura Agung Besakih',
+            'slug' => 'pura-besakih',
+            'is_active' => true,
+        ]);
+
+        CulturalRule::factory()->create([
+            'location_id' => $location->id,
+            'category' => 'dress_code',
+            'title' => 'Kewajiban Kamen dan Senteng',
+            'content' => 'Wajib mengenakan kamen dan senteng.',
+            'is_verified' => true,
+            'is_active' => true,
+        ]);
+
+        Http::fake([
+            'generativelanguage.googleapis.com/*' => Http::response([
+                'candidates' => [
+                    [
+                        'content' => [
+                            'parts' => [
+                                ['text' => 'Matur suksma! Biaya sewa kamen biasanya berkisar Rp 10.000 - Rp 20.000.'],
+                            ],
+                        ],
+                    ],
+                ],
+            ], 200),
+        ]);
+
+        // Create 8 history messages (4 turns)
+        $history = [
+            ['role' => 'user', 'content' => 'Pertanyaan 1: Pura Besakih di mana?'],
+            ['role' => 'model', 'content' => 'Jawaban 1: Terletak di lereng Gunung Agung.'],
+            ['role' => 'user', 'content' => 'Pertanyaan 2: Jam berapa buka?'],
+            ['role' => 'model', 'content' => 'Jawaban 2: Buka dari jam 08:00 hingga 18:00 WITA.'],
+            ['role' => 'user', 'content' => 'Pertanyaan 3: Boleh pakai celana pendek?'],
+            ['role' => 'model', 'content' => 'Jawaban 3: Wajib memakai kamen dan senteng.'],
+            ['role' => 'user', 'content' => 'Pertanyaan 4: Apakah ada tempat sewa kamen?'],
+            ['role' => 'model', 'content' => 'Jawaban 4: Ada di dekat loket tiket masuk.'],
+        ];
+
+        $response = $this->postJson('/chat', [
+            'message' => 'Pertanyaan 5: Berapa kisaran biayanya?',
+            'location_slug' => 'pura-besakih',
+            'language' => 'id',
+            'history' => $history,
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'status' => 'success',
+            'answer' => 'Matur suksma! Biaya sewa kamen biasanya berkisar Rp 10.000 - Rp 20.000.',
+        ]);
+
+        Http::assertSent(function (Request $request) {
+            $contents = $request['contents'];
+            $this->assertNotEmpty($contents);
+
+            // Verify alternating sequence
+            $expectedRole = 'user';
+            foreach ($contents as $turn) {
+                $this->assertSame($expectedRole, $turn['role']);
+                $expectedRole = ($expectedRole === 'user') ? 'model' : 'user';
+            }
+
+            // Verify last turn is the new user prompt
+            $lastTurn = end($contents);
+            $this->assertSame('user', $lastTurn['role']);
+            $this->assertStringContainsString('Berapa kisaran biayanya?', $lastTurn['parts'][0]['text']);
+
+            return true;
+        });
     }
 }
