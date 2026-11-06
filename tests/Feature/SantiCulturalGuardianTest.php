@@ -669,4 +669,18 @@ class SantiCulturalGuardianTest extends TestCase
             return true;
         });
     }
+
+    /**
+     * Test 16: Healthcheck endpoint returns HTTP 200 with status ok for Railway.
+     */
+    public function test_healthcheck_endpoint_returns_ok(): void
+    {
+        $response = $this->getJson('/health');
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'status' => 'ok',
+            'application' => 'Santi AI',
+        ]);
+    }
 }

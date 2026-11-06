@@ -23,3 +23,10 @@ Route::get('/lang/{locale}', function (string $locale) {
 Route::post('/chat', [SantiChatController::class, 'chat'])
     ->middleware('throttle:25,1')
     ->name('santi.chat');
+
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'ok',
+        'application' => 'Santi AI',
+    ], 200);
+})->name('health');
