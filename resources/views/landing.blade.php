@@ -565,27 +565,27 @@
     </section>
 
     <!-- ==================== 5. AI ASSISTANT CTA SECTION (PREMIUM INTERACTIVE REDESIGN) ==================== -->
-    <section id="ai-assistant" class="py-16 sm:py-20 bg-[#174D3B] text-white relative overflow-hidden">
+    <section id="ai-assistant" class="py-16 sm:py-20 bg-white dark:bg-[#174D3B] text-[#202A25] dark:text-white border-t border-[#174D3B]/10 dark:border-white/10 relative overflow-hidden transition-colors duration-200">
         <!-- Ambient lighting elements -->
-        <div class="absolute -right-32 -top-32 w-[500px] h-[500px] rounded-full bg-[#21845B]/25 blur-3xl pointer-events-none"></div>
-        <div class="absolute -left-32 -bottom-32 w-[500px] h-[500px] rounded-full bg-[#C6A15B]/20 blur-3xl pointer-events-none"></div>
+        <div class="absolute -right-32 -top-32 w-[500px] h-[500px] rounded-full bg-[#21845B]/15 dark:bg-[#21845B]/25 blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-32 -bottom-32 w-[500px] h-[500px] rounded-full bg-[#C6A15B]/15 dark:bg-[#C6A15B]/20 blur-3xl pointer-events-none"></div>
 
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
                 <!-- Left Column: Value Proposition & Interactive Destination Selectors (Span 5) -->
                 <div class="lg:col-span-5 space-y-5">
                     <div>
-                        <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/10 text-[#DDF2DF] text-[11px] font-bold tracking-wider uppercase backdrop-blur-xs mb-3">
+                        <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#174D3B]/5 dark:bg-white/10 text-[#174D3B] dark:text-[#DDF2DF] text-[11px] font-bold tracking-wider uppercase border border-[#174D3B]/10 dark:border-white/10 backdrop-blur-xs mb-3">
                             <span class="w-1.5 h-1.5 rounded-full bg-[#21845B]"></span>
                             <span>{{ __('messages.cta_eyebrow') }}</span>
                         </span>
-                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white tracking-tight leading-tight">
+                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#174D3B] dark:text-white tracking-tight leading-tight">
                             {{ __('messages.cta_heading_1') }}<br>
-                            <span class="text-[#DDF2DF]">{{ __('messages.cta_heading_2') }}</span>
+                            <span class="text-[#21845B] dark:text-[#DDF2DF]">{{ __('messages.cta_heading_2') }}</span>
                         </h2>
                     </div>
 
-                    <p class="text-xs sm:text-sm text-white/80 leading-relaxed">
+                    <p class="text-xs sm:text-sm text-[#5A6961] dark:text-white/80 leading-relaxed">
                         {{ __('messages.cta_desc') }}
                     </p>
 
@@ -593,20 +593,20 @@
                     <div class="space-y-2.5 pt-1">
                         <p class="text-[11px] font-bold text-[#C6A15B] uppercase tracking-wider">Pilih Simulasi Kasus Destinasi:</p>
                         <div class="grid grid-cols-2 gap-2">
-                            <button type="button" class="cta-tab-btn active p-2.5 rounded-xl bg-[#21845B] text-white text-left transition-all duration-200 border border-white/20 hover:scale-[1.02]" data-tab="besakih">
+                            <button type="button" class="cta-tab-btn active p-2.5 rounded-xl bg-[#174D3B] dark:bg-[#21845B] text-white text-left transition-all duration-200 border border-[#174D3B]/20 dark:border-white/20 hover:scale-[1.02]" data-tab="besakih">
                                 <span class="text-[9px] text-white/70 block uppercase font-mono">Kawasan Suci</span>
                                 <span class="text-xs font-bold block truncate">Pura Besakih</span>
                             </button>
-                            <button type="button" class="cta-tab-btn p-2.5 rounded-xl bg-white/10 text-white/80 text-left transition-all duration-200 border border-white/10 hover:bg-white/15 hover:scale-[1.02]" data-tab="penglipuran">
-                                <span class="text-[9px] text-white/70 block uppercase font-mono">Desa Adat</span>
+                            <button type="button" class="cta-tab-btn p-2.5 rounded-xl bg-[#F8F6EF] dark:bg-white/10 text-[#174D3B] dark:text-white/80 text-left transition-all duration-200 border border-[#174D3B]/10 dark:border-white/10 hover:bg-[#DDF2DF] dark:hover:bg-white/15 hover:scale-[1.02]" data-tab="penglipuran">
+                                <span class="text-[9px] text-[#5A6961] dark:text-white/70 block uppercase font-mono">Desa Adat</span>
                                 <span class="text-xs font-bold block truncate">Desa Penglipuran</span>
                             </button>
-                            <button type="button" class="cta-tab-btn p-2.5 rounded-xl bg-white/10 text-white/80 text-left transition-all duration-200 border border-white/10 hover:bg-white/15 hover:scale-[1.02]" data-tab="jatiluwih">
-                                <span class="text-[9px] text-white/70 block uppercase font-mono">UNESCO Subak</span>
+                            <button type="button" class="cta-tab-btn p-2.5 rounded-xl bg-[#F8F6EF] dark:bg-white/10 text-[#174D3B] dark:text-white/80 text-left transition-all duration-200 border border-[#174D3B]/10 dark:border-white/10 hover:bg-[#DDF2DF] dark:hover:bg-white/15 hover:scale-[1.02]" data-tab="jatiluwih">
+                                <span class="text-[9px] text-[#5A6961] dark:text-white/70 block uppercase font-mono">UNESCO Subak</span>
                                 <span class="text-xs font-bold block truncate">Sawah Jatiluwih</span>
                             </button>
-                            <button type="button" class="cta-tab-btn p-2.5 rounded-xl bg-white/10 text-white/80 text-left transition-all duration-200 border border-white/10 hover:bg-white/15 hover:scale-[1.02]" data-tab="uluwatu">
-                                <span class="text-[9px] text-white/70 block uppercase font-mono">Tebing & Seni</span>
+                            <button type="button" class="cta-tab-btn p-2.5 rounded-xl bg-[#F8F6EF] dark:bg-white/10 text-[#174D3B] dark:text-white/80 text-left transition-all duration-200 border border-[#174D3B]/10 dark:border-white/10 hover:bg-[#DDF2DF] dark:hover:bg-white/15 hover:scale-[1.02]" data-tab="uluwatu">
+                                <span class="text-[9px] text-[#5A6961] dark:text-white/70 block uppercase font-mono">Tebing & Seni</span>
                                 <span class="text-xs font-bold block truncate">Pura Uluwatu</span>
                             </button>
                         </div>
@@ -614,29 +614,29 @@
 
                     <!-- Trust Stats & Direct CTA Button -->
                     <div class="pt-3 space-y-3.5">
-                        <div class="flex items-center space-x-4 sm:space-x-6 text-[11px] sm:text-xs text-white/70 pb-3 border-b border-white/10">
+                        <div class="flex items-center space-x-4 sm:space-x-6 text-[11px] sm:text-xs text-[#5A6961] dark:text-white/70 pb-3 border-b border-[#174D3B]/10 dark:border-white/10">
                             <div>
-                                <span class="font-extrabold text-white text-xs sm:text-sm block">Google Gemini</span>
-                                <span class="text-[10px] text-white/60">Flash AI Model</span>
+                                <span class="font-extrabold text-[#174D3B] dark:text-white text-xs sm:text-sm block">Google Gemini</span>
+                                <span class="text-[10px] text-[#5A6961] dark:text-white/60">Flash AI Model</span>
                             </div>
-                            <div class="h-5 w-px bg-white/20"></div>
+                            <div class="h-5 w-px bg-[#174D3B]/15 dark:bg-white/20"></div>
                             <div>
-                                <span class="font-extrabold text-white text-xs sm:text-sm block">RAG Grounded</span>
-                                <span class="text-[10px] text-white/60">SE Gubernur & Adat</span>
+                                <span class="font-extrabold text-[#174D3B] dark:text-white text-xs sm:text-sm block">RAG Grounded</span>
+                                <span class="text-[10px] text-[#5A6961] dark:text-white/60">SE Gubernur & Adat</span>
                             </div>
-                            <div class="h-5 w-px bg-white/20"></div>
+                            <div class="h-5 w-px bg-[#174D3B]/15 dark:bg-white/20"></div>
                             <div>
-                                <span class="font-extrabold text-white text-xs sm:text-sm block">Multibahasa</span>
-                                <span class="text-[10px] text-white/60">ID & English</span>
+                                <span class="font-extrabold text-[#174D3B] dark:text-white text-xs sm:text-sm block">Multibahasa</span>
+                                <span class="text-[10px] text-[#5A6961] dark:text-white/60">7 Bahasa Resmi</span>
                             </div>
                         </div>
 
                         <div>
                             <a href="{{ route('santi.index') }}"
                                id="cta-dynamic-chat-btn"
-                               class="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 px-6 py-3 rounded-xl bg-white hover:bg-[#DDF2DF] text-[#174D3B] font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
+                               class="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 px-6 py-3 rounded-xl bg-[#174D3B] dark:bg-white hover:bg-[#21845B] dark:hover:bg-[#DDF2DF] text-white dark:text-[#174D3B] font-extrabold text-xs sm:text-sm shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
                                 <span>{{ __('messages.cta_btn') }}</span>
-                                <svg class="w-4 h-4 text-[#174D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-4 h-4 text-white dark:text-[#174D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                                 </svg>
                             </a>
@@ -646,7 +646,7 @@
 
                 <!-- Right Column: Interactive Smartphone Device Mockup (Span 7) -->
                 <div class="lg:col-span-7 flex justify-center lg:justify-end">
-                    <div class="w-full max-w-md bg-[#0e2c21] rounded-[2rem] p-3.5 sm:p-4 shadow-xl border-4 border-white/15 relative">
+                    <div class="w-full max-w-md bg-[#0e2c21] rounded-[2rem] p-3.5 sm:p-4 shadow-2xl border-4 border-[#174D3B]/20 dark:border-white/15 relative">
                         <!-- Device Top Island / Speaker -->
                         <div class="flex items-center justify-between px-3 pb-2.5 mb-2.5 border-b border-white/10 text-xs text-white/70">
                             <div class="flex items-center space-x-2">
@@ -850,11 +850,11 @@
 
                 // Update active tab buttons styling
                 tabBtns.forEach(b => {
-                    b.classList.remove('bg-[#21845B]', 'text-white', 'border-white/20');
-                    b.classList.add('bg-white/10', 'text-white/80', 'border-white/10');
+                    b.classList.remove('active', 'bg-[#174D3B]', 'dark:bg-[#21845B]', 'text-white', 'border-[#174D3B]/20', 'dark:border-white/20');
+                    b.classList.add('bg-[#F8F6EF]', 'dark:bg-white/10', 'text-[#174D3B]', 'dark:text-white/80', 'border-[#174D3B]/10', 'dark:border-white/10');
                 });
-                btn.classList.add('bg-[#21845B]', 'text-white', 'border-white/20');
-                btn.classList.remove('bg-white/10', 'text-white/80', 'border-white/10');
+                btn.classList.add('active', 'bg-[#174D3B]', 'dark:bg-[#21845B]', 'text-white', 'border-[#174D3B]/20', 'dark:border-white/20');
+                btn.classList.remove('bg-[#F8F6EF]', 'dark:bg-white/10', 'text-[#174D3B]', 'dark:text-white/80', 'border-[#174D3B]/10', 'dark:border-white/10');
 
                 // Update dynamic panes
                 panes.forEach(p => p.classList.add('hidden'));
