@@ -205,149 +205,161 @@
         @yield('content')
     </main>
 
-    <!-- ==================== FOOTER (ANTISLOP BALINESE CULTURAL GUARDIAN) ==================== -->
-    <footer id="footer" class="bg-[#0E2C21] text-[#F8F6EF] border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-14">
-            <!-- Top Grounding Row: Tri Hita Karana & Regulatory Authority -->
-            <div class="border-b border-white/10 pb-8 mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div class="flex items-start sm:items-center space-x-3.5">
-                    <div class="w-8 h-8 rounded-lg bg-[#21845B]/30 border border-[#21845B]/40 flex items-center justify-center text-[#DDF2DF] shrink-0 mt-0.5 sm:mt-0">
-                        <svg class="w-4 h-4 text-[#DDF2DF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="text-xs font-bold text-white tracking-wide flex items-center space-x-2">
-                            <span>Tri Hita Karana</span>
-                            <span class="text-[10px] text-[#C6A15B] font-normal">• Parhyangan • Pawongan • Palemahan</span>
+    <!-- ==================== PREMIUM MODERN MINIMALIST FOOTER ==================== -->
+    <footer id="footer" class="bg-[#0C241B] text-[#F8F6EF] border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-9">
+            <!-- Main Content: Refined 3-Column Proportional Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-7 lg:gap-8 items-start">
+                <!-- Col 1: Identity & Regulatory Grounding (Span 5) -->
+                <div class="lg:col-span-5 space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-[#21845B] border border-white/20 flex items-center justify-center text-white font-bold text-xs shadow-xs shrink-0">
+                            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m12 3-1.9 5.8a2 2 0 0 1-1.28 1.28L3 12l5.8 1.9a2 2 0 0 1 1.28 1.28L12 21l1.9-5.8a2 2 0 0 1 1.28-1.28L21 12l-5.8-1.9a2 2 0 0 1-1.28-1.28Z"/>
+                                <circle cx="12" cy="12" r="2.5"/>
+                            </svg>
                         </div>
-                        <p class="text-[11px] text-[#DDF2DF]/80 leading-relaxed mt-0.5">
-                            {{ __('messages.footer_tri_hita_karana') }}
-                        </p>
+                        <div>
+                            <span class="font-extrabold text-lg tracking-tight text-white block leading-tight">SANTI</span>
+                            <span class="text-[9px] uppercase tracking-widest text-[#DDF2DF] font-semibold">{{ __('messages.brand_subtitle') }}</span>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-[#F8F6EF]/70 leading-relaxed max-w-sm line-clamp-3">
+                        {{ __('messages.footer_desc') }}
+                    </p>
+
+                    <div class="space-y-1 pt-0.5 text-[11px] text-[#F8F6EF]/60">
+                        <div class="flex items-center space-x-1.5">
+                            <svg class="w-3.5 h-3.5 text-[#C6A15B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>{{ __('messages.footer_address') }}</span>
+                        </div>
+                        <a href="javascript:void(0)" onclick="document.getElementById('ethics-modal').classList.remove('hidden')" class="inline-flex items-center space-x-1.5 text-[#A7D9B8] hover:text-[#DDF2DF] transition-colors group">
+                            <svg class="w-3.5 h-3.5 text-[#C6A15B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                            <span class="group-hover:underline underline-offset-2">Rujukan Resmi: SE Gubernur Bali No. 4/2023</span>
+                        </a>
                     </div>
                 </div>
-                <div class="flex items-center space-x-2 shrink-0">
-                    <span class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] text-[#DDF2DF] font-medium">
+
+                <!-- Col 2: Cagar Budaya & Destinasi Sakral (Span 4) -->
+                <div class="lg:col-span-4">
+                    <h3 class="text-[11px] uppercase tracking-wider font-bold text-[#DDF2DF] mb-2.5">{{ __('messages.footer_temple_links') }}</h3>
+                    <ul class="space-y-1.5 text-xs">
+                        <li>
+                            <a href="{{ route('guidelines.show', 'pura-besakih') }}" class="group flex items-center justify-between text-[#F8F6EF]/75 hover:text-white transition-colors py-0.5">
+                                <span class="group-hover:translate-x-1 transition-transform">Pura Agung Besakih</span>
+                                <span class="text-[10px] text-[#A7D9B8]/70">Ibu Pura</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('guidelines.show', 'pura-uluwatu') }}" class="group flex items-center justify-between text-[#F8F6EF]/75 hover:text-white transition-colors py-0.5">
+                                <span class="group-hover:translate-x-1 transition-transform">Pura Luhur Uluwatu</span>
+                                <span class="text-[10px] text-[#A7D9B8]/70">Sad Kahyangan</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('guidelines.show', 'desa-penglipuran') }}" class="group flex items-center justify-between text-[#F8F6EF]/75 hover:text-white transition-colors py-0.5">
+                                <span class="group-hover:translate-x-1 transition-transform">Desa Adat Penglipuran</span>
+                                <span class="text-[10px] text-[#A7D9B8]/70">Desa Tradisional</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('guidelines.show', 'jatiluwih-rice-terraces') }}" class="group flex items-center justify-between text-[#F8F6EF]/75 hover:text-white transition-colors py-0.5">
+                                <span class="group-hover:translate-x-1 transition-transform">Subak Jatiluwih</span>
+                                <span class="text-[10px] text-[#A7D9B8]/70">UNESCO Subak</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('guidelines.show', 'pura-ulun-danu-beratan') }}" class="group flex items-center justify-between text-[#F8F6EF]/75 hover:text-white transition-colors py-0.5">
+                                <span class="group-hover:translate-x-1 transition-transform">Pura Ulun Danu Beratan</span>
+                                <span class="text-[10px] text-[#A7D9B8]/70">Danau Bedugul</span>
+                            </a>
+                        </li>
+                        <li class="pt-1">
+                            <a href="{{ route('locations.index') }}" class="inline-flex items-center space-x-1 text-[11px] font-semibold text-[#A7D9B8] hover:text-white transition-colors group">
+                                <span>Lihat Semua Destinasi & Panduan Adat</span>
+                                <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Pusat Bantuan & Kontak Darurat (Span 3) -->
+                <div class="lg:col-span-3 space-y-3">
+                    <div>
+                        <h3 class="text-[11px] uppercase tracking-wider font-bold text-[#DDF2DF] mb-1">{{ __('messages.footer_emergency_title') }}</h3>
+                        <p class="text-[11px] text-[#F8F6EF]/65 leading-snug">
+                            {{ __('messages.footer_emergency_desc') }}
+                        </p>
+                    </div>
+
+                    <!-- Compact Emergency List -->
+                    <div class="space-y-1.5 text-xs">
+                        <a href="tel:112" class="flex items-center justify-between py-1 text-[#F8F6EF]/80 hover:text-white group transition-colors">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3.5 h-3.5 text-[#C6A15B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                                <span class="text-[11px]">{{ __('messages.footer_emergency_call_center') }}</span>
+                            </div>
+                            <span class="text-[11px] font-bold text-[#DDF2DF] group-hover:text-white">112</span>
+                        </a>
+
+                        <div class="flex items-center justify-between py-1 text-[#F8F6EF]/80">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3.5 h-3.5 text-[#21845B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </svg>
+                                <span class="text-[11px]">{{ __('messages.footer_emergency_police') }}</span>
+                            </div>
+                            <span class="text-[10px] text-[#A7D9B8]/70">24 Jam</span>
+                        </div>
+                    </div>
+
+                    <!-- Compact Ask Santi Button -->
+                    <div class="pt-0.5">
+                        <a href="{{ route('santi.index') }}" class="inline-flex items-center justify-center space-x-2 px-3 py-1.5 rounded-lg bg-[#21845B] hover:bg-[#1E734F] text-white font-semibold text-xs shadow-xs transition-colors">
+                            <span>{{ __('messages.footer_ask_santi_btn') }}</span>
+                            <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal Strip: Filosofi Tri Hita Karana & Regulasi Terverifikasi -->
+            <div class="mt-7 pt-3.5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-[#F8F6EF]/75">
+                    <span class="font-bold text-white tracking-wide">Tri Hita Karana:</span>
+                    <span class="text-[#C6A15B] font-medium">Parahyangan</span>
+                    <span class="text-white/20">•</span>
+                    <span class="text-[#C6A15B] font-medium">Pawongan</span>
+                    <span class="text-white/20">•</span>
+                    <span class="text-[#C6A15B] font-medium">Palemahan</span>
+                    <span class="hidden md:inline text-[#F8F6EF]/50 ml-1">({{ __('messages.footer_tri_hita_karana') }})</span>
+                </div>
+                <div class="flex items-center shrink-0">
+                    <span class="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-[11px] text-[#A7D9B8] font-medium">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#21845B]"></span>
                         <span>{{ __('messages.footer_verified_badge') }}</span>
                     </span>
                 </div>
             </div>
 
-            <!-- Main Content: Asymmetrical Purposeful 3-Column Layout (5 : 4 : 3) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
-                <!-- Col 1: Identity & Regulatory Grounding (Span 5) -->
-                <div class="lg:col-span-5 space-y-4">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-9 h-9 rounded-full bg-[#21845B] border border-white/20 flex items-center justify-center text-white font-bold text-xs shadow-xs">
-                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="m12 3-1.9 5.8a2 2 0 0 1-1.28 1.28L3 12l5.8 1.9a2 2 0 0 1 1.28 1.28L12 21l1.9-5.8a2 2 0 0 1 1.28-1.28L21 12l-5.8-1.9a2 2 0 0 1-1.28-1.28Z"/>
-                                <circle cx="12" cy="12" r="2.5"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="font-extrabold text-xl tracking-tight text-white block">SANTI</span>
-                            <span class="text-[9px] uppercase tracking-widest text-[#DDF2DF] font-semibold">{{ __('messages.brand_subtitle') }}</span>
-                        </div>
-                    </div>
-                    <p class="text-xs text-[#F8F6EF]/75 leading-relaxed pr-2">
-                        {{ __('messages.footer_desc') }}
-                    </p>
-                    <div class="pt-1 space-y-2">
-                        <div class="inline-flex items-center space-x-2 text-[11px] text-[#DDF2DF]/90 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10">
-                            <svg class="w-3.5 h-3.5 text-[#C6A15B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                            </svg>
-                            <span>Surat Edaran Gubernur Bali No. 4/2023</span>
-                        </div>
-                        <p class="text-[11px] text-[#F8F6EF]/50">
-                            {{ __('messages.footer_address') }}
-                        </p>
-                    </div>
+            <!-- Horizontal Row: Pilihan Bahasa (ID, EN, ZH, JA, RU, FR, DE) -->
+            <div class="mt-3.5 pt-3 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div class="text-[10px] sm:text-[11px] text-[#DDF2DF]/70 font-medium shrink-0">
+                    Bahasa Wisatawan:
                 </div>
-
-                <!-- Col 2: Cagar Budaya & Destinasi Sakral Terpilih (Span 4) -->
-                <div class="lg:col-span-4">
-                    <h3 class="text-xs uppercase tracking-wider font-bold text-[#DDF2DF] mb-4">{{ __('messages.footer_temple_links') }}</h3>
-                    <ul class="space-y-2.5 text-xs">
-                        <li>
-                            <a href="{{ route('guidelines.show', 'pura-besakih') }}" class="group flex items-center justify-between text-[#F8F6EF]/80 hover:text-white transition-colors">
-                                <span class="group-hover:translate-x-1 transition-transform">Pura Agung Besakih</span>
-                                <span class="text-[10px] text-[#DDF2DF]/60 bg-white/5 px-2 py-0.5 rounded border border-white/5">Ibu Pura</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('guidelines.show', 'pura-uluwatu') }}" class="group flex items-center justify-between text-[#F8F6EF]/80 hover:text-white transition-colors">
-                                <span class="group-hover:translate-x-1 transition-transform">Pura Luhur Uluwatu</span>
-                                <span class="text-[10px] text-[#DDF2DF]/60 bg-white/5 px-2 py-0.5 rounded border border-white/5">Sad Kahyangan</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('guidelines.show', 'desa-penglipuran') }}" class="group flex items-center justify-between text-[#F8F6EF]/80 hover:text-white transition-colors">
-                                <span class="group-hover:translate-x-1 transition-transform">Desa Adat Penglipuran</span>
-                                <span class="text-[10px] text-[#DDF2DF]/60 bg-white/5 px-2 py-0.5 rounded border border-white/5">Desa Tradisional</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('guidelines.show', 'jatiluwih-rice-terraces') }}" class="group flex items-center justify-between text-[#F8F6EF]/80 hover:text-white transition-colors">
-                                <span class="group-hover:translate-x-1 transition-transform">Subak Jatiluwih</span>
-                                <span class="text-[10px] text-[#DDF2DF]/60 bg-white/5 px-2 py-0.5 rounded border border-white/5">UNESCO Subak</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('guidelines.show', 'pura-ulun-danu-beratan') }}" class="group flex items-center justify-between text-[#F8F6EF]/80 hover:text-white transition-colors">
-                                <span class="group-hover:translate-x-1 transition-transform">Pura Danau Beratan</span>
-                                <span class="text-[10px] text-[#DDF2DF]/60 bg-white/5 px-2 py-0.5 rounded border border-white/5">Danau Bedugul</span>
-                            </a>
-                        </li>
-                        <li class="pt-2">
-                            <a href="{{ route('locations.index') }}" class="inline-flex items-center space-x-1.5 text-[11px] font-semibold text-[#DDF2DF] hover:underline underline-offset-4">
-                                <span>Lihat Semua Destinasi & Panduan Adat</span>
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Col 3: Pusat Bantuan & Kontak Darurat Wisatawan (Span 3) -->
-                <div class="lg:col-span-3 space-y-4">
-                    <h3 class="text-xs uppercase tracking-wider font-bold text-[#DDF2DF]">{{ __('messages.footer_emergency_title') }}</h3>
-                    <p class="text-xs text-[#F8F6EF]/75 leading-relaxed">
-                        {{ __('messages.footer_emergency_desc') }}
-                    </p>
-                    <div class="space-y-2 text-xs">
-                        <div class="p-2.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                            <div class="flex items-center space-x-2 text-[#DDF2DF] font-semibold text-[11px]">
-                                <svg class="w-3.5 h-3.5 text-[#C6A15B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                                <span>{{ __('messages.footer_emergency_call_center') }}</span>
-                            </div>
-                            <p class="text-[10px] text-[#F8F6EF]/60 pl-5">Layanan Ambulans, SAR, & Kepolisian 24 Jam</p>
-                        </div>
-                        <div class="p-2.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                            <div class="flex items-center space-x-2 text-[#DDF2DF] font-semibold text-[11px]">
-                                <svg class="w-3.5 h-3.5 text-[#21845B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                                <span>{{ __('messages.footer_emergency_police') }}</span>
-                            </div>
-                            <p class="text-[10px] text-[#F8F6EF]/60 pl-5">Hotline Pelayanan Turis Asing & Domestik</p>
-                        </div>
-                    </div>
-                    <div class="pt-1">
-                        <a href="{{ route('santi.index') }}" class="w-full inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl bg-white hover:bg-[#DDF2DF] text-[#0E2C21] font-bold text-xs shadow-sm transition-colors">
-                            <span>{{ __('messages.footer_ask_santi_btn') }}</span>
-                            <svg class="w-3.5 h-3.5 text-[#0E2C21]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Global Multilingual Strip: All 7 International Tourist Languages Supported -->
-            <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="text-[11px] text-[#DDF2DF]/80 font-medium">
-                    Bahasa Wisatawan / Supported Languages:
-                </div>
-                <div class="flex flex-wrap items-center justify-center gap-1.5">
+                <div class="flex items-center gap-1 overflow-x-auto max-w-full pb-1 sm:pb-0 scrollbar-none">
                     @foreach($languages as $code => $data)
-                        <a href="{{ route('lang.switch', $code) }}" class="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all {{ $currentLocale === $code ? 'bg-[#21845B] text-white shadow-xs' : 'bg-white/5 text-white/70 hover:bg-white/15 hover:text-white' }}">
+                        <a href="{{ route('lang.switch', $code) }}" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded text-[11px] font-semibold transition-all shrink-0 {{ $currentLocale === $code ? 'bg-[#21845B] text-white shadow-2xs' : 'bg-white/5 text-white/70 hover:bg-white/15 hover:text-white' }}" title="{{ $data['name'] }}">
                             <span>{{ $data['flag'] }}</span>
                             <span>{{ $data['code'] }}</span>
                         </a>
@@ -355,14 +367,15 @@
                 </div>
             </div>
 
-            <!-- Bottom Bar: Working Policy Modal Triggers & Legal Notice -->
-            <div class="mt-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#F8F6EF]/60 gap-4">
+            <!-- Bottom Row: Copyright & Legal Policy Modal Triggers -->
+            <div class="mt-3.5 pt-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#F8F6EF]/55 gap-2.5">
                 <p>&copy; {{ date('Y') }} SANTI — AI Cultural Guardian Bali. {{ __('messages.footer_rights') }}</p>
-                <div class="flex items-center space-x-6">
-                    <button type="button" onclick="document.getElementById('ethics-modal').classList.remove('hidden')" class="hover:text-white transition-colors underline decoration-white/20 underline-offset-4 cursor-pointer">
+                <div class="flex items-center space-x-5 text-[11px]">
+                    <button type="button" onclick="document.getElementById('ethics-modal').classList.remove('hidden')" class="hover:text-white transition-colors cursor-pointer">
                         {{ __('messages.footer_ethics_btn') }}
                     </button>
-                    <button type="button" onclick="document.getElementById('privacy-modal').classList.remove('hidden')" class="hover:text-white transition-colors underline decoration-white/20 underline-offset-4 cursor-pointer">
+                    <span class="text-white/20">•</span>
+                    <button type="button" onclick="document.getElementById('privacy-modal').classList.remove('hidden')" class="hover:text-white transition-colors cursor-pointer">
                         {{ __('messages.footer_privacy_btn') }}
                     </button>
                 </div>
