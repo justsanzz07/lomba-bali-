@@ -13,6 +13,64 @@ class CulturalRuleSeeder extends Seeder
      */
     public function run(): void
     {
+        $seluruhBali = Location::where('slug', 'seluruh-bali')->first();
+        if ($seluruhBali) {
+            $seluruhBaliRules = [
+                [
+                    'category' => 'dress_code',
+                    'title' => 'Etika Berbusana di Pantai vs Ruang Publik (SE Gubernur No. 4/2023)',
+                    'content' => 'Pakaian renang (bikini, baju renang, atau bertelanjang dada) hanya pantas dikenakan di area pasir pantai atau kolam renang. Saat melangkah keluar pantai menuju jalan raya umum, pertokoan, restoran, atau permukiman, wisatawan wajib mengenakan pakaian penutup yang sopan. Saat memasuki pura atau tempat suci, wajib mengenakan kamen menutup hingga bawah lutut dan selendang senteng.',
+                    'source_name' => 'Surat Edaran Gubernur Bali No. 4 Tahun 2023 & Awig-Awig Adat',
+                    'source_url' => 'https://baliprov.go.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'sacred_area',
+                    'title' => 'Menghormati Kesucian Pura, Puncak Gunung, dan Pohon Sakral',
+                    'content' => 'Dilarang memasuki pelataran Utama Mandala (Jeroan) tempat suci/pura bagi wisatawan yang tidak bersembahyang atau yang sedang dalam masa cuntaka (menstruasi/masa berkabung). Gunung dan pohon-pohon besar di Bali disucikan sebagai stana dewa; dilarang keras berfoto tanpa busana (telanjang), memanjat pohon sakral, atau merusak ornamen suci.',
+                    'source_name' => 'Pedoman PHDI Bali & SE Gubernur Bali No. 4/2023',
+                    'source_url' => 'https://phdi.or.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'behavior',
+                    'title' => 'Kesantunan Sosial, Upacara Adat, dan Canang Sari',
+                    'content' => 'Wisatawan wajib berperilaku santun, bertutur kata sopan, dan menghormati prosesi upacara keagamaan di jalan (tidak memotong barisan iring-iringan upacara atau berdiri lebih tinggi dari pemangku/pendeta). Jangan pernah menginjak atau melangkahi canang sari yang diletakkan di trotoar atau jalan.',
+                    'source_name' => 'Tata Krama Adat Krama Bali & SE Gubernur No. 4/2023',
+                    'source_url' => 'https://baliprov.go.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'photography',
+                    'title' => 'Etika Dokumentasi Foto, Video, dan Pengoperasian Drone',
+                    'content' => 'Dilarang berpose tidak senonoh atau provokatif di seluruh ruang publik dan kawasan sakral. Dilarang menggunakan lampu kilat (flash) ke arah mata penari/pemangku dalam ritual sakral. Pengoperasian drone di atas pura suci dan prosesi keagamaan dilarang keras tanpa izin resmi tertulis.',
+                    'source_name' => 'Regulasi Dokumentasi Budaya Bali & SE No. 4/2023',
+                    'source_url' => 'https://baliprov.go.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'general',
+                    'title' => 'Tata Tertib Resmi Wisatawan Mancanegara & Domestik di Bali',
+                    'content' => 'Wisatawan wajib bertransaksi menggunakan mata uang Rupiah dan kode QRIS resmi Indonesia. Saat menyewa kendaraan bermotor, wajib memiliki SIM internasional/nasional yang sah, mengenakan helm berstandar SNI, dan tertib berlalu lintas. Dilarang keras melakukan aktivitas komersial/bekerja ilegal tanpa visa kerja resmi.',
+                    'source_name' => 'Surat Edaran Gubernur Bali No. 4 Tahun 2023 & Regulasi Imigrasi',
+                    'source_url' => 'https://baliprov.go.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+            ];
+
+            foreach ($seluruhBaliRules as $rule) {
+                CulturalRule::updateOrCreate(
+                    ['location_id' => $seluruhBali->id, 'title' => $rule['title']],
+                    $rule
+                );
+            }
+        }
+
         $ulunDanu = Location::where('slug', 'pura-ulun-danu-beratan')->first();
         if ($ulunDanu) {
             $ulunDanuRules = [
@@ -199,6 +257,237 @@ class CulturalRuleSeeder extends Seeder
             foreach ($tanahLotRules as $rule) {
                 CulturalRule::updateOrCreate(
                     ['location_id' => $tanahLot->id, 'title' => $rule['title']],
+                    $rule
+                );
+            }
+        }
+
+        $penglipuran = Location::where('slug', 'desa-penglipuran')->first();
+        if ($penglipuran) {
+            $penglipuranRules = [
+                [
+                    'category' => 'behavior',
+                    'title' => 'Zona Bebas Kendaraan Bermotor & Larangan Merokok',
+                    'content' => 'Kawasan utama desa adat Penglipuran merupakan zona steril kendaraan bermotor demi menjaga kualitas udara dan ketenangan lingkungan. Dilarang merokok di sepanjang jalur pemukiman utama; merokok hanya diperbolehkan di area khusus yang telah disediakan pengelola desa.',
+                    'source_name' => 'Awig-Awig Desa Adat Penglipuran & Pengelola Desa Wisata',
+                    'source_url' => 'https://penglipuran.net',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'dress_code',
+                    'title' => 'Etika Busana Sopan & Memasuki Pekarangan Rumah Warga',
+                    'content' => 'Wisatawan wajib mengenakan pakaian yang sopan (menutup pundak dan paha). Saat berkunjung atau memotret ke dalam pekarangan rumah tradisional warga melalui gerbang angkul-angkul, pengunjung wajib mengucapkan salam "Om Swastiastu" dengan ramah dan tidak memasuki area pribadi sanggah (pelinggih keluarga) tanpa seizin tuan rumah.',
+                    'source_name' => 'Pedoman Kunjungan Desa Wisata Penglipuran & SE Gubernur Bali No. 4/2023',
+                    'source_url' => 'https://penglipuran.net',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'sacred_area',
+                    'title' => 'Kelestarian Hutan Bambu Suci & Larangan Mengambil Flora',
+                    'content' => 'Hutan bambu seluas 45 hektar di utara desa adalah hutan lindung resapan air dan kawasan sakral desa adat. Wisatawan dilarang mematahkan bambu, mencoret-coret batang bambu, merusak vegetasi, atau membuang sampah dalam bentuk apa pun di jalur hutan.',
+                    'source_name' => 'Awig-Awig Perlindungan Hutan Adat Penglipuran',
+                    'source_url' => 'https://penglipuran.net',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'photography',
+                    'title' => 'Etika Fotografi Warga & Kegiatan Keseharian',
+                    'content' => 'Pengambilan foto lanskap tata ruang desa diperkenankan. Namun untuk memotret aktivitas warga lokal atau tetua adat yang sedang beraktivitas secara dekat, mohon meminta izin secara santun terlebih dahulu guna menghormati privasi warga.',
+                    'source_name' => 'Panduan Etika Wisatawan Desa Adat Penglipuran',
+                    'source_url' => 'https://penglipuran.net',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+            ];
+
+            foreach ($penglipuranRules as $rule) {
+                CulturalRule::updateOrCreate(
+                    ['location_id' => $penglipuran->id, 'title' => $rule['title']],
+                    $rule
+                );
+            }
+        }
+
+        $jatiluwih = Location::where('slug', 'jatiluwih-rice-terraces')->first();
+        if ($jatiluwih) {
+            $jatiluwihRules = [
+                [
+                    'category' => 'sacred_area',
+                    'title' => 'Penghormatan Sistem Subak & Pelinggih Pura Bedugul',
+                    'content' => 'Sistem irigasi Subak Jatiluwih adalah warisan budaya dunia UNESCO yang sarat nilai spiritual Tri Hita Karana. Wisatawan dilarang memanjat atau menginjak pelinggih Pura Bedugul (kuil pemujaan Dewi Sri di petak sawah) serta dilarang memanipulasi saluran air irigasi yang mengalir.',
+                    'source_name' => 'SOP Pengelola Daya Tarik Wisata Jatiluwih & Badan Pengelola UNESCO',
+                    'source_url' => 'https://jatiluwih.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'behavior',
+                    'title' => 'Etika Melintasi Pematang Sawah & Larangan Sampah Plastik',
+                    'content' => 'Pengunjung diwajibkan berjalan di jalur setapak resmi (trekking route). Dilarang menginjak atau merusak tanaman padi yang sedang tumbuh. Kawasan ini menerapkan kebijakan bebas sampah plastik; pengunjung wajib membawa kembali sampah anorganik masing-masing.',
+                    'source_name' => 'Peraturan Desa Adat Jatiluwih & Awig-Awig Subak',
+                    'source_url' => 'https://jatiluwih.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'photography',
+                    'title' => 'Etika Drone & Dokumentasi Aktivitas Petani',
+                    'content' => 'Penggunaan drone untuk tujuan komersial atau sinematik wajib mendaftar ke pos pengelola resmi guna mencegah gangguan terhadap satwa burung sawah dan ketenteraman petani yang sedang membajak atau menanam.',
+                    'source_name' => 'Regulasi Dokumentasi Kawasan Ekowisata Jatiluwih',
+                    'source_url' => 'https://jatiluwih.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'dress_code',
+                    'title' => 'Pakaian Nyaman Ekowisata yang Tetap Sopan',
+                    'content' => 'Disarankan mengenakan alas kaki anti-selip untuk jalur tanah sawah. Meskipun berada di area alam terbuka, pakaian tetap harus sopan (tidak hanya mengenakan pakaian renang/bikini di jalur desa dan sawah umum).',
+                    'source_name' => 'SE Gubernur Bali No. 4/2023 tentang Tata Krama Wisatawan',
+                    'source_url' => 'https://baliprov.go.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+            ];
+
+            foreach ($jatiluwihRules as $rule) {
+                CulturalRule::updateOrCreate(
+                    ['location_id' => $jatiluwih->id, 'title' => $rule['title']],
+                    $rule
+                );
+            }
+        }
+
+        $pantaiKuta = Location::where('slug', 'pantai-kuta')->first();
+        if ($pantaiKuta) {
+            $kutaRules = [
+                [
+                    'category' => 'dress_code',
+                    'title' => 'Etika Busana Renang & Larangan Bertelanjang Dada di Jalan Raya',
+                    'content' => 'Pakaian renang (bikini, baju renang, celana pendek pantai) hanya pantas dikenakan di area pasir pantai. Wisatawan dilarang keras berjalan keluar kawasan pantai ke jalan raya, toko, restoran umum, atau area pemukiman desa hanya mengenakan pakaian renang atau bertelanjang dada.',
+                    'source_name' => 'Surat Edaran Gubernur Bali No. 4/2023 & Peraturan Desa Adat Kuta',
+                    'source_url' => 'https://baliprov.go.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'behavior',
+                    'title' => 'Penghormatan Sesajen Canang Sari di Pasir Pantai',
+                    'content' => 'Masyarakat dan nelayan lokal kerap meletakkan sesajen canang sari dan dupa di tepi pantai sebagai wujud syukur kepada Batara Baruna (dewa penguasa laut). Wisatawan dilarang melangkahi, menendang, atau menduduki sesajen tersebut.',
+                    'source_name' => 'Awig-Awig Tradisi Pesisir Desa Adat Kuta',
+                    'source_url' => 'https://badungkab.go.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'sacred_area',
+                    'title' => 'Keselamatan Laut Balawista & Larangan Membuang Sampah Plastik',
+                    'content' => 'Patuhi rambu bendera keselamatan dari tim penyelamat pantai (Balawista). Dilarang keras berenang di zona bendera merah. Kawasan pantai menerapkan bebas sampah plastik; dilarang meninggalkan botol plastik, puntung rokok, atau sampah kemasan di pasir.',
+                    'source_name' => 'SOP Balawista Badung & Perda Pengurangan Sampah Plastik Bali No. 97/2018',
+                    'source_url' => 'https://badungkab.go.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+            ];
+
+            foreach ($kutaRules as $rule) {
+                CulturalRule::updateOrCreate(
+                    ['location_id' => $pantaiKuta->id, 'title' => $rule['title']],
+                    $rule
+                );
+            }
+        }
+
+        $gwk = Location::where('slug', 'gwk-cultural-park')->first();
+        if ($gwk) {
+            $gwkRules = [
+                [
+                    'category' => 'behavior',
+                    'title' => 'Penghormatan Ikon Kebudayaan Dewa Wisnu & Garuda',
+                    'content' => 'Patung Garuda Wisnu Kencana merupakan mahakarya seni yang merepresentasikan nilai luhur pemeliharaan alam semesta dalam filsafat Hindu Bali. Pengunjung diimbau bersikap santun, menjaga kebersihan, dan tidak memanjat struktur relief patung.',
+                    'source_name' => 'Tata Tertib Kawasan Taman Budaya GWK',
+                    'source_url' => 'https://gwkbali.com',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'photography',
+                    'title' => 'Etika Menyaksikan Pementasan Tari Tradisional & Fotografi',
+                    'content' => 'Saat menyaksikan pementasan Tari Kecak, Barong, atau Legong di amfiteater, dilarang menyalakan lampu kilat (flash) kamera langsung ke arah mata penari. Pengoperasian drone wajib memiliki izin tertulis dari manajemen GWK.',
+                    'source_name' => 'Pedoman Penonton Pementasan Seni Budaya GWK',
+                    'source_url' => 'https://gwkbali.com',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+            ];
+
+            foreach ($gwkRules as $rule) {
+                CulturalRule::updateOrCreate(
+                    ['location_id' => $gwk->id, 'title' => $rule['title']],
+                    $rule
+                );
+            }
+        }
+
+        $monkeyForest = Location::where('slug', 'ubud-monkey-forest')->first();
+        if ($monkeyForest) {
+            $mfRules = [
+                [
+                    'category' => 'behavior',
+                    'title' => 'Etika Berinteraksi dengan Kera Sakral & Larangan Makanan Luar',
+                    'content' => 'Kera ekor panjang di Wenara Wana disucikan oleh masyarakat adat Padangtegal. Dilarang menyentuh kera, dilarang menatap mata kera secara agresif, dan dilarang memberi makanan ringan dari luar (snack, permen, roti). Amankan kacamata, anting, dan tas.',
+                    'source_name' => 'SOP Pengelola Mandala Suci Wenara Wana Ubud',
+                    'source_url' => 'https://monkeyforestubud.com',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'sacred_area',
+                    'title' => 'Kawasan Suci Pura Dalem Agung Padangtegal di Dalam Hutan',
+                    'content' => 'Di dalam kawasan hutan terdapat Pura Dalem Agung Padangtegal yang sakral. Wisatawan hanya diperbolehkan melihat dari pelataran luar; dilarang melangkah ke area persembahyangan suci kecuali mengenakan pakaian adat lengkap dan didampingi prajuru.',
+                    'source_name' => 'Awig-Awig Desa Adat Padangtegal Ubud',
+                    'source_url' => 'https://monkeyforestubud.com',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+            ];
+
+            foreach ($mfRules as $rule) {
+                CulturalRule::updateOrCreate(
+                    ['location_id' => $monkeyForest->id, 'title' => $rule['title']],
+                    $rule
+                );
+            }
+        }
+
+        $batur = Location::where('slug', 'gunung-batur-kintamani')->first();
+        if ($batur) {
+            $baturRules = [
+                [
+                    'category' => 'sacred_area',
+                    'title' => 'Kesucian Puncak Gunung Sakral & Larangan Perbuatan Asusila',
+                    'content' => 'Gunung-gunung di Bali disucikan sebagai stana dewa dan hulu spiritual pulau. Berdasarkan SE Gubernur Bali No. 4/2023, wisatawan dilarang keras berfoto tanpa busana/tidak senonoh, memanjat pohon keramat, atau melakukan tindakan amoral di kawasan puncak dan kaldera.',
+                    'source_name' => 'Surat Edaran Gubernur Bali No. 4/2023 & Awig-Awig Desa Adat Batur',
+                    'source_url' => 'https://baliprov.go.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+                [
+                    'category' => 'behavior',
+                    'title' => 'Kewajiban Pemandu Lokal Resmi & Bebas Sampah Gunung',
+                    'content' => 'Wisatawan yang mendaki matahari terbit diwajibkan menggunakan jasa pemandu lokal resmi (HPPGB Kintamani) demi keselamatan di jalur bebatuan vulkanik. Wajib membawa kembali seluruh sampah kemasan/plastik turun ke pos bawah.',
+                    'source_name' => 'SOP Asosiasi Pemandu Gunung Batur & Dinas Pariwisata Bangli',
+                    'source_url' => 'https://banglikab.go.id',
+                    'is_verified' => true,
+                    'is_active' => true,
+                ],
+            ];
+
+            foreach ($baturRules as $rule) {
+                CulturalRule::updateOrCreate(
+                    ['location_id' => $batur->id, 'title' => $rule['title']],
                     $rule
                 );
             }

@@ -21,7 +21,7 @@ class GeminiService
     public function __construct()
     {
         $this->apiKey = config('services.gemini.api_key');
-        $this->model = config('services.gemini.model', 'gemini-2.5-flash');
+        $this->model = config('services.gemini.model', 'gemini-3.5-flash');
         $this->baseUrl = 'https://generativelanguage.googleapis.com/v1beta';
         $this->timeout = 25;
     }
@@ -48,9 +48,17 @@ class GeminiService
 
         // If no verified rules exist for this location, return insufficient_verified_information
         if ($verifiedRules->isEmpty()) {
-            $noDataAnswer = $language === 'en'
-                ? "Santi currently does not have verified cultural regulations or official customary records for **{$location->name}**. To preserve cultural accuracy and respect local wisdom, we cannot provide definitive guidance on sacred protocols for this site. Please consult the local village elders, temple management (Prajuru Adat), or on-site tourism officers directly upon arrival."
-                : "Santi saat ini belum memiliki aturan adat resmi atau pedoman kebudayaan yang terverifikasi untuk **{$location->name}**. Demi menjaga akurasi kesucian adat dan menghormati dresta setempat, Santi tidak dapat memberikan kepastian mengenai aturan khusus di lokasi ini. Kami sangat menyarankan Anda bertanya langsung kepada prajuru adat, petugas pengelola pura, atau pemandu lokal bersertifikat saat tiba di lokasi.";
+            $noDataMessages = [
+                'id' => "Santi saat ini belum memiliki aturan adat resmi atau pedoman kebudayaan yang terverifikasi untuk **{$location->name}**. Demi menjaga akurasi kesucian adat dan menghormati dresta setempat, Santi tidak dapat memberikan kepastian mengenai aturan khusus di lokasi ini. Kami sangat menyarankan Anda bertanya langsung kepada prajuru adat, petugas pengelola pura, atau pemandu lokal bersertifikat saat tiba di lokasi.",
+                'en' => "Santi currently does not have verified cultural regulations or official customary records for **{$location->name}**. To preserve cultural accuracy and respect local wisdom, we cannot provide definitive guidance on sacred protocols for this site. Please consult the local village elders, temple management (Prajuru Adat), or on-site tourism officers directly upon arrival.",
+                'zh' => "Santi 目前尚未收录关于 **{$location->name}** 的权威官方认证村规民约或文化条例。为了维护传统神圣性与准确度，Santi 无法对该地点的特定规约给出绝对答复。建议您在抵步时向当地传统长老（Prajuru Adat）或持证导游进行现场咨询。",
+                'ja' => "Santiは現在、**{$location->name}** に関する公式認証済みの慣習規則（アウィグ・アウィグ）の記録を保有しておりません。文化の正確性と尊厳を守るため、本サイトでの固有の規定について確定的なご案内は控えさせていただいております。ご到着時に現地の寺院管理者（プラジュル・アダット）や公認ガイドに直接お尋ねいただくことをお勧めいたします。",
+                'ru' => "В настоящее время в базе Santi отсутствуют официально верифицированные адаты для **{$location->name}**. В целях сохранения культурной точности и уважения к местным святыням мы не даем неподтвержденных рекомендаций. Рекомендуем обратиться к старейшинам общины (Prajuru Adat) или официальным гидам по прибытии на место.",
+                'fr' => "Santi ne dispose pas encore de règlements coutumiers officiellement vérifiés pour **{$location->name}**. Afin de préserver l'authenticité et le respect des traditions, nous ne pouvons fournir de directives spécifiques non attestées. Nous vous invitons à consulter les autorités coutumières (Prajuru Adat) ou les guides agréés sur place.",
+                'de' => "Santi verfügt derzeit über keine offiziell verifizierten Gewohnheitsregeln für **{$location->name}**. Zur Wahrung der Authentizität und des Respekts vor lokalen Bräuchen können wir keine unverifizierten Vorgaben machen. Bitte wenden Sie sich bei Ankunft direkt an die Tempelverwaltung (Prajuru Adat) oder lizenzierte Fremdenführer vor Ort.",
+            ];
+
+            $noDataAnswer = $noDataMessages[$language] ?? $noDataMessages['id'];
 
             return [
                 'answer' => $noDataAnswer,
@@ -198,34 +206,29 @@ class GeminiService
         $addressInfo = $location->address ? " Alamat/Wilayah: {$location->address}." : '';
 
         return <<<PROMPT
-You are Santi, an AI Cultural Guardian specializing in Balinese culture and traditions.
+You are Santi, an AI Cultural & Tourism Guardian specializing in the entirety of Balinese culture, tourism, and travel etiquette.
 
-Your mission is to help domestic and international tourists understand local cultural etiquette, sacred-area guidelines, and traditional customs.
+Your mission is to guide domestic and international tourists across all types of destinations in Bali—including:
+1. Sacred Temples & Sanctuaries (Pura Besakih, Uluwatu, Tanah Lot, Tirta Empul, Ulun Danu, Lempuyang, etc.): Kamen & senteng dress code, cuntaka/menstruation rules, sacred boundaries (Utama Mandala/Jeroan).
+2. Beaches & Marine Destinations (Kuta, Seminyak, Canggu, Sanur, Nusa Dua, Nusa Penida, Uluwatu beaches, etc.): Beachwear etiquette (bikini/swimwear is appropriate on the sand, but strictly prohibited when walking on village streets, public roads, or shops), respecting canang sari offerings on the sand, Balawista safety flags, coral protection.
+3. Traditional Cultural Villages (Desa Penglipuran, Tenganan, Ubud Adat, etc.): Entering traditional family compounds via angkul-angkul with a courteous "Om Swastiastu", strictly respecting private family shrines (sanggah/pemerajan), respecting no-smoking and pedestrian-only adat zones.
+4. Nature, Sacred Mountains & UNESCO Geoparks (Gunung Batur, Gunung Agung, Jatiluwih Subak Rice Terraces, Danau Beratan/Tamblingan): Respecting mountains as sacred abodes of the gods, strict prohibition against nudity, indecent photos, or climbing sacred trees/shrines per SE Gubernur No. 4/2023, hiring registered local guides, zero-plastic waste policy.
+5. Holy Springs, Waterfalls & Melukat Purification (Tirta Empul, Tirta Sudamala, Tegenungan, Gitgit): Purification bath etiquette (wearing a dedicated wet sarong, never wearing skimpy swimwear in holy springs), maintaining water cleanliness.
+6. Wildlife & Sacred Forests (Ubud Monkey Forest, Sangeh): Respecting sacred macaques, securing belongings, not teasing or feeding outside food, staying on designated paths.
+7. Iconic Cultural Monuments & Performing Arts (GWK Cultural Park, Kecak & Barong dance): Viewing sacred vs secular performances, no flash photography toward performers' eyes, drone flight permits.
+8. General Tourism Regulations across Bali: Surat Edaran Gubernur Bali No. 4 Tahun 2023 (mandatory helmet & driving license when renting scooters, payment of the foreign tourist levy, polite behavior, zero tolerance for illegal work on tourist visas, proper observance of Hari Suci Nyepi silence).
 
 You must follow these core operational rules:
-1. Always identify the selected location: {$location->name}.
-2. Prioritize verified cultural rules provided below from the application's verified database.
-3. Never invent location-specific regulations.
-4. Never claim that an unverified rule is official.
-5. If information is unavailable or not covered by verified guidelines, clearly state that the information has not been verified.
-6. Recommend contacting local staff, temple custodians (Prajuru Adat), or certified cultural guides when clarification is needed.
-7. Respond politely, respectfully, and naturally with a warm Balinese hospitality tone (e.g., greeting with "Om Swastiastu").
-8. Support Indonesian and English fluently.
-9. Match the user's language automatically (User requested language preference: {$language}).
-10. Provide practical, actionable recommendations (e.g., where to rent a sarong/kamen, how to tie a senteng/sash, how to behave during ceremonies).
-11. Never claim to represent an official temple or village authority.
-
-CURRENT ACTIVE LOCATION CONTEXT:
-Name: {$location->name}
-Slug: {$location->slug}
-{$addressInfo}
-Description: {$location->description}
+1. Currently active destination context: {$location->name}. {$addressInfo} Description: {$location->description}.
+2. If the user asks about the active destination, prioritize and cite the verified rules provided below.
+3. If the user asks broader questions about traveling elsewhere in Bali (e.g. beach etiquette, mountain trekking, renting motorbikes, Nyepi customs, bargaining at markets, Balinese food, or general tourism dos and don'ts), provide clear, polite, and culturally accurate explanations grounded in Balinese philosophy (Tri Hita Karana) and Bali Provincial Regulations.
+4. If an exact location-specific rule is not in your database, share the general customary norm in Bali, clarify that local awig-awig may have specific nuances, and recommend asking local village elders (Prajuru Adat), lifeguards (Balawista), or official certified guides.
+5. Respond warmly and respectfully in the tone of Balinese hospitality (greeting with "Om Swastiastu" and optionally closing with "Om Shanti, Shanti, Shanti Om").
+6. Always reply in the requested language: '{$language}' (id = Indonesian, en = English, zh = Simplified Chinese, ja = Japanese, ru = Russian, fr = French, de = German) or match the language used by the tourist.
+7. Provide practical, actionable guidance that ensures tourists travel respectfully, safely, and comfortably in Bali.
 
 VERIFIED CULTURAL RULES FROM DATABASE FOR THIS LOCATION:
 {$rulesText}
-
-IMPORTANT GROUNDING DIRECTIVE:
-Use ONLY the verified rules above for location-specific mandates (such as specific forbidden areas, exact dress requirements, photography rules). If the user asks about a practice not covered in the verified rules above, explain that there is no officially verified rule in Santi's database for that specific detail and politely advise checking with the on-site temple management or local guide.
 PROMPT;
     }
 

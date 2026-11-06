@@ -18,7 +18,7 @@ class SantiCulturalGuardianTest extends TestCase
 
         config([
             'services.gemini.api_key' => 'test-fake-gemini-key',
-            'services.gemini.model' => 'gemini-2.5-flash',
+            'services.gemini.model' => 'gemini-3.5-flash',
         ]);
     }
 
@@ -64,6 +64,22 @@ class SantiCulturalGuardianTest extends TestCase
     }
 
     /**
+     * Test: Language switcher supports multiple international tourist languages.
+     */
+    public function test_language_switcher_supports_multiple_international_tourist_languages(): void
+    {
+        $locales = ['zh', 'ja', 'ru', 'fr', 'de'];
+
+        foreach ($locales as $locale) {
+            $response = $this->get('/?lang='.$locale);
+            $response->assertStatus(200);
+
+            $switch = $this->get('/lang/'.$locale);
+            $switch->assertRedirect();
+        }
+    }
+
+    /**
      * Test 3 & 4: Location directory page displays all active locations.
      */
     public function test_locations_directory_displays_active_locations(): void
@@ -85,6 +101,101 @@ class SantiCulturalGuardianTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Pura Luhur Uluwatu');
         $response->assertDontSee('Pura Non-Aktif');
+        $response->assertSee('/panduan/pura-uluwatu');
+        $response->assertSee('Lihat Panduan Adat');
+    }
+
+    /**
+     * Test: Guidelines page renders successfully with categorized rules and official sources.
+     */
+    public function test_guidelines_page_renders_successfully_with_categorized_rules(): void
+    {
+        $location = Location::factory()->create([
+            'name' => 'Pura Agung Besakih',
+            'slug' => 'pura-besakih',
+            'description' => 'Pura terbesar dan tersuci di Pulau Bali (Mother Temple).',
+            'address' => 'Jl. Gunung Agung, Desa Besakih, Karangasem',
+            'is_active' => true,
+        ]);
+
+        CulturalRule::factory()->create([
+            'location_id' => $location->id,
+            'category' => 'dress_code',
+            'title' => 'Kewajiban Busana Sopan Adat',
+            'content' => 'Setiap pengunjung wajib mengenakan kamen dan senteng.',
+            'source_name' => 'Pedoman PHDI Bali',
+            'source_url' => 'https://phdi.or.id',
+            'is_verified' => true,
+            'is_active' => true,
+        ]);
+
+        CulturalRule::factory()->create([
+            'location_id' => $location->id,
+            'category' => 'sacred_area',
+            'title' => 'Zona Sakral Utama Mandala',
+            'content' => 'Area Utama Mandala dikhususkan untuk umat yang bersembahyang.',
+            'source_name' => 'Tata Tertib Pengelola Besakih',
+            'is_verified' => true,
+            'is_active' => true,
+        ]);
+
+        $response = $this->get('/panduan/pura-besakih');
+
+        $response->assertStatus(200);
+        $response->assertSee('Pura Agung Besakih');
+        $response->assertSee('Jl. Gunung Agung, Desa Besakih, Karangasem');
+        $response->assertSee('Kewajiban Busana Sopan Adat');
+        $response->assertSee('Zona Sakral Utama Mandala');
+        $response->assertSee('Pedoman PHDI Bali');
+        $response->assertSee('Masih Ada Pertanyaan? Tanya Santi AI');
+        $response->assertSee(route('santi.show', 'pura-besakih'));
+    }
+
+    /**
+     * Test: Guidelines page aborts with 404 for inactive location.
+     */
+    public function test_guidelines_page_aborts_for_inactive_location(): void
+    {
+        Location::factory()->create([
+            'name' => 'Pura Non-Aktif',
+            'slug' => 'pura-non-aktif-2',
+            'is_active' => false,
+        ]);
+
+        $response = $this->get('/panduan/pura-non-aktif-2');
+
+        $response->assertStatus(404);
+    }
+
+    /**
+     * Test: Guidelines page covers diverse tourism destinations such as cultural heritage villages.
+     */
+    public function test_guidelines_page_covers_cultural_village_tourism(): void
+    {
+        $village = Location::factory()->create([
+            'name' => 'Desa Wisata Adat Penglipuran',
+            'slug' => 'desa-penglipuran',
+            'description' => 'Desa adat terbersih di dunia dengan arsitektur bambu.',
+            'address' => 'Kelurahan Kubu, Bangli, Bali',
+            'is_active' => true,
+        ]);
+
+        CulturalRule::factory()->create([
+            'location_id' => $village->id,
+            'category' => 'behavior',
+            'title' => 'Zona Bebas Kendaraan Bermotor',
+            'content' => 'Kawasan utama desa merupakan zona steril kendaraan bermotor.',
+            'source_name' => 'Awig-Awig Desa Adat Penglipuran',
+            'is_verified' => true,
+            'is_active' => true,
+        ]);
+
+        $response = $this->get('/panduan/desa-penglipuran');
+
+        $response->assertStatus(200);
+        $response->assertSee('Desa Wisata Adat Penglipuran');
+        $response->assertSee('Zona Bebas Kendaraan Bermotor');
+        $response->assertSee('Awig-Awig Desa Adat Penglipuran');
     }
 
     /**
@@ -111,6 +222,33 @@ class SantiCulturalGuardianTest extends TestCase
         $response->assertSee('Pura Tirta Empul');
         $response->assertSee('Om Swastiastu');
         $response->assertSee('Santi AI Cultural Guardian');
+    }
+
+    /**
+     * Test: AI Cultural Assistant page opens in general mode covering all Bali destinations (/santi).
+     */
+    public function test_chat_page_opens_in_general_mode_covering_all_bali_destinations(): void
+    {
+        $seluruhBali = Location::factory()->create([
+            'name' => 'Seluruh Wisata & Budaya Bali',
+            'slug' => 'seluruh-bali',
+            'address' => 'Provinsi Bali (9 Kabupaten & Kota)',
+            'is_active' => true,
+        ]);
+
+        CulturalRule::factory()->create([
+            'location_id' => $seluruhBali->id,
+            'title' => 'Etika Busana di Pantai vs Ruang Publik (SE Gubernur No. 4/2023)',
+            'is_verified' => true,
+            'is_active' => true,
+        ]);
+
+        $response = $this->get('/santi');
+
+        $response->assertStatus(200);
+        $response->assertSee('Seluruh Wisata');
+        $response->assertSee('Cakupan Seluruh Bali');
+        $response->assertSee('Om Swastiastu! Rahajeng rauh ring Bali.');
     }
 
     /**

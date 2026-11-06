@@ -10,6 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 class SetLocale
 {
     /**
+     * Supported application locales for international tourists and domestic visitors.
+     */
+    public const SUPPORTED_LOCALES = ['id', 'en', 'zh', 'ja', 'ru', 'fr', 'de'];
+
+    /**
      * Handle an incoming request and set application locale.
      *
      * @param  Closure(Request): (Response)  $next
@@ -19,7 +24,7 @@ class SetLocale
         // 1. Check if language is provided via query parameter ?lang=
         if ($request->has('lang')) {
             $lang = $request->query('lang');
-            if (in_array($lang, ['id', 'en'])) {
+            if (in_array($lang, self::SUPPORTED_LOCALES, true)) {
                 session(['locale' => $lang]);
             }
         }
@@ -27,7 +32,7 @@ class SetLocale
         // 2. Resolve locale from session, defaulting to Indonesian ('id')
         $locale = session('locale', config('app.locale', 'id'));
 
-        if (in_array($locale, ['id', 'en'])) {
+        if (in_array($locale, self::SUPPORTED_LOCALES, true)) {
             App::setLocale($locale);
         }
 
