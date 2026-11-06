@@ -23,7 +23,7 @@ class GeminiService
         $this->apiKey = config('services.gemini.api_key');
         $this->model = config('services.gemini.model', 'gemini-3.5-flash');
         $this->baseUrl = 'https://generativelanguage.googleapis.com/v1beta';
-        $this->timeout = 25;
+        $this->timeout = (int) config('services.gemini.timeout', 35);
     }
 
     /**
@@ -111,6 +111,9 @@ class GeminiService
                     'generationConfig' => [
                         'temperature' => 0.3,
                         'maxOutputTokens' => 1024,
+                        'thinkingConfig' => [
+                            'thinkingBudget' => 0,
+                        ],
                     ],
                 ]);
 
