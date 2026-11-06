@@ -93,34 +93,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Verified Rules Summary Pill in Initial State -->
-                @if($location->slug === 'seluruh-bali')
-                    <div class="px-4 py-2.5 rounded-xl bg-[#21845B]/10 dark:bg-[#21845B]/20 border border-[#21845B]/20 dark:border-[#21845B]/30 text-[11px] text-[#174D3B] dark:text-[#DDF2DF] flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <svg class="w-4 h-4 text-[#21845B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                            </svg>
-                            <span>Basis data terverifikasi aktif: <strong>Seluruh pedoman dresta adat & regulasi pariwisata resmi (SE Gubernur Bali No. 4/2023)</strong> terintegrasi.</span>
-                        </div>
-                    </div>
-                @elseif($location->verifiedCulturalRules->count() > 0)
-                    <div class="px-4 py-2.5 rounded-xl bg-[#21845B]/10 dark:bg-[#21845B]/20 border border-[#21845B]/20 dark:border-[#21845B]/30 text-[11px] text-[#174D3B] dark:text-[#DDF2DF] flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <svg class="w-4 h-4 text-[#21845B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                            </svg>
-                            <span>Basis data terverifikasi aktif: <strong>{{ $location->verifiedCulturalRules->count() }} pedoman dresta adat & etika wisata</strong> untuk destinasi ini.</span>
-                        </div>
-                    </div>
-                @else
-                    <div class="px-4 py-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/50 text-[11px] text-amber-800 dark:text-amber-200 flex items-center space-x-2">
-                        <svg class="w-4 h-4 text-amber-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                        </svg>
-                        <span>Peringatan: Lokasi ini adalah lokasi simulasi dan belum memiliki pedoman adat terverifikasi resmi di basis data Santi.</span>
-                    </div>
-                @endif
             </div>
 
             <!-- Loading Indicator Box (Hidden by default) -->
