@@ -184,8 +184,8 @@ Aplikasi kini aktif dan dapat diakses di: **`http://127.0.0.1:8000`**
 ## 8. Deployment URL
 
 - **Repositori Resmi GitHub**: [https://github.com/justsanzz07/lomba-bali-](https://github.com/justsanzz07/lomba-bali-)
-- **Live Production URL**: [https://santi-ai-topaz.vercel.app](https://santi-ai-topaz.vercel.app)  
-  *(Cermin Serverless Vercel / Railway Ready)*
+- **Live Production URL (Railway)**: [https://santi-web-production.up.railway.app](https://santi-web-production.up.railway.app)
+- **Production Health Check**: [https://santi-web-production.up.railway.app/health](https://santi-web-production.up.railway.app/health)
 
 ---
 
