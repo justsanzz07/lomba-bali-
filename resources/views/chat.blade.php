@@ -3,10 +3,10 @@
 @section('title', $location->slug === 'seluruh-bali' ? 'Santi AI Cultural Guardian — Seluruh Wisata Bali' : 'Santi AI Guardian — ' . $location->name)
 
 @section('content')
-<div class="pt-24 pb-12 bg-[#F8F6EF] dark:bg-[#0B1E17] min-h-screen flex flex-col justify-between transition-colors duration-200">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow flex flex-col space-y-4">
+<div class="pt-20 pb-4 sm:pt-24 sm:pb-12 bg-[#F8F6EF] dark:bg-[#0B1E17] min-h-screen flex flex-col justify-between transition-colors duration-200">
+    <div class="max-w-5xl mx-auto px-2 sm:px-6 lg:px-8 w-full flex-grow flex flex-col space-y-4">
         <!-- Chat Main Container Card -->
-        <div class="bg-white dark:bg-[#132B22] rounded-3xl shadow-xl border border-[#174D3B]/10 dark:border-white/10 flex flex-col h-[74vh] sm:h-[78vh] overflow-hidden transition-colors">
+        <div class="bg-white dark:bg-[#132B22] rounded-3xl shadow-xl border border-[#174D3B]/10 dark:border-white/10 flex flex-col h-[calc(100dvh-6.5rem)] sm:h-[78vh] overflow-hidden transition-colors">
             <!-- Header Status Strip -->
             <div class="shrink-0 px-4 sm:px-6 py-3 bg-[#F8F6EF]/90 dark:bg-[#16352A]/90 border-b border-[#174D3B]/10 dark:border-white/10 flex items-center justify-between text-xs">
                 <div class="flex items-center space-x-3">
