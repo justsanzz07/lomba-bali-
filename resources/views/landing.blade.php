@@ -575,23 +575,23 @@
                 <!-- Left Column: Value Proposition & Interactive Destination Selectors (Span 5) -->
                 <div class="lg:col-span-5 space-y-5">
                     <div>
-                        <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#174D3B]/5 dark:bg-white/10 text-[#174D3B] dark:text-[#DDF2DF] text-[11px] font-bold tracking-wider uppercase border border-[#174D3B]/10 dark:border-white/10 backdrop-blur-xs mb-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-[#21845B]"></span>
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#DDF2DF] dark:bg-[#21845B]/25 text-[#174D3B] dark:text-[#A7D9B8] text-xs font-bold tracking-wider uppercase mb-2.5">
+                            <span class="w-2 h-2 rounded-full bg-[#21845B]"></span>
                             <span>{{ __('messages.cta_eyebrow') }}</span>
-                        </span>
-                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#174D3B] dark:text-white tracking-tight leading-tight">
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#174D3B] dark:text-[#DDF2DF] tracking-tight leading-tight">
                             {{ __('messages.cta_heading_1') }}<br>
-                            <span class="text-[#21845B] dark:text-[#DDF2DF]">{{ __('messages.cta_heading_2') }}</span>
+                            <span class="text-[#21845B] dark:text-[#A7D9B8]">{{ __('messages.cta_heading_2') }}</span>
                         </h2>
                     </div>
 
-                    <p class="text-xs sm:text-sm text-[#5A6961] dark:text-white/80 leading-relaxed">
+                    <p class="text-sm sm:text-base text-[#202A25]/80 dark:text-[#C1D1C7] leading-relaxed font-normal">
                         {{ __('messages.cta_desc') }}
                     </p>
 
                     <!-- Interactive Destination Selector Pills -->
                     <div class="space-y-2.5 pt-1">
-                        <p class="text-[11px] font-bold text-[#C6A15B] uppercase tracking-wider">Pilih Simulasi Kasus Destinasi:</p>
+                        <p class="text-[11px] font-bold text-[#174D3B] dark:text-[#E5C378] uppercase tracking-wider">Pilih Simulasi Kasus Destinasi:</p>
                         <div class="grid grid-cols-2 gap-2">
                             <button type="button" class="cta-tab-btn active p-2.5 rounded-xl bg-[#174D3B] dark:bg-[#21845B] text-white text-left transition-all duration-200 border border-[#174D3B]/20 dark:border-white/20 hover:scale-[1.02]" data-tab="besakih">
                                 <span class="text-[9px] text-white/70 block uppercase font-mono">Kawasan Suci</span>
@@ -614,20 +614,20 @@
 
                     <!-- Trust Stats & Direct CTA Button -->
                     <div class="pt-3 space-y-3.5">
-                        <div class="flex items-center space-x-4 sm:space-x-6 text-[11px] sm:text-xs text-[#5A6961] dark:text-white/70 pb-3 border-b border-[#174D3B]/10 dark:border-white/10">
+                        <div class="flex items-center space-x-4 sm:space-x-6 text-[11px] sm:text-xs text-[#5A6961] dark:text-[#C1D1C7] pb-3 border-b border-[#174D3B]/10 dark:border-white/10">
                             <div>
-                                <span class="font-extrabold text-[#174D3B] dark:text-white text-xs sm:text-sm block">Google Gemini</span>
-                                <span class="text-[10px] text-[#5A6961] dark:text-white/60">Flash AI Model</span>
+                                <span class="font-extrabold text-[#174D3B] dark:text-[#DDF2DF] text-xs sm:text-sm block">Google Gemini</span>
+                                <span class="text-[10px] text-[#5A6961] dark:text-[#A7B9AF]">Flash AI Model</span>
                             </div>
                             <div class="h-5 w-px bg-[#174D3B]/15 dark:bg-white/20"></div>
                             <div>
-                                <span class="font-extrabold text-[#174D3B] dark:text-white text-xs sm:text-sm block">RAG Grounded</span>
-                                <span class="text-[10px] text-[#5A6961] dark:text-white/60">SE Gubernur & Adat</span>
+                                <span class="font-extrabold text-[#174D3B] dark:text-[#DDF2DF] text-xs sm:text-sm block">RAG Grounded</span>
+                                <span class="text-[10px] text-[#5A6961] dark:text-[#A7B9AF]">SE Gubernur & Adat</span>
                             </div>
                             <div class="h-5 w-px bg-[#174D3B]/15 dark:bg-white/20"></div>
                             <div>
-                                <span class="font-extrabold text-[#174D3B] dark:text-white text-xs sm:text-sm block">Multibahasa</span>
-                                <span class="text-[10px] text-[#5A6961] dark:text-white/60">7 Bahasa Resmi</span>
+                                <span class="font-extrabold text-[#174D3B] dark:text-[#DDF2DF] text-xs sm:text-sm block">Multibahasa</span>
+                                <span class="text-[10px] text-[#5A6961] dark:text-[#A7B9AF]">7 Bahasa Resmi</span>
                             </div>
                         </div>
 

@@ -79,10 +79,10 @@ return [
     'how_step3_tag3' => 'Ancestral Heritage',
 
     // AI Assistant CTA Section
-    'cta_eyebrow' => 'REAL-TIME CULTURAL CONSULTATION',
-    'cta_heading_1' => 'Mindful Steps Before Entering Sacred Ground',
-    'cta_heading_2' => 'Ask Customary Rules to Santi AI',
-    'cta_desc' => 'Obtain verified answers on dress codes, sacred sanctuary boundaries, and ceremony etiquette backed by official Balinese customary guidelines.',
+    'cta_eyebrow' => 'REAL-TIME CULTURAL & TOURISM CONSULTATION',
+    'cta_heading_1' => 'Mindful Exploration Across All of Bali',
+    'cta_heading_2' => 'Consult Directly with Santi AI',
+    'cta_desc' => 'Get instant, verified guidance wherever you travel in Bali—from sacred temple attire, beach etiquette, customary villages, and mountain trekking, to Governor Circular No. 4/2023 compliance.',
     'cta_btn' => 'Start Cultural Consultation with Santi AI',
     'cta_preview_badge' => 'INTERACTIVE DIALOGUE SIMULATION',
     'cta_tab_besakih' => 'Pura Agung Besakih',

@@ -79,10 +79,10 @@ return [
     'how_step3_tag3' => 'Warisan Leluhur',
 
     // AI Assistant CTA Section
-    'cta_eyebrow' => 'KONSULTASI BUDAYA REAL-TIME',
-    'cta_heading_1' => 'Langkah Bijak Sebelum Memasuki Pura Suci',
-    'cta_heading_2' => 'Tanyakan Aturan Adat kepada Santi AI',
-    'cta_desc' => 'Dapatkan jawaban terverifikasi seputar etika berpakaian, batasan mandala sakral, dan tata krama persembahyangan yang didukung data Awig-Awig resmi.',
+    'cta_eyebrow' => 'KONSULTASI BUDAYA & PARIWISATA REAL-TIME',
+    'cta_heading_1' => 'Langkah Bijak Berwisata di Seluruh Bali',
+    'cta_heading_2' => 'Konsultasikan Bersama Santi AI',
+    'cta_desc' => 'Dapatkan panduan etika budaya instan ke mana pun Anda bepergian di Bali—mulai dari busana pura, aturan pantai, desa adat, pendakian gunung, hingga kepatuhan SE Gubernur Bali No. 4/2023.',
     'cta_btn' => 'Mulai Konsultasi dengan Santi AI',
     'cta_preview_badge' => 'SIMULASI PERCAKAPAN INTERAKTIF',
     'cta_tab_besakih' => 'Pura Agung Besakih',
