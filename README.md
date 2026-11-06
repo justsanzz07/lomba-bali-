@@ -1,6 +1,6 @@
 # SANTI — AI Cultural Guardian Bali
 > **"Discover Bali. Respect Its Culture."**  
-> *Sistem Pemandu dan Penjaga Budaya Bali Virtual Berbasis Artificial Intelligence untuk Wisatawan Domestik dan Mancanegara di Kawasan Suci & Cagar Budaya Bali.*
+> *An AI-Powered Virtual Cultural Guardian & Sacred Heritage Navigator for Domestic and International Travelers in Bali.*
 
 [![Bali DigiFest 2026](https://img.shields.io/badge/Bali%20DigiFest-2026%20AI%20Web%20Innovation%20Challenge-174D3B?style=for-the-badge)](https://balidigifest.baliprov.go.id)
 [![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
@@ -13,76 +13,77 @@
 
 ## 1. Description
 
-**SANTI (Sistem Asisten & Navigasi Tradisi Interaktif)** adalah platform web inovasi pariwisata berbasis Generative AI yang dirancang sebagai penjaga budaya (*Cultural Guardian*) digital di Pulau Dewata. SANTI menjembatani kesenjangan pemahaman antara wisatawan (domestik maupun internasional) dengan nilai-nilai kesucian adat Bali (*Dresta Bali*).
+**SANTI (Interactive Tradition & Systems Assistant / *Sistem Asisten & Navigasi Tradisi Interaktif*)** is an innovative AI-driven cultural tourism web platform built as a digital cultural guardian (*Cultural Guardian*) for the Island of the Gods. SANTI bridges the communication and cultural etiquette gap between travelers (both domestic and global) and sacred Balinese traditions (*Dresta Bali*).
 
-SANTI memberikan panduan etika wisata interaktif, kontekstual, dan ramah budaya secara *real-time* sebelum dan saat wisatawan berada di pura agung, desa adat, pantai, kawasan subak, hingga gunung sakral di Bali. Platform ini dilengkapi sistem *Anti-Hallucination Grounding* berbasis basis data aturan adat terverifikasi resmi (mengacu pada Surat Edaran Gubernur Bali No. 4/2023 dan pedoman Parisada Hindu Dharma Indonesia / PHDI).
+SANTI provides real-time, context-aware, respectful, and actionable cultural etiquette guidance before and during visits to sacred temples (*pura*), customary heritage villages (*desa adat*), beaches, UNESCO cultural subak rice landscapes, and sacred mountains across Bali. The platform features an **Anti-Hallucination Grounded AI Architecture** verified against official regulatory mandates, specifically Bali Governor Circular Letter No. 04/2023 (*Surat Edaran Gubernur Bali No. 4/2023*) and guidelines from Parisada Hindu Dharma Indonesia (PHDI).
 
 ---
 
 ## 2. Problem & Target User
 
 ### Problem Statement
-1. **Tingginya Insiden Pelanggaran Norma Budaya**: Maraknya insiden wisatawan berpakaian tidak pantas di pura, menaiki tempat suci (*pelinggih*), menerbangkan drone di upacara sakral, atau masuk ke area suci dalam keadaan berkabung/menstruasi (*cuntaka*).
-2. **Keterbatasan Informasi Kontekstual di Lokasi**: Papan informasi konvensional seringkali pasif, hanya berupa teks statis satu arah, dan tidak mampu menjawab pertanyaan dinamis wisatawan dalam berbagai bahasa.
-3. **Risiko Halusinasi AI Generik**: Aplikasi AI generik tanpa sistem *grounding* kerap mengarang informasi adat (*cultural hallucination*), menciptakan kesalahpahaman fatwa adat yang fatal.
+1. **Recurring Cultural Norm Infringements**: Widespread incidents of tourists wearing improper attire in sacred temples, climbing sacred shrines (*pelinggih*), flying drones unpermitted during religious ceremonies, or trespassing into sanctified zones during spiritual impurity or mourning periods (*cuntaka/sebel*).
+2. **Static & Monolingual On-Site Signage**: Traditional acrylic signs at temple gates are passive, static, and unable to interactively answer dynamic tourist questions in their native languages.
+3. **Severe Cultural Hallucination Risks in Generic LLMs**: Unconstrained commercial LLMs frequently fabricate Balinese customary rules, producing inaccurate or offensive cultural advice.
 
-### Target User
-- **Wisatawan Domestik (Nusantara)**: Membutuhkan panduan praktis busana sopan adat, makna canang sari, dan tata karma berfoto di pura.
-- **Wisatawan Mancanegara (Mancanegara)**: Wisatawan dari Australia, Asia, Eropa, dan Amerika yang membutuhkan asistensi dalam bahasa ibu mereka (Inggris, Mandarin, Jepang, Rusia, Prancis, Jerman).
-- **Pengelola Cagar Budaya & Desa Adat**: Prajuru adat dan pemandu lokal yang membutuhkan platform edukasi mandiri bagi turis di gerbang masuk via QR Code.
+### Target Users
+- **Domestic Tourists (Wisatawan Nusantara)**: Seeking practical guidance on modest customary attire (*kamen & senteng*), the spiritual significance of daily offerings (*canang sari*), and photography etiquette.
+- **International Travelers**: Visitors from Australia, Europe, the Americas, and Asia who require instant guidance in their primary language (English, Chinese, Japanese, Russian, French, German).
+- **Cultural Heritage Custodians & Customary Village Councils (*Prajuru Adat*)**: Community guardians seeking a frictionless, automated self-education touchpoint at sanctuary entry gates via printed QR codes.
 
 ---
 
 ## 3. Key Features
 
 1. **AI Cultural Guardian Chatbot (Multi-Turn Conversational AI)**:
-   - Asisten virtual dengan persona ramah tamah Bali ("Om Swastiastu"), berbasis model **Google Gemini 3.5 Flash**.
-   - Manajemen konteks percakapan dinamis (mendukung dialog bertahap hingga 20 interaksi dengan mekanisme peringkasan otomatis tanpa memotong tampilan pengguna).
-2. **Anti-Hallucination Grounded Database**:
-   - Jawaban AI wajib berlandaskan data aturan adat resmi (`cultural_rules`) berstatus `is_verified = true`.
-   - Transparansi rujukan aturan resmi lengkap dengan nama sumber (SE Gubernur Bali, Awig-Awig Desa Adat, SK Pengelola Pura).
-3. **Multi-Destination Coverage (13 Destinasi Budaya Utama)**:
-   - Mencakup Pura Agung Besakih, Pura Luhur Uluwatu, Pura Tirta Empul, Pura Ulun Danu Beratan, Pura Tanah Lot, Desa Adat Penglipuran, Subak Jatiluwih, Pantai Kuta, GWK, Ubud Monkey Forest, Gunung Batur Kintamani, hingga panduan umum *Seluruh Bali*.
-4. **Dukungan 7 Bahasa Internasional**:
-   - Bahasa Indonesia (ID), English (EN), 中文 (ZH), 日本語 (JA), Русский (RU), Français (FR), Deutsch (DE).
-5. **Katalog Panduan Adat 2x2 Responsive Grid**:
-   - Halaman panduan adat terstruktur per kategori: Busana Adat (*Dress Code*), Kawasan Sakral (*Sacred Area*), Tata Krama (*Behavior*), Fotografi (*Photography*), dan Aturan Umum.
-6. **QR Code Ready Access**:
-   - URL berbasis slug ramah pindai (`/panduan/pura-besakih`, `/santi/desa-penglipuran`) untuk diintegrasikan pada standee fisik di gerbang pura.
-7. **Premium Modern Minimalist Footer & Modal Kebijakan**:
-   - Strip filosofi **Tri Hita Karana** (Parahyangan, Pawongan, Palemahan), kontak darurat wisatawan (Bali 112 & Polisi Pariwisata), dan modal popup Pedoman Resmi SE Gubernur Bali No. 4/2023.
+   - Embodies genuine Balinese warmth and hospitality (*Ramah Tamah Bali*) starting with "Om Swastiastu", powered by **Google Gemini 3.5 Flash**.
+   - Context-aware multi-turn conversational memory supporting up to 20 dialogue interactions with automated context summarization without truncating user-facing responses.
+2. **Anti-Hallucination Database-Backed Grounding**:
+   - Every AI response is grounded strictly in verified database rules (`cultural_rules` where `is_verified = true`).
+   - If an unverified shrine is queried, SANTI transparently returns an `insufficient_verified_information` status, refusing to fabricate sacred rules and advising consultation with local temple custodians (*prajuru adat*).
+3. **Comprehensive Multi-Destination Coverage (13 Sacred Locations)**:
+   - Dedicated coverage including Pura Agung Besakih (Mother Temple), Pura Luhur Uluwatu, Pura Tirta Empul, Pura Ulun Danu Beratan, Pura Tanah Lot, Desa Adat Penglipuran, Subak Jatiluwih, Pantai Kuta, GWK Cultural Park, Ubud Monkey Forest, Mount Batur Kintamani, and a comprehensive *All-Bali General Scope*.
+4. **Native Support for 7 International Languages**:
+   - Full localization across Bahasa Indonesia (ID), English (EN), Chinese (ZH), Japanese (JA), Russian (RU), French (FR), and German (DE).
+5. **Harmonious 2x2 Responsive Guidelines Grid**:
+   - Clean, structured card layout categorizing rules into Dress Code (*Busana Adat*), Sacred Sanctum (*Zona Sakral*), Demeanor & Conduct (*Tata Krama*), Photography Etiquette, and General Regulations.
+6. **QR-Code Scan Ready Architecture**:
+   - Permanent slug-based URLs (`/panduan/pura-besakih`, `/santi/desa-penglipuran`) designed for zero-install instant access via physical QR signage at temple gates.
+7. **Premium Modern Minimalist Footer & Legal Modals**:
+   - Horizontal philosophical strip highlighting **Tri Hita Karana** (Parahyangan, Pawongan, Palemahan), emergency contact shortcuts (Bali Emergency 112 & Bali Tourism Police), and working regulatory policy modals for SE Gubernur Bali No. 4/2023.
 
 ---
 
 ## 4. Tech Stack
 
-| Layer | Teknologi | Keterangan |
+| Layer | Technology | Role & Purpose |
 |---|---|---|
 | **Backend Framework** | Laravel 13.x (PHP 8.4+) | Robust MVC architecture, Eloquent ORM, Rate Limiting, Strict Validation |
-| **Frontend UI** | Laravel Blade + Tailwind CSS v4 | Clean semantic HTML, fluid typography, dark/light theme support |
-| **Build Tool** | Vite 8.x | High-speed asset pipeline with font optimization |
+| **Frontend UI** | Laravel Blade + Tailwind CSS v4 | Semantic HTML, fluid typography, dark/light theme support, responsive 2x2 grid |
+| **Asset Pipeline** | Vite 8.x | High-speed asset bundling, automated font fallbacks, sub-second HMR |
 | **AI Engine** | Google Gemini API (`gemini-3.5-flash`) | Context grounding, latency optimization (< 4s), zero-thinking budget |
 | **Database** | MySQL 8.0+ / SQLite 3 | Relational schema with migrations, factories, and deterministic seeders |
-| **Testing** | PHPUnit 12.x | 20 Automated Feature & Unit Tests with `Http::fake()` |
+| **Testing** | PHPUnit 12.x | 20 Automated Feature & Unit Tests with `Http::fake()` mocking |
 | **Security** | Laravel Middleware | CSRF Protection, Encrypted Session Cookies, Rate Limiting (`throttle:25,1`) |
 
 ---
 
 ## 5. AI Implementation
 
-Integrasi AI diimplementasikan secara tersentralisasi pada kelas [`app/Services/GeminiService.php`](app/Services/GeminiService.php) dengan spesifikasi teknis berikut:
+The AI integration is encapsulated within [`app/Services/GeminiService.php`](app/Services/GeminiService.php) with the following technical implementation:
 
-- **Model AI**: `gemini-3.5-flash` melalui endpoint Google AI Studio API (`v1beta`).
-- **Optimization Latency**: Dikonfigurasi dengan `thinkingBudget: 0` dan timeout 35 detik, menghasilkan waktu respons rata-rata **~3.2 – 3.8 detik** tanpa penurunan kualitas jawaban.
-- **Grounding Protocol (Anti-Hallucination)**:
-  - Sebelum *prompt* dikirim ke Gemini, backend melakukan injeksi aturan adat terverifikasi dari tabel `cultural_rules` ke dalam `systemInstruction`.
-  - Jika suatu lokasi belum memiliki aturan adat resmi yang terverifikasi, AI diinstruksikan menolak menjawab secara spekulatif dan menyarankan konfirmasi ke prajuru adat setempat (`insufficient_verified_information`).
+- **Model Configuration**: Utilizes Google's latest `gemini-3.5-flash` model through the Google AI Studio `v1beta` REST endpoint.
+- **Latency Optimization**: Explicitly configured with `thinkingBudget: 0` and a 35-second connection timeout, reducing multi-turn round-trip latency from >25s to an agile **~3.2 – 3.8 seconds**.
+- **Context Injection & Cultural Grounding**:
+  - Dynamically injects verified records from the `cultural_rules` table into the `systemInstruction` payload.
+  - Instructs the model to explain the sacred rationale (*Tri Hita Karana & Dresta Bali*) and provide respectful, actionable alternatives (e.g., how to rent and tie a *kamen* & *senteng* properly).
 - **Conversational Memory & Turn Alternation**:
-  - Mendukung riwayat percakapan bertahap (*multi-turn conversation*).
-  - Backend membatasi payload riwayat terbaru (maksimal 6 pesan terakhir), meringkas pesan lawas ke dalam ringkasan konteks, dan memangkas pesan model berlebih demi efisiensi token tanpa memotong teks di UI.
-  - Memastikan alternasi *role* yang valid (`user` &rarr; `model` &rarr; `user`) sesuai spesifikasi Gemini API.
-- **Fallback Handlers**:
-  - Proteksi otomatis terhadap kendala jaringan atau batas kuota (*rate limiting* / 429) dengan pesan alternatif terjemahan lokal yang informatif.
+  - Bounded conversational history window retaining the most recent 6 messages (3 conversational turns).
+  - Contextual summarization for older messages outside the active window, preserving dialogue continuity.
+  - Model responses in history exceeding 800 characters are condensed for API token payload efficiency without affecting the full text rendered in the user's interface.
+  - Strictly enforces alternating role requirements (`user` &rarr; `model` &rarr; `user`) compliant with Gemini API specifications.
+- **Resilient Fallback Handlers**:
+  - Catches connection timeouts and HTTP 429 rate-limiting gracefully, returning localized fallback messages paired with official verified database rules.
 
 ---
 
@@ -90,13 +91,13 @@ Integrasi AI diimplementasikan secara tersentralisasi pada kelas [`app/Services/
 
 ```mermaid
 flowchart TD
-    subgraph Client ["Frontend (Wisatawan)"]
-        UI["Antarmuka Web SANTI\n(Blade + Tailwind CSS v4)"]
-        QR["Scan QR Code Papan Informasi Pura"]
+    subgraph Client ["Client Layer (Traveler Browser)"]
+        UI["SANTI Web Interface\n(Blade + Tailwind CSS v4)"]
+        QR["Temple Gate QR Scan\n(/panduan/{slug})"]
     end
 
     subgraph Server ["Laravel Backend Engine"]
-        Router["Route Dispatcher & Middleware\n(CSRF, SetLocale, Rate Limiter: 25/min)"]
+        Router["HTTP Router & Middleware\n(CSRF, SetLocale, Rate Limiter: 25/min)"]
         Controller["SantiChatController"]
         DB[(Database MySQL / SQLite\nLocations & CulturalRules)]
         Service["GeminiService\n(Prompt Grounding & History Manager)"]
@@ -106,50 +107,50 @@ flowchart TD
         GeminiAPI["Google Gemini 3.5 Flash API\n(v1beta generateContent)"]
     end
 
-    QR -->|Akses URL /panduan/{slug}| UI
-    UI -->|Kirim Pesan & Riwayat| Router
+    QR -->|Direct Navigation| UI
+    UI -->|Async HTTP POST /chat| Router
     Router --> Controller
-    Controller -->|Query Aturan Terverifikasi is_verified=true| DB
-    DB -->|Konteks Aturan Resmi| Controller
-    Controller -->|Kompilasi Konteks & Sanitasi History| Service
-    Service -->|Payload JSON dengan System Instruction| GeminiAPI
-    GeminiAPI -->|Respons Jawaban Budaya| Service
+    Controller -->|Query Verified Rules is_verified=true| DB
+    DB -->|Verified Records| Controller
+    Controller -->|Pass Context & Sanitize History| Service
+    Service -->|JSON Payload with System Instruction| GeminiAPI
+    GeminiAPI -->|AI Guidance Response| Service
     Service --> Controller
-    Controller -->|JSON Response: Jawaban + Rujukan Resmi| UI
+    Controller -->|Structured JSON: Answer + Official Sources| UI
 ```
 
 ---
 
 ## 7. Installation / Run Instructions
 
-Ikuti langkah-langkah berikut untuk menjalankan proyek di lingkungan pengembang lokal (*Local Environment*):
+Follow these steps to set up and run SANTI in your local development environment:
 
-### Prasyarat Sistem
-- PHP >= 8.3 (dengan ekstensi `pdo_mysql`, `curl`, `mbstring`, `openssl`, `intl`)
-- Composer >= 2.5
-- Node.js >= 20.x & npm >= 10.x
-- MySQL 8.0+ atau MariaDB 10.4+
+### Prerequisites
+- **PHP**: >= 8.3 (with `pdo_mysql`, `curl`, `mbstring`, `openssl`, `intl` extensions enabled)
+- **Composer**: >= 2.5
+- **Node.js & npm**: Node.js >= 20.x, npm >= 10.x
+- **Database**: MySQL 8.0+ or MariaDB 10.4+ (or SQLite)
 
-### Langkah 1: Clone Repositori
+### Step 1: Clone Repository & Enter Directory
 ```bash
 git clone https://github.com/justsanzz07/lomba-bali-.git
 cd lomba-bali-
 ```
 
-### Langkah 2: Instal Dependensi PHP & Node.js
+### Step 2: Install PHP & Node.js Dependencies
 ```bash
 composer install
 npm install
 ```
 
-### Langkah 3: Konfigurasi File Environment
+### Step 3: Configure Environment File
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-### Langkah 4: Konfigurasi Database & API Key di `.env`
-Buka file `.env` dan sesuaikan parameter berikut:
+### Step 4: Configure Database & API Key in `.env`
+Update your `.env` file with your database credentials and Gemini API key:
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -158,75 +159,76 @@ DB_DATABASE=santi_bali
 DB_USERNAME=root
 DB_PASSWORD=
 
-# Dapatkan API Key gratis di https://aistudio.google.com
+# Obtain a free API key at https://aistudio.google.com
 GEMINI_API_KEY=your_gemini_api_key_here
 GEMINI_MODEL=gemini-3.5-flash
 ```
 
-### Langkah 5: Migrasi & Isi Database (Seed Data)
+### Step 5: Run Database Migrations & Seeders
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-### Langkah 6: Kompilasi Aset Frontend
+### Step 6: Compile Frontend Assets
 ```bash
 npm run build
 ```
 
-### Langkah 7: Jalankan Server Lokal
+### Step 7: Launch Local Development Server
 ```bash
 php artisan serve
 ```
-Aplikasi kini aktif dan dapat diakses di: **`http://127.0.0.1:8000`**
+Access the application in your browser at: **`http://127.0.0.1:8000`**
 
 ---
 
 ## 8. Deployment URL
 
-- **Repositori Resmi GitHub**: [https://github.com/justsanzz07/lomba-bali-](https://github.com/justsanzz07/lomba-bali-)
-- **Live Production URL**: [https://santi-ai-topaz.vercel.app](https://santi-ai-topaz.vercel.app)  
-  *(Cermin Serverless Vercel / Railway Ready)*
+- **Official GitHub Repository**: [https://github.com/justsanzz07/lomba-bali-](https://github.com/justsanzz07/lomba-bali-)
+- **Live Deployment URL**: [https://santi-ai-topaz.vercel.app](https://santi-ai-topaz.vercel.app)  
+  *(Production Serverless Mirror with Seeded Cultural Heritage Database)*
+- **Local Development URL**: `http://127.0.0.1:8000`
 
 ---
 
 ## 9. Demo Account
 
-Aplikasi dirancang sebagai **Public Citizen & Tourist Service Platform** tanpa registrasi akun yang memberatkan pengguna (*Guest-Accessible by Design*). Wisatawan dapat langsung mengakses seluruh fitur panduan, katalog pura, serta asisten AI tanpa login, dengan proteksi *Rate Limiting* berbasis IP untuk mencegah *abuse*.
+SANTI is architected as an open **Public Citizen & Tourist Service Platform** that prioritizes immediate accessibility (*Guest-Accessible by Design*). Travelers scanning QR codes at temple gates require zero account registration or credential entry. Abuse is mitigated through server-side IP rate limiting (`throttle:25,1`).
 
 ---
 
 ## 10. Known Limitations
 
-1. **Ketergantungan Kuota Gemini API**: Penggunaan API Key tier gratis (*Google AI Studio Free Tier*) memiliki batas kuota permintaan per menit (RPM). Jika batas terlampaui, sistem secara otomatis menampilkan pesan *fallback* informasi terverifikasi database.
-2. **Konektivitas Internet di Kawasan Pegunungan**: Respon AI membutuhkan koneksi internet aktif. Di masa depan, panduan aturan teks dasar dirancang dapat di-cache secara offline (*PWA Service Worker*).
-3. **Cakupan Database Awig-Awig**: Saat ini basis data terverifikasi mencakup 13 destinasi prioritas di Bali; penambahan aturan desa adat lainnya memerlukan kurasi berkelanjutan dari bendesa adat setempat.
+1. **Gemini API Free-Tier Rate Limits**: Free tier keys from Google AI Studio operate with per-minute rate limits (RPM). If exhausted during peak concurrent queries, the system gracefully falls back to displaying verified database guidelines.
+2. **Remote Mountain Connectivity**: AI inference requires an active internet connection. Offline progressive caching (*PWA Service Worker*) for essential rule checklists is earmarked for future releases.
+3. **Customary Adat Rule Curation Scope**: The current verified dataset comprehensively covers 13 flagship cultural landmarks in Bali. Expanding to all 1,493 customary villages across Bali requires ongoing partnership with local village councils (*desa adat*).
 
 ---
 
 ## 11. Third-party Resources / Credits
 
-- **Regulasi & Pedoman Resmi**:
-  - *Surat Edaran Gubernur Bali No. 4 Tahun 2023* tentang Tatanan Baru bagi Wisatawan Mancanegara selama Berada di Bali.
-  - *Pedoman Kesucian Pura* — Parisada Hindu Dharma Indonesia (PHDI) Bali.
-  - *Awig-Awig & Peraturan Pengelola Kawasan Suci Pura Agung Besakih*.
-- **Asset Visual & Tipografi**:
-  - Plus Jakarta Sans Font (Google Fonts / Tokotype).
-  - Unsplash Photography (Kredit kepada fotografer dokumentasi budaya Bali).
-  - Heroicons (Icons Library by Tailwind Labs).
-- **Infrastruktur & Framework**:
-  - Laravel Framework (Taylor Otwell & Komunitas Open-Source Laravel).
+- **Regulatory Framework & Cultural Directives**:
+  - *Bali Governor Circular Letter No. 04 of 2023* concerning New Order Standards for Foreign Tourists Visiting Bali.
+  - *Sacred Sanctuary Guidelines* — Parisada Hindu Dharma Indonesia (PHDI) Bali.
+  - *Pura Agung Besakih Management Etiquette & Customary Decrees*.
+- **Visual Assets & Typography**:
+  - Plus Jakarta Sans Typography (Google Fonts / Tokotype).
+  - Unsplash Photography (Cultural documentation photography of Bali).
+  - Heroicons (Tailwind Labs).
+- **Frameworks & Infrastructure**:
+  - Laravel Framework (Taylor Otwell & Laravel Open Source Contributors).
   - Google Gemini AI (Google DeepMind).
 
 ---
 
 ## 12. Team Members
 
-**Tim Pengembang SANTI (Bali DigiFest 2026 AI Web Innovation Challenge)**:
+**SANTI Development Team (Bali DigiFest 2026 AI Web Innovation Challenge)**:
 
-| No | Nama Lengkap | Peran / Tanggung Jawab | Institusi / Afiliasi |
+| No | Full Name | Role & Responsibility | Affiliation |
 |:---:|---|---|---|
-| **1** | **Nur Hasan** | Full-Stack Developer & Prompt Engineer | Universitas / Tim Inovator Bali |
-| **2** | **Tim SANTI Cultural Tech** | UX Researcher & Balinese Cultural Curator | Tim Inovator Bali |
+| **1** | **Nur Hasan** | Full-Stack Developer & AI Systems Engineer | Balinese Digital Innovation Team |
+| **2** | **SANTI Cultural Tech Team** | UX Designer & Balinese Cultural Heritage Researcher | Balinese Digital Innovation Team |
 
 ---
 *Matur Suksma. Rahayu Sareng Sami.* 🙏🌺
