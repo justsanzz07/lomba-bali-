@@ -144,3 +144,4 @@ class AdminCulturalRuleController extends Controller
             ->with('success', "Aturan budaya '{$title}' berhasil dihapus.");
     }
 }
+

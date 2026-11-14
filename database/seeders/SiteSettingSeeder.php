@@ -35,7 +35,7 @@ class SiteSettingSeeder extends Seeder
             ],
             [
                 'key' => 'about_heading',
-                'value' => 'Menjaga Kesucian & Harmoni Jagat Bali',
+                'value' => 'Panduan Budaya AI untuk Menjelajahi Bali',
                 'description' => 'Judul utama di bagian Tentang Kami',
             ],
             [
@@ -68,3 +68,4 @@ class SiteSettingSeeder extends Seeder
         }
     }
 }
+

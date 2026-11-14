@@ -140,3 +140,4 @@ class AdminLocationController extends Controller
             ->with('success', "Destinasi '{$name}' dan seluruh aturan adatnya berhasil dihapus.");
     }
 }
+

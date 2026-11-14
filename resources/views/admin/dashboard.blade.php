@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', 'Dashboard Ringkasan — SANTI Admin')
-@section('header_title', 'Ringkasan dan Statistik Budaya')
+@section('header_title', 'Ringkasan & Statistik Budaya')
 
 @section('content')
 <div class="space-y-6">
@@ -61,7 +61,7 @@
     <!-- Quick Actions Banner -->
     <div class="p-6 rounded-3xl bg-[#174D3B] dark:bg-[#133E2F] text-white shadow-lg border border-[#21845B]/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div class="space-y-1">
-            <h3 class="text-lg font-extrabold tracking-tight">Kelola Konten dan Pedoman Adat Bali</h3>
+            <h3 class="text-lg font-extrabold tracking-tight">Kelola Konten & Pedoman Adat Bali</h3>
             <p class="text-xs text-white/80 max-w-xl">
                 Tambah atau ubah destinasi pariwisata, perbarui aturan tata busana pura, dan sesuaikan teks informasi pada beranda publik secara langsung.
             </p>
@@ -153,3 +153,4 @@
     </div>
 </div>
 @endsection
+

@@ -62,3 +62,4 @@ class AdminSettingController extends Controller
             ->with('success', 'Konten Halaman Depan berhasil diperbarui dan langsung tampil di website publik!');
     }
 }
+

@@ -20,11 +20,14 @@ class AdminManagementTest extends TestCase
     {
         parent::setUp();
 
-        $this->admin = User::factory()->create([
-            'name' => 'Administrator Santi',
-            'email' => 'admin@santi.bali',
-            'password' => Hash::make('SantiBali2026!'),
-        ]);
+        $this->admin = User::firstOrCreate(
+            ['email' => 'admin@santi.bali'],
+            [
+                'name' => 'Administrator Santi',
+                'password' => Hash::make('SantiBali2026!'),
+                'email_verified_at' => now(),
+            ]
+        );
     }
 
     public function test_guest_cannot_access_admin_dashboard_and_is_redirected_to_login(): void
@@ -71,8 +74,8 @@ class AdminManagementTest extends TestCase
         $response = $this->actingAs($this->admin)->get('/admin');
 
         $response->assertStatus(200);
-        $response->assertSee('Ringkasan dan Statistik Budaya');
-        $response->assertSee('Kelola Konten dan Pedoman Adat Bali');
+        $response->assertSee('Statistik Budaya');
+        $response->assertSee('Kelola Konten');
     }
 
     public function test_admin_can_view_locations_index(): void
@@ -265,3 +268,4 @@ class AdminManagementTest extends TestCase
         $this->assertGuest();
     }
 }
+

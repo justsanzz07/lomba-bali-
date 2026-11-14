@@ -52,10 +52,17 @@
 
                 <!-- Password Input -->
                 <div class="space-y-1.5">
-                    <label for="password" class="block text-xs font-bold text-[#174D3B] dark:text-[#DDF2DF]">Kata Sandi</label>
-                    <input type="password" id="password" name="password" required
-                        placeholder="••••••••"
-                        class="w-full px-4 py-2.5 rounded-xl bg-[#F8F6EF] dark:bg-[#0E231B] border border-[#174D3B]/20 dark:border-white/10 text-xs sm:text-sm text-[#202A25] dark:text-[#F8F6EF] focus:outline-none focus:ring-2 focus:ring-[#21845B] focus:border-transparent transition-all">
+                    <div class="flex items-center justify-between">
+                        <label for="password" class="block text-xs font-bold text-[#174D3B] dark:text-[#DDF2DF]">Kata Sandi</label>
+                        <button type="button" id="toggle-password-btn" class="text-[11px] text-[#21845B] dark:text-[#A7D9B8] hover:underline font-medium cursor-pointer">
+                            Tampilkan Sandi
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <input type="password" id="password" name="password" required
+                            placeholder="SantiBali2026!"
+                            class="w-full px-4 py-2.5 rounded-xl bg-[#F8F6EF] dark:bg-[#0E231B] border border-[#174D3B]/20 dark:border-white/10 text-xs sm:text-sm text-[#202A25] dark:text-[#F8F6EF] focus:outline-none focus:ring-2 focus:ring-[#21845B] focus:border-transparent transition-all">
+                    </div>
                 </div>
 
                 <!-- Remember Me -->
@@ -76,18 +83,57 @@
                 </div>
             </form>
 
-            <!-- Demo Account Credentials Info Box -->
-            <div class="mt-6 pt-5 border-t border-gray-100 dark:border-white/10 text-xs text-[#5A6961] dark:text-[#A7B9AF] space-y-1.5">
+            <!-- Demo Account Credentials Info Box with 1-Click Auto Fill -->
+            <div class="mt-6 pt-5 border-t border-gray-100 dark:border-white/10 text-xs text-[#5A6961] dark:text-[#A7B9AF] space-y-2">
                 <p class="font-bold text-[#174D3B] dark:text-[#DDF2DF] flex items-center space-x-1.5">
                     <svg class="w-3.5 h-3.5 text-[#C6A15B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     <span>Akun Pengelola Default:</span>
                 </p>
-                <div class="p-2.5 rounded-xl bg-[#F8F6EF] dark:bg-[#0E231B] font-mono text-[11px] space-y-0.5 border border-[#174D3B]/10 dark:border-white/5">
-                    <div>Email: <strong class="text-[#174D3B] dark:text-white">admin@santi.bali</strong></div>
-                    <div>Password: <strong class="text-[#174D3B] dark:text-white">SantiBali2026!</strong></div>
+                <div class="p-3 rounded-2xl bg-[#F8F6EF] dark:bg-[#0E231B] font-mono text-[11px] space-y-1 border border-[#174D3B]/10 dark:border-white/5">
+                    <div class="flex items-center justify-between">
+                        <span>Email:</span>
+                        <strong class="text-[#174D3B] dark:text-white select-all">admin@santi.bali</strong>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span>Password:</span>
+                        <strong class="text-[#174D3B] dark:text-white select-all">SantiBali2026!</strong>
+                    </div>
                 </div>
+                <button type="button" id="autofill-btn"
+                    class="w-full py-2 px-3 rounded-xl bg-[#21845B]/15 hover:bg-[#21845B]/25 text-[#174D3B] dark:text-[#A7D9B8] font-bold text-xs transition-colors flex items-center justify-center space-x-1.5 cursor-pointer">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <span>Klik untuk Isi Otomatis Kredensial</span>
+                </button>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const passInput = document.getElementById('password');
+                const emailInput = document.getElementById('email');
+                const toggleBtn = document.getElementById('toggle-password-btn');
+                const autofillBtn = document.getElementById('autofill-btn');
+
+                if (toggleBtn && passInput) {
+                    toggleBtn.addEventListener('click', () => {
+                        const isPass = passInput.getAttribute('type') === 'password';
+                        passInput.setAttribute('type', isPass ? 'text' : 'password');
+                        toggleBtn.textContent = isPass ? 'Sembunyikan Sandi' : 'Tampilkan Sandi';
+                    });
+                }
+
+                if (autofillBtn && passInput && emailInput) {
+                    autofillBtn.addEventListener('click', () => {
+                        emailInput.value = 'admin@santi.bali';
+                        passInput.value = 'SantiBali2026!';
+                        autofillBtn.innerHTML = '<span class="text-emerald-600 font-bold">✓ Kredensial Terisi! Klik "Masuk"</span>';
+                        setTimeout(() => {
+                            autofillBtn.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span>Klik untuk Isi Otomatis Kredensial</span>';
+                        }, 3000);
+                    });
+                }
+            });
+        </script>
 
         <!-- Back to Website Link -->
         <div class="text-center">
@@ -99,3 +145,4 @@
     </div>
 </div>
 @endsection
+
