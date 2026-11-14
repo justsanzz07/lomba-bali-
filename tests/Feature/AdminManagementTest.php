@@ -256,7 +256,6 @@ class AdminManagementTest extends TestCase
         $landingResponse->assertStatus(200);
         $landingResponse->assertSee('Jelajahi Keindahan Bali.');
         $landingResponse->assertSee('Hormati Kesucian Adatnya.');
-        $landingResponse->assertSee('Perhatian Khusus Hari Raya Galungan dan Kuningan.');
         $landingResponse->assertSee('Komitmen Pelestarian Budaya Leluhur');
     }
 

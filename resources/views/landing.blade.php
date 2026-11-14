@@ -24,13 +24,6 @@
         <div class="absolute inset-0 bg-black/15 pointer-events-none"></div>
 
         <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 pb-20 text-center flex flex-col items-center justify-center space-y-4 sm:space-y-5">
-            @if($announcement = \App\Models\SiteSetting::get('announcement_banner'))
-                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-xs font-semibold text-white max-w-xl transition-all shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-[#C6A15B] animate-pulse"></span>
-                    <span class="truncate">{{ $announcement }}</span>
-                </div>
-            @endif
-
             <!-- Main Headline -->
             <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight max-w-2xl drop-shadow-md">
                 {{ \App\Models\SiteSetting::getLocalized('hero_title_1', 'messages.hero_title_1') }}<br>
