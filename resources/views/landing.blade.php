@@ -24,15 +24,22 @@
         <div class="absolute inset-0 bg-black/15 pointer-events-none"></div>
 
         <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 pb-20 text-center flex flex-col items-center justify-center space-y-4 sm:space-y-5">
+            @if($announcement = \App\Models\SiteSetting::get('announcement_banner'))
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-xs font-semibold text-white max-w-xl transition-all shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-[#C6A15B] animate-pulse"></span>
+                    <span class="truncate">{{ $announcement }}</span>
+                </div>
+            @endif
+
             <!-- Main Headline -->
             <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight max-w-2xl drop-shadow-md">
-                {{ __('messages.hero_title_1') }}<br>
-                {{ __('messages.hero_title_2') }}
+                {{ \App\Models\SiteSetting::getLocalized('hero_title_1', 'messages.hero_title_1') }}<br>
+                {{ \App\Models\SiteSetting::getLocalized('hero_title_2', 'messages.hero_title_2') }}
             </h1>
 
             <!-- Subtitle -->
             <p class="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed font-normal max-w-lg mx-auto drop-shadow-sm">
-                {{ __('messages.hero_subtitle') }}
+                {{ \App\Models\SiteSetting::getLocalized('hero_subtitle', 'messages.hero_subtitle') }}
             </p>
 
             <!-- Centered Action Buttons -->
@@ -64,22 +71,22 @@
                     </div>
 
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#174D3B] dark:text-[#DDF2DF] tracking-tight leading-tight">
-                        {{ __('messages.about_heading') }}
+                        {{ \App\Models\SiteSetting::getLocalized('about_heading', 'messages.about_heading') }}
                     </h2>
 
                     <div class="space-y-3.5 text-sm sm:text-base text-[#202A25]/80 dark:text-[#C1D1C7] leading-relaxed font-normal">
                         <p>
-                            {{ __('messages.about_p1') }}
+                            {{ \App\Models\SiteSetting::getLocalized('about_p1', 'messages.about_p1') }}
                         </p>
                         <p>
-                            {{ __('messages.about_p2') }}
+                            {{ \App\Models\SiteSetting::getLocalized('about_p2', 'messages.about_p2') }}
                         </p>
                     </div>
 
                     <!-- Factual Cultural Alignment Point -->
                     <div class="pt-1 text-xs font-semibold text-[#174D3B] dark:text-[#A7D9B8] flex items-center space-x-2">
                         <span class="w-2 h-2 rounded-full bg-[#21845B]"></span>
-                        <span>{{ __('messages.about_highlight') }}</span>
+                        <span>{{ \App\Models\SiteSetting::getLocalized('about_highlight', 'messages.about_highlight') }}</span>
                     </div>
 
                     <!-- CTA Button -->

@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminCulturalRuleController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminLocationController;
+use App\Http\Controllers\Admin\AdminSettingController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SantiChatController;
 use App\Http\Middleware\SetLocale;
 use App\Models\Location;
@@ -30,3 +35,25 @@ Route::get('/health', function () {
         'application' => 'Santi AI',
     ], 200);
 })->name('health');
+
+// Authentication Routes
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Protected Admin Panel Routes
+Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+    // Destinations (Locations) Management
+    Route::post('/locations/{location}/toggle', [AdminLocationController::class, 'toggle'])->name('locations.toggle');
+    Route::resource('locations', AdminLocationController::class);
+
+    // Cultural Rules Management
+    Route::post('/cultural-rules/{culturalRule}/toggle-verify', [AdminCulturalRuleController::class, 'toggleVerify'])->name('cultural-rules.toggle-verify');
+    Route::resource('cultural-rules', AdminCulturalRuleController::class);
+
+    // Front-Page (Landing Page) Settings
+    Route::get('/settings', [AdminSettingController::class, 'index'])->name('settings.index');
+    Route::put('/settings', [AdminSettingController::class, 'update'])->name('settings.update');
+});

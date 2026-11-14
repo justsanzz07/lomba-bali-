@@ -129,6 +129,13 @@
                         </svg>
                     </button>
 
+                    @auth
+                        <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-full bg-[#21845B] hover:bg-[#1a6e4b] text-white text-xs font-bold shadow-md transition-all">
+                            <span>Admin Panel</span>
+                            <span class="text-[10px]">⚙</span>
+                        </a>
+                    @endauth
+
                     <a href="{{ route('santi.index') }}" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#DDF2DF] text-[#174D3B] text-xs font-bold shadow-md hover:shadow-lg transition-all duration-200">
                         <span>{{ __('messages.nav_ask_santi') }}</span>
                         <svg class="w-3.5 h-3.5 text-[#174D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -378,6 +385,16 @@
                     <button type="button" onclick="document.getElementById('privacy-modal').classList.remove('hidden')" class="hover:text-white transition-colors cursor-pointer">
                         {{ __('messages.footer_privacy_btn') }}
                     </button>
+                    <span class="text-white/20">•</span>
+                    @auth
+                        <a href="{{ route('admin.dashboard') }}" class="text-[#A7D9B8] hover:text-white font-semibold transition-colors">
+                            Admin Panel ⚙
+                        </a>
+                    @else
+                        <a href="{{ route('login') }}" class="hover:text-white transition-colors" title="Login Pengelola">
+                            Login Admin 🔒
+                        </a>
+                    @endauth
                 </div>
             </div>
         </div>
